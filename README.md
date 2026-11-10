@@ -12,6 +12,16 @@ npm run build    # type-check + production build
 npm run lint
 ```
 
+## Publish to GitHub Pages
+
+```bash
+npm run deploy
+```
+
+This builds the app and uploads it to the `gh-pages` branch. The live site is
+https://elynn-dev.github.io/flexibite-prototype-test/ (GitHub Pages must be set to deploy from the
+`gh-pages` branch). Pushing to `main` alone does not update the live site.
+
 ## Where things live
 
 ```
