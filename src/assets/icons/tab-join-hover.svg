@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="48" height="50" viewBox="0 0 48 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="main-tap icon">
+<mask id="path-1-inside-1_0_3047" fill="white">
+<path d="M0 0H48V50H0V0Z"/>
+</mask>
+<path d="M48 50V48.4H0V50V51.6H48V50Z" fill="#6B635E" mask="url(#path-1-inside-1_0_3047)"/>
+<path id="Vector" d="M41.26 24C41.26 33.5324 33.5324 41.26 24 41.26C14.4676 41.26 6.74 33.5324 6.74 24C6.74 14.4676 14.4676 6.74 24 6.74C33.5324 6.74 41.26 14.4676 41.26 24Z" stroke-width="1.2" stroke-miterlimit="10" stroke="#6B635E" vector-effect="non-scaling-stroke"/>
+<path id="Vector_2" d="M24 9.9V38.2" stroke-width="1.2" stroke-miterlimit="10" stroke="#6B635E" vector-effect="non-scaling-stroke"/>
+<path id="Vector_3" d="M13.99 14.04L34.01 34.05" stroke-width="1.2" stroke-miterlimit="10" stroke="#6B635E" vector-effect="non-scaling-stroke"/>
+<path id="Vector_4" d="M13.99 34.05L34.01 14.04" stroke-width="1.2" stroke-miterlimit="10" stroke="#6B635E" vector-effect="non-scaling-stroke"/>
+<path id="Vector_5" d="M9.84961 24.0498H38.1496" stroke-width="1.2" stroke-miterlimit="10" stroke="#6B635E" vector-effect="non-scaling-stroke"/>
+</g>
+</svg>

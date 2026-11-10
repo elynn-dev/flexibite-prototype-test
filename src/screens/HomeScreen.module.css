@@ -1,0 +1,137 @@
+.screen {
+  position: relative;
+  height: 100%;
+  background: var(--surface-page);
+}
+
+.scroll {
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 240px;
+}
+
+.pad {
+  padding: 0 var(--space-page);
+}
+
+.plans {
+  padding: 0 var(--space-page);
+}
+
+.daily {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 16px;
+}
+
+.mealGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Empty day */
+.empty {
+  padding-top: 12px;
+}
+
+.createPlan {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--border-default);
+  background: var(--surface-default-secondary);
+  /* Tighter than the Figma "Button" effect so it doesn't spill over the tiles below. */
+  box-shadow: var(--shadow-link);
+  color: var(--text-default-secondary);
+  font: 400 18px/22px var(--font-display);
+  letter-spacing: 0.36px;
+  cursor: pointer;
+}
+
+.createPlan:hover {
+  background: var(--surface-hover);
+  border-color: var(--neutral-600);
+}
+
+.createPlan:active {
+  background: var(--surface-pressed);
+  box-shadow: var(--shadow-pressed);
+}
+
+.createPlan:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: 4px;
+}
+
+.tiles {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 2px;
+  margin: 16px calc(-1 * var(--space-page)) 0 0;
+  overflow: hidden;
+}
+
+/* Weekly view */
+.weekRow {
+  display: flex;
+  gap: 16px;
+  padding-top: 16px;
+  overflow-x: auto;
+}
+
+.weekDay {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: none;
+  width: 124px;
+}
+
+.weekHeader {
+  height: 28px;
+  padding-top: 3px;
+  border-bottom: 1px solid var(--neutral-500);
+  text-transform: uppercase;
+  color: var(--text-action);
+}
+
+.weekMeal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.weekMeal + .weekMeal {
+  margin-top: 24px;
+}
+
+/* Bottom dock: + button, basket and tab bar */
+.dock {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.dock > * {
+  pointer-events: auto;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.grocery {
+  display: flex;
+  justify-content: flex-end;
+  height: 42px;
+  margin: 14px 0 16px;
+  padding: 0 var(--space-page);
+}

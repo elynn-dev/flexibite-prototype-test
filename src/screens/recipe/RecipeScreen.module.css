@@ -1,0 +1,244 @@
+.screen {
+  height: 100%;
+  overflow-y: auto;
+  background: var(--surface-page);
+}
+
+.overlayHeader {
+  display: flex;
+  justify-content: flex-end;
+  height: 96px;
+  padding: 56px var(--space-page) 0;
+}
+
+.close {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: 2px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 16px var(--space-page) 0;
+}
+
+/* Selected dates */
+.selectedDates {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+}
+
+.dateButton {
+  width: 44px;
+  padding: 0;
+  box-shadow: var(--shadow-card);
+}
+
+.dateChips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.dateChip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+  height: 40px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-action);
+  background: var(--surface-default-secondary);
+  white-space: nowrap;
+}
+
+.chipLabel {
+  color: var(--text-action);
+}
+
+.dateChip button {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.dateChip button img {
+  width: 20px;
+  height: 20px;
+}
+
+.toast {
+  margin: -36px 0 -24px;
+}
+
+/* Title, tags and photo */
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  height: 40px;
+}
+
+.title h1 {
+  margin: 0;
+  color: var(--text-heading);
+}
+
+.search {
+  width: 40px;
+  padding: 0;
+  box-shadow: none;
+}
+
+.info {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid var(--text-action);
+  border-bottom: 1px solid var(--text-action);
+}
+
+.infoChip {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 22px;
+  color: var(--text-action);
+}
+
+.outlined {
+  border: 1px solid var(--text-action);
+  padding: 0 11px;
+}
+
+.photo {
+  height: 163px;
+  background: #fff;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Steps, Ingredients, Note */
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.steps {
+  padding: 10px 0;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 25px;
+}
+
+.sectionHeader h2 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: var(--text-default-secondary);
+}
+
+.ingredients {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* The ingredient cards scroll sideways and their shadows need room. */
+.pantry {
+  margin: -8px calc(-1 * var(--space-page)) -40px;
+  padding: 8px var(--space-page) 40px;
+  overflow-x: auto;
+}
+
+.pantryRows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 594px;
+}
+
+.pantryRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.addIngredient {
+  width: 44px;
+  padding: 0;
+  box-shadow: var(--shadow-card);
+}
+
+.note {
+  width: 100%;
+  height: 146px;
+  padding: 24px;
+  border: 1px solid var(--border-muted);
+  background: var(--surface-page);
+  color: var(--text-default-secondary);
+  resize: none;
+}
+
+.note::placeholder {
+  color: var(--neutral-500);
+}
+
+.note:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: 2px;
+}
+
+/* Sticky Done button */
+.footer {
+  position: sticky;
+  bottom: 0;
+  margin-top: 24px;
+  padding: 24px var(--space-page) 32px;
+  background: var(--surface-page);
+}

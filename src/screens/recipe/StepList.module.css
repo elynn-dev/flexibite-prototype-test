@@ -1,0 +1,68 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.list {
+  display: flex;
+  gap: 16px;
+  margin: 0 calc(-1 * var(--space-page));
+  padding: 0 var(--space-page);
+  overflow-x: auto;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: none;
+  width: 104px;
+}
+
+.picture {
+  width: 104px;
+  height: 104px;
+  background: #e9e6df;
+}
+
+.picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.step p {
+  margin: 0;
+  font: 400 11.976px/14.74px var(--font-body);
+  letter-spacing: 0.12px;
+  color: var(--text-step);
+}
+
+/* Scroll indicator: grey track with a dot that follows the scroll position. */
+.indicator {
+  position: relative;
+  width: 26px;
+  height: 6px;
+  margin: 0 auto;
+}
+
+.indicator b {
+  position: absolute;
+  top: 0;
+  left: 2px;
+  width: 22px;
+  height: 6px;
+  border-radius: 8px;
+  background: #c8c8c8;
+}
+
+.indicator i {
+  position: absolute;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border-tab-bar);
+}

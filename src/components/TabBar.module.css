@@ -1,0 +1,46 @@
+.bar {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 108px;
+  padding: 12px 48px 36px;
+  border-top: 1px solid var(--border-tab-bar);
+  background: var(--surface-tab-bar);
+}
+
+.tab {
+  position: relative;
+  width: 48px;
+  height: 50px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.tab img {
+  position: absolute;
+  inset: 0;
+  width: 48px;
+  height: 50px;
+}
+
+.hover {
+  opacity: 0;
+}
+
+.tab:hover .hover {
+  opacity: 1;
+}
+
+/* Swap to the hover icon on inactive tabs (the active tab has only one icon). */
+.tab:hover .normal:not(:only-child) {
+  opacity: 0;
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--toast-info-fg);
+  outline-offset: 2px;
+}

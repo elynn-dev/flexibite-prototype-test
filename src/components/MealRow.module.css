@@ -1,0 +1,75 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--surface-page);
+  text-align: left;
+  font-family: var(--font-body);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.picture {
+  flex: none;
+  overflow: hidden;
+  background: var(--surface-desk);
+}
+
+.picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-right: 8px;
+  border-bottom: 0.7px solid var(--neutral-500);
+}
+
+.name {
+  display: block;
+  font: 400 14px/18px var(--font-body);
+  color: var(--text-action);
+}
+
+.description {
+  display: block;
+  max-width: 120px;
+  margin-top: 4px;
+  font: 400 10px/13px var(--font-body);
+  color: var(--text-default-secondary);
+}
+
+.clickable:hover {
+  background: var(--surface-hover);
+}
+
+.clickable:hover .text {
+  border-bottom-color: transparent;
+}
+
+.clickable:hover .name,
+.clickable:hover .description {
+  color: var(--neutral-600);
+}
+
+.clickable:active {
+  background: var(--surface-pressed);
+  box-shadow: var(--shadow-pressed);
+}
+
+.clickable:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: 5px;
+}

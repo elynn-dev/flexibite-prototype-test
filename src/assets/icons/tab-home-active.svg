@@ -1,0 +1,16 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="48" height="50" viewBox="0 0 48 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="main-tap icon">
+<mask id="path-1-inside-1_0_3109" fill="white">
+<path d="M0 0H48V50H0V0Z"/>
+</mask>
+<path d="M48 50V48.4H0V50V51.6H48V50Z" fill="black" mask="url(#path-1-inside-1_0_3109)"/>
+<path id="Vector" d="M40.4499 14.39C40.4499 17.9191 37.589 20.78 34.0599 20.78C30.5308 20.78 27.6699 17.9191 27.6699 14.39C27.6699 10.8609 30.5308 8 34.0599 8C37.589 8 40.4499 10.8609 40.4499 14.39Z" stroke-width="1.2" stroke-miterlimit="10" stroke="black" vector-effect="non-scaling-stroke"/>
+<path id="Vector_2" d="M8.82031 8.37012H20.8603V20.4101H8.82031V8.37012Z" stroke-width="1.2" stroke-miterlimit="10" stroke="black" vector-effect="non-scaling-stroke"/>
+<path id="Vector_3" d="M14.84 28.3099L8 40.1599H21.68L14.84 28.3099Z" stroke-width="1.2" stroke-miterlimit="10" stroke="black" vector-effect="non-scaling-stroke"/>
+<g id="home-glyph">
+<path id="Vector_4" d="M33.47 27.7597L27.68 33.5397L26.79 40.1597L33.47 39.3197L39.25 33.5397C40.85 31.9397 40.85 29.3497 39.25 27.7597C37.65 26.1697 35.06 26.1597 33.47 27.7597Z" stroke-width="1.2" stroke-miterlimit="10" stroke="black" vector-effect="non-scaling-stroke"/>
+<path id="Vector_5" d="M27.88 33.3497L33.83 39.2997" stroke-width="1.2" stroke-miterlimit="10" stroke="black" vector-effect="non-scaling-stroke"/>
+<path id="Vector_6" d="M33.6104 27.6099L39.5704 33.5699" stroke-width="1.2" stroke-miterlimit="10" stroke="black" vector-effect="non-scaling-stroke"/>
+</g>
+</g>
+</svg>

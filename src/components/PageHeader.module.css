@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 112px;
+  padding: 88px var(--space-page) 0;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  color: var(--text-caption);
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border-default);
+  border-radius: 50%;
+}
+
+.bell {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.bellIcon {
+  position: absolute;
+  top: -3.13%;
+  left: 0;
+  width: 109.38%;
+  height: 103.13%;
+  max-width: none;
+}
+
+.bell:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: 2px;
+}

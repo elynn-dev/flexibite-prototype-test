@@ -1,0 +1,408 @@
+/* Shared by Choose dates, Plan builder and Plan summary. */
+.screen {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: var(--surface-page);
+}
+
+.scroll {
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 150px;
+}
+
+.upper {
+  gap: 8px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+/* ---- Choose dates ---- */
+.title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 24px var(--space-page) 0;
+  color: var(--text-action);
+}
+
+.weekdays {
+  display: flex;
+  padding: 32px var(--space-page) 0;
+  opacity: 0.5;
+}
+
+.weekdays span {
+  flex: 1;
+  text-align: center;
+  font: 400 10px/13px var(--font-body);
+  color: var(--text-heading);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 8px;
+  padding: 12px var(--space-page) 0;
+}
+
+.gridDay {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+  padding: 4px 0 0;
+  border: 0;
+  border-radius: 2px;
+  background: none;
+  color: var(--text-action);
+  font: 400 10px/13px var(--font-body);
+  cursor: pointer;
+}
+
+.gridDay:hover {
+  background: var(--surface-hover);
+  color: var(--neutral-600);
+}
+
+.outside {
+  color: var(--neutral-500);
+}
+
+.on,
+.on:hover {
+  background: var(--secondary-warm-light);
+}
+
+.today::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--text-action);
+}
+
+.gridDay:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: 2px;
+}
+
+.marks {
+  display: flex;
+  gap: 2px;
+}
+
+.rule {
+  margin: 32px var(--space-page) 0;
+  border-top: 1px solid #cbc8c2;
+}
+
+.selectedToggle {
+  margin: 24px var(--space-page) 0;
+}
+
+.dateRows {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 24px var(--space-page) 0;
+}
+
+.dateRow {
+  padding: 12px;
+  background: var(--surface-desk);
+}
+
+.dateRowHead {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  font-size: 14px;
+  color: var(--text-action);
+}
+
+.typeMenu {
+  position: absolute;
+  top: 32px;
+  right: 0;
+  z-index: 5;
+  width: 94px;
+  border: 1px solid var(--border-default);
+  background: var(--surface-page);
+  box-shadow: var(--shadow-button);
+}
+
+.typeMenu button {
+  display: block;
+  width: 100%;
+  height: 32px;
+  padding: 0 15px;
+  border: 0;
+  border-top: 1px solid var(--border-default);
+  background: var(--surface-page);
+  color: var(--text-action);
+  font: 400 10px/13px var(--font-body);
+  text-align: left;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.typeMenu button:first-child {
+  border-top: 0;
+}
+
+.typeMenu button:hover {
+  background: var(--surface-hover);
+  color: var(--neutral-600);
+}
+
+.typeChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.typeChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 90px;
+  height: 32px;
+  padding-left: 4px;
+  border-bottom: 1px solid var(--border-subtle);
+  font: 500 12px/15px var(--font-body);
+  color: var(--text-action);
+}
+
+.typeChip button,
+.dateChip button,
+.needChip button {
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.typeChip button img,
+.dateChip button img,
+.needChip button img {
+  width: 20px;
+  height: 20px;
+}
+
+.done {
+  position: absolute;
+  right: var(--space-page);
+  bottom: 36px;
+  width: 58px;
+  border: 0;
+  box-shadow: var(--shadow-button);
+}
+
+/* ---- Plan builder ---- */
+.chipRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 var(--space-page);
+}
+
+.calendarButton {
+  width: 44px;
+  padding: 0;
+}
+
+.chips {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.dateChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  height: 42px;
+  padding-left: 4px;
+  border-bottom: 1px solid var(--text-action);
+  font-size: 14px;
+  color: var(--text-action);
+  white-space: nowrap;
+}
+
+.dateChip button {
+  margin-left: 16px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  margin: 12px var(--space-page) 0;
+  padding: 0 12px;
+  border: 1px solid #cabebb;
+  background: var(--surface-page);
+}
+
+.search input {
+  width: 100%;
+  border: 0;
+  background: none;
+  outline: 0;
+  font: 400 14px var(--font-body);
+  color: var(--text-action);
+}
+
+.search:focus-within {
+  border-color: var(--border-default);
+}
+
+.dropdown {
+  max-height: 312px;
+  margin: 12px var(--space-page) 0;
+  padding: 12px;
+  overflow-y: auto;
+  background: var(--surface-page);
+  box-shadow: var(--shadow-button);
+}
+
+.dropdown h3 {
+  margin: 12px 0 8px;
+  font: 400 14px/18px var(--font-body);
+  color: var(--text-action);
+}
+
+.dropdown h3:first-child {
+  margin-top: 0;
+}
+
+.dropdown > div {
+  margin-top: 8px;
+}
+
+.addToPlan {
+  flex: none;
+  font-size: 10px;
+}
+
+/* ---- Summary ---- */
+.summaryDate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 0 var(--space-page);
+  font-size: 14px;
+  color: var(--text-action);
+}
+
+.summaryRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 8px var(--space-page) 0;
+}
+
+.summaryPicture {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+}
+
+.summaryPicture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.summaryText {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 14px;
+  color: var(--text-action);
+}
+
+.summaryText button {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.needs {
+  position: absolute;
+  left: var(--space-page);
+  right: var(--space-page);
+  bottom: 120px;
+}
+
+.needs h2 {
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--text-action);
+  color: var(--text-default-secondary);
+}
+
+.needChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.needChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 8px 0 16px;
+  border: 1px solid var(--text-action);
+  border-radius: 16px;
+  background: var(--surface-page);
+  font-size: 14px;
+  color: var(--text-action);
+}
+
+.needChip em {
+  font-style: normal;
+  color: var(--red-200);
+}
+
+.needChip small {
+  font-size: 10px;
+  color: var(--neutral-500);
+}
+
+.needChip button {
+  margin-left: 0;
+}
+
+.addButton {
+  position: absolute;
+  left: var(--space-page);
+  right: var(--space-page);
+  bottom: 36px;
+  width: auto;
+}

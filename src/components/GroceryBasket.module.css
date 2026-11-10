@@ -1,0 +1,58 @@
+.basket {
+  position: relative;
+  flex: none;
+  width: 42px;
+  height: 42px;
+  background: #fff;
+  box-shadow: 0 1.964px 1.964px rgba(0, 0, 0, 0.16);
+}
+
+.button {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1.2px solid var(--border-default);
+  background: var(--surface-default-secondary);
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--surface-hover);
+  border-color: var(--neutral-600);
+}
+
+.button:active {
+  background: var(--surface-pressed);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: 4px;
+}
+
+.count {
+  position: absolute;
+  top: -4px;
+  left: 31px;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--badge);
+  color: var(--text-on-action);
+  font: 400 12px/1 var(--font-body);
+  pointer-events: none;
+}
+
+.bump {
+  animation: bump 0.5s ease-out;
+}
+
+@keyframes bump {
+  40% {
+    transform: scale(1.5);
+  }
+}

@@ -1,0 +1,116 @@
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  background: rgba(52, 50, 49, 0.45);
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 24px;
+  right: 24px;
+  transform: translateY(-50%);
+  padding: 12px 24px 16px;
+  border-radius: 4px;
+  background: var(--surface-page);
+  box-shadow: var(--shadow-button);
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  font: 400 36px/40px var(--font-display);
+  color: var(--text-heading);
+}
+
+.weekdays,
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.weekdays {
+  margin-top: 28px;
+  text-align: center;
+  font: 400 10px/13px var(--font-body);
+  color: var(--text-heading);
+}
+
+.week {
+  margin-top: 8px;
+}
+
+.day {
+  position: relative;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-default-secondary);
+  font: 400 10px/13px var(--font-body);
+  cursor: pointer;
+}
+
+.day:hover {
+  background: var(--surface-hover);
+  color: var(--neutral-600);
+}
+
+.outside {
+  color: var(--neutral-500);
+}
+
+.today::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  bottom: 6px;
+  height: 2px;
+  background: var(--text-action);
+}
+
+.selected,
+.selected:hover {
+  background: linear-gradient(var(--secondary-warm-light), var(--secondary-warm-light)) no-repeat center / 34px 34px;
+  color: var(--text-action);
+}
+
+.day:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: -2px;
+}
+
+.menu {
+  position: absolute;
+  z-index: 3;
+  width: 94px;
+  box-shadow: var(--shadow-button);
+}
+
+.menu button {
+  display: block;
+  width: 94px;
+  height: 32px;
+  padding: 0 15px;
+  border: 1px solid var(--border-default);
+  background: var(--surface-page);
+  color: var(--text-action);
+  font: 400 10px/13px var(--font-body);
+  text-align: left;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.menu button + button {
+  border-top: 0;
+}
+
+.menu button:hover {
+  background: var(--surface-hover);
+  border-color: var(--neutral-600);
+  color: var(--neutral-600);
+}

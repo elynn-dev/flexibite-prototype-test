@@ -1,0 +1,408 @@
+.screen {
+  height: 100%;
+  overflow: hidden;
+  background: var(--surface-page);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  height: calc(var(--frame-height) - 96px);
+  padding: 0 var(--space-page);
+}
+
+/* Heading: ‹ Apr 8 › */
+.heading {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+.monthDay {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dark-green);
+}
+
+.chev {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.next img {
+  transform: scaleX(-1);
+}
+
+/* Month grid with dashed day cells */
+.dates {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 16px;
+}
+
+.weekdays {
+  display: flex;
+  justify-content: space-between;
+  height: 24px;
+  align-items: center;
+}
+
+.weekdays span {
+  width: 36px;
+  text-align: center;
+  font: 400 10px/13px var(--font-body);
+  color: var(--text-heading);
+}
+
+.weeks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.week {
+  display: flex;
+  justify-content: space-between;
+}
+
+.day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 36px;
+  height: 36px;
+  padding: 4px 0 0;
+  border: 1.2px dashed var(--secondary-warm-light);
+  border-radius: 2px;
+  background: var(--surface-page);
+  color: var(--text-default-secondary);
+  font: 400 10px/13px var(--font-body);
+  cursor: pointer;
+}
+
+.day:hover:not(.selected) {
+  border-color: var(--border-default);
+}
+
+.outside {
+  border-color: var(--surface-disabled);
+  color: var(--neutral-500);
+}
+
+.selected {
+  border-color: transparent;
+  background: #f6d5d9;
+}
+
+.over {
+  border: 1.2px solid var(--border-default);
+  background: #f6d5d9;
+}
+
+.day:focus-visible,
+.card:focus-visible,
+.chev:focus-visible {
+  outline: 2px solid var(--toast-info-fg);
+  outline-offset: 2px;
+}
+
+.plan {
+  display: flex;
+  height: 9px;
+  padding: 0 2px;
+}
+
+.today {
+  position: absolute;
+  left: -1.2px;
+  right: -1.2px;
+  bottom: -1.2px;
+  height: 2px;
+  background: var(--text-action);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .landed {
+    animation: land 0.5s ease-out;
+  }
+}
+
+@keyframes land {
+  from {
+    background: var(--toast-ok-bg);
+  }
+}
+
+/* Toast */
+.toastSlot {
+  display: flex;
+  justify-content: center;
+  min-height: 26px;
+  margin-top: 12px;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+.toast {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 26px;
+  padding: 6px 12px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+.hint {
+  background: var(--toast-info-bg);
+  color: var(--toast-info-fg);
+}
+
+.ok {
+  background: var(--toast-ok-bg);
+  color: var(--toast-ok-fg);
+}
+
+.fail {
+  background: var(--toast-fail-bg);
+  color: var(--toast-fail-fg);
+}
+
+.undo {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin: -3px 0;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+}
+
+.undo:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.sugg {
+  gap: 12px;
+  height: 28px;
+  padding: 0 4px 0 10px;
+  border-radius: 14px;
+  background: #f8e7e3;
+  color: var(--text-action);
+}
+
+.suggText,
+.suggActions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.suggActions {
+  gap: 4px;
+}
+
+.suggActions button {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+}
+
+.suggActions button:hover {
+  background: rgba(183, 79, 48, 0.12);
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background: #e7c5bb;
+}
+
+/* Meal cards of the selected day */
+.editPart {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 14px;
+  padding-top: 24px;
+  border-top: 1px solid #cbc8c2;
+}
+
+.cards {
+  display: flex;
+  gap: 24px;
+  min-height: 134px;
+}
+
+.empty {
+  padding: 24px 0;
+  font-size: 14px;
+  color: #7a7873;
+}
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: none;
+  width: 98px;
+}
+
+
+.card {
+  position: relative;
+  display: block;
+  width: 98px;
+  height: 98px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: var(--secondary-warm-light);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.card::after {
+  content: '';
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.card:active::after {
+  background: rgba(0, 0, 0, 0.1);
+  opacity: 1;
+}
+
+.picked {
+  box-shadow:
+    0 0 0 2px var(--surface-page),
+    0 0 0 4px var(--border-default);
+}
+
+.dim {
+  opacity: 0.35;
+}
+
+.dim::after {
+  opacity: 0 !important;
+}
+
+/* Footer: keep switch, bin, Done */
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: auto;
+  padding-bottom: 36px;
+}
+
+.keep {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.keepTitle {
+  font: 500 14px/16px var(--font-body);
+  color: #343131;
+}
+
+.keepHint {
+  margin-top: 2px;
+  font: 400 12px/15px var(--font-body);
+  color: #7a7873;
+}
+
+.foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.bin {
+  width: 42px;
+  padding: 0;
+}
+
+.binOver {
+  background: var(--surface-hover);
+  border-color: var(--neutral-600);
+  transform: scale(1.06);
+}
+
+.done {
+  width: 58px;
+  height: 42px;
+  padding: 12px;
+  border: 0;
+  background: var(--surface-default);
+  color: var(--text-on-action);
+  font: 400 14px/16px var(--font-body);
+  cursor: pointer;
+}
+
+.done:hover {
+  background: var(--neutral-600);
+}
+
+/* The card that follows the pointer while dragging */
+.ghost {
+  position: fixed;
+  overflow: visible;
+  z-index: 50;
+  width: 98px;
+  height: 98px;
+  pointer-events: none;
+  transform: translate(-50%, -60%) rotate(-3deg);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+}
+
+.tip {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  bottom: 100%;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  margin-bottom: 6px;
+  padding: 0 12px;
+  border-radius: 22px;
+  background: var(--toast-info-bg);
+  color: var(--toast-info-fg);
+  white-space: nowrap;
+}

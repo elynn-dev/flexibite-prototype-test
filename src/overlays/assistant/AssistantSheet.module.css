@@ -1,0 +1,667 @@
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  background: rgba(52, 50, 49, 0.35);
+  animation: fadeIn 0.3s ease-out both;
+}
+
+.fadeOut {
+  animation: fadeIn 0.3s ease-out reverse both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+/* The sheet slides up from the bottom and back down when closed. */
+.sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 41;
+  height: 608px;
+  overflow: hidden;
+  outline: 0;
+  background: var(--surface-page);
+  box-shadow: 0 -16px 27.2px 5.5px rgba(0, 0, 0, 0.08);
+  animation: sheetIn 0.3s cubic-bezier(0, 0, 0.58, 1) both;
+}
+
+.out {
+  animation: sheetOut 0.3s cubic-bezier(0, 0, 0.58, 1) both;
+}
+
+@keyframes sheetIn {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes sheetOut {
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.handle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+}
+
+.handle i {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 28px;
+  height: 4px;
+  margin-left: -14px;
+  border-radius: 2px;
+  background: var(--surface-disabled);
+}
+
+.feed {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Each "message" moves up into place; its parts fade in one after another. */
+.body {
+  margin: 0 var(--space-page);
+  padding-bottom: 24px;
+  animation: enter 0.4s cubic-bezier(0, 0, 0.58, 1) both;
+}
+
+.body > * {
+  animation: reveal 0.4s cubic-bezier(0, 0, 0.58, 1) both;
+}
+
+.body > :nth-child(2) {
+  animation-delay: 0.15s;
+}
+.body > :nth-child(3) {
+  animation-delay: 0.3s;
+}
+.body > :nth-child(4) {
+  animation-delay: 0.45s;
+}
+.body > :nth-child(5) {
+  animation-delay: 0.6s;
+}
+
+@keyframes enter {
+  from {
+    transform: translateY(80px);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet,
+  .out,
+  .body,
+  .body > *,
+  .scrim {
+    animation-duration: 0.01s;
+    animation-delay: 0s;
+  }
+}
+
+.heading {
+  margin: 50px 0 0;
+  font: 400 21px/25px var(--font-display);
+  color: var(--text-action);
+}
+
+.first {
+  margin-top: 0;
+}
+
+/* Start: three options */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 24px;
+}
+
+.option {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.optionIcon,
+.promptIcon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+}
+
+.optionLabel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 12px;
+  padding-right: 6px;
+  border-bottom: 1px solid var(--border-subtle);
+  font: 400 14px/16px var(--font-body);
+  color: #335c45;
+}
+
+.option:hover {
+  background: var(--surface-hover);
+}
+
+.option:hover .optionLabel {
+  color: var(--neutral-600);
+  border-bottom-color: var(--neutral-600);
+}
+
+.option:focus-visible,
+.meal:focus-visible,
+.quickDay:focus-visible,
+.calendarButton:focus-visible,
+.back:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: 2px;
+}
+
+/* Top row: back button + what the user picked */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+}
+
+.back {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.back:hover {
+  opacity: 0.75;
+}
+
+.promptChip,
+.mealChip,
+.dateChip {
+  display: flex;
+  align-items: center;
+  background: var(--surface-desk);
+  color: var(--text-action);
+  font: 400 14px/16px var(--font-body);
+}
+
+.promptChip {
+  width: 191px;
+  height: 48px;
+}
+
+.promptChip > span:last-child {
+  margin-left: 0;
+  color: #335c45;
+}
+
+.wide {
+  width: 223px;
+}
+
+.mealChip {
+  width: 186px;
+  height: 48px;
+}
+
+.mealChip > img {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  object-fit: cover;
+}
+
+.mealChip span {
+  margin-left: 12px;
+}
+
+.dateChip {
+  width: 188px;
+  height: 46px;
+}
+
+.dateChip > img {
+  width: 46px;
+  height: 46px;
+  flex: none;
+  object-fit: cover;
+}
+
+.dateMarker {
+  margin-left: 12px;
+}
+
+.dateText {
+  flex: 1;
+  margin-left: 4px;
+}
+
+.dateChip button img {
+  width: 20px;
+  height: 20px;
+}
+
+.dateChip button {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.dateWrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 48px;
+}
+
+/* Pantry reply */
+.tabs {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.tab {
+  height: 29px;
+  padding: 0 0 6px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font: 500 16px/21px var(--font-body);
+  color: var(--neutral-500);
+  cursor: pointer;
+}
+
+.tab[aria-selected='true'] {
+  border-bottom-color: var(--text-action);
+  color: var(--text-action);
+}
+
+.pantryRows {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.pantryRow {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  height: 46px;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.pantryImage,
+.pantryImage img {
+  flex: none;
+  width: 46px;
+  height: 46px;
+}
+
+.pantryInfo {
+  margin-left: 12px;
+  padding-top: 4px;
+}
+
+.pantryName {
+  display: block;
+  font: 500 14px/16px var(--font-body);
+  color: var(--text-action);
+}
+
+.pantryQty {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  margin-top: 3px;
+  font: 400 12px/15px var(--font-body);
+  color: var(--text-default-secondary);
+}
+
+.pantryQty small {
+  margin: 0 2px 0 6px;
+  font-size: 10px;
+}
+
+.badge {
+  position: absolute;
+  top: 11px;
+  right: 8px;
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 22px;
+  background: var(--toast-info-bg);
+  color: var(--toast-info-fg);
+  font: 500 12px/24px var(--font-body);
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* Meal ideas reply */
+.ingredients {
+  display: flex;
+  gap: 16px;
+  margin: 24px calc(-1 * var(--space-page)) 0 0;
+  padding-right: var(--space-page);
+  overflow-x: auto;
+}
+
+.ingredient {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  height: 40px;
+  padding: 0 20px 0 16px;
+  border: 1px solid var(--border-default);
+  border-radius: 30px;
+  font: 500 14px/16px var(--font-body);
+  color: var(--text-action);
+}
+
+.ingredient b {
+  margin-left: 14px;
+  font-weight: 400;
+  color: var(--red-200);
+}
+
+.ingredient small {
+  margin-left: 4px;
+  font-size: 10px;
+  color: var(--neutral-500);
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 21px;
+  margin-top: 48px;
+  font: 500 16px/21px var(--font-body);
+  color: var(--text-default-secondary);
+}
+
+.meals {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.meal {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  height: 74px;
+  padding: 0;
+  border: 0;
+  background: var(--surface-page);
+  text-align: left;
+  cursor: pointer;
+}
+
+.meal:hover {
+  background: var(--surface-hover);
+}
+
+.meal > img {
+  width: 74px;
+  height: 74px;
+  flex: none;
+  object-fit: cover;
+}
+
+.mealText {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mealText > b {
+  font: 400 14px/16px var(--font-body);
+  color: var(--text-action);
+}
+
+.mealText > small {
+  margin-top: 5px;
+  font: 400 10px/13px var(--font-body);
+  color: var(--text-default-secondary);
+}
+
+.need {
+  position: absolute;
+  top: 25px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+  padding: 0 12px;
+  border: 1px solid var(--border-default);
+  border-radius: 22px;
+  background: var(--surface-page);
+  color: var(--text-action);
+  font: 400 10px/14px var(--font-body);
+  text-transform: uppercase;
+}
+
+.need img {
+  width: 16px;
+  height: 16px;
+}
+
+.need b {
+  font-weight: 500;
+  color: var(--red-200);
+}
+
+.available {
+  border-color: var(--text-action);
+  background: var(--text-action);
+  color: var(--text-on-action);
+}
+
+/* Day picker */
+.pick {
+  display: flex;
+  align-items: center;
+  height: 46px;
+  margin-top: 22px;
+}
+
+.calendarButton {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 46px;
+  border: 0;
+  background: var(--surface-default);
+  box-shadow: var(--shadow-button);
+  cursor: pointer;
+}
+
+.calendarButton:hover {
+  background: var(--neutral-600);
+}
+
+.quickDays {
+  display: flex;
+  gap: 12px;
+  margin: 0 calc(-1 * var(--space-page)) 0 var(--space-page);
+  padding-right: var(--space-page);
+  overflow-x: auto;
+}
+
+.quickDay {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  height: 40px;
+  padding: 0 17px 0 20px;
+  border: 1px solid var(--border-default);
+  border-radius: 30px;
+  background: var(--surface-page);
+  color: var(--text-action);
+  font: 500 14px/16px var(--font-body);
+  cursor: pointer;
+}
+
+.quickDay i {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: var(--meal-time-lunch);
+}
+
+.quickDay:hover {
+  background: var(--surface-hover);
+  border-color: var(--neutral-600);
+}
+
+.on {
+  background: var(--surface-desk);
+}
+
+/* Prep steps */
+.prepSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.prepStep {
+  display: flex;
+  height: 48px;
+}
+
+.prepStep img {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  object-fit: cover;
+}
+
+.prepStep > span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-left: 12px;
+  padding-left: 2px;
+  border-bottom: 1px solid var(--border-subtle);
+  font: 400 14px/16px var(--font-body);
+  color: var(--text-action);
+}
+
+.stepNumber {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-action);
+  color: var(--text-on-action);
+  font: 400 12px/16px var(--font-body);
+  text-align: center;
+}
+
+/* Message box at the bottom */
+.message {
+  position: absolute;
+  left: var(--space-page);
+  right: var(--space-page);
+  bottom: 43px;
+}
+
+.messageLabel {
+  margin-bottom: 8px;
+  font: 400 14px/16px var(--font-body);
+  color: var(--text-action);
+}
+
+.input {
+  position: relative;
+  display: block;
+  height: 42px;
+}
+
+.inputIcon {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  width: 42px;
+  height: 42px;
+  pointer-events: none;
+}
+
+.input input {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px 0 60px;
+  border: 1px solid var(--surface-disabled);
+  outline: 0;
+  background: rgba(232, 229, 228, 0.64);
+  color: var(--text-action);
+  font: 400 14px var(--font-body);
+}
+
+.input input::placeholder {
+  color: var(--neutral-500);
+}
+
+.input input:focus,
+.input:hover input {
+  border-color: var(--border-default);
+}

@@ -1,0 +1,63 @@
+.marker {
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.marker i {
+  display: block;
+}
+
+.sm {
+  width: 10px;
+  height: 10px;
+}
+
+.md {
+  width: 20px;
+  height: 20px;
+}
+
+.breakfast {
+  border-radius: 50%;
+  background: var(--meal-time-breakfast);
+}
+
+.lunch {
+  background: var(--meal-time-lunch);
+}
+
+.dinner {
+  background: var(--meal-time-dinner);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.sm .breakfast,
+.sm .lunch {
+  width: 6px;
+  height: 6px;
+}
+
+.sm .dinner {
+  width: 7px;
+  height: 6px;
+}
+
+.md .breakfast,
+.md .lunch {
+  width: 12px;
+  height: 12px;
+}
+
+.md .dinner {
+  width: 14px;
+  height: 12px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+  color: var(--neutral-600);
+}

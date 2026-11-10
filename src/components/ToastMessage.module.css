@@ -1,0 +1,53 @@
+.slot {
+  display: flex;
+  justify-content: center;
+  min-height: 26px;
+  margin-top: 12px;
+}
+
+.toast {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 26px;
+  padding: 6px 12px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+.hint {
+  background: var(--toast-info-bg);
+  color: var(--toast-info-fg);
+}
+
+.ok {
+  background: var(--toast-ok-bg);
+  color: var(--toast-ok-fg);
+}
+
+.fail {
+  background: var(--toast-fail-bg);
+  color: var(--toast-fail-fg);
+}
+
+.undo {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin: -3px 0;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+}
+
+.undo:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.undo:focus-visible {
+  outline: 2px solid var(--border-default);
+  outline-offset: 1px;
+}

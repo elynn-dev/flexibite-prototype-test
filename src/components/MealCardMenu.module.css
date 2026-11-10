@@ -1,0 +1,92 @@
+.wrap {
+  position: relative;
+  flex: none;
+}
+
+.trigger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  width: 48px;
+  height: 40px;
+  padding: 3px 8px 0 23px;
+  border: 0;
+  background: none;
+  color: var(--text-default-secondary);
+  cursor: pointer;
+  opacity: 0;
+}
+
+/* On the photo tiles the ⋮ uses the "on action hover" colour, as in Figma's hover state. */
+.vertical .trigger {
+  color: var(--text-on-action-hover);
+}
+
+.vertical:active .trigger,
+.vertical .trigger[aria-expanded='true'] {
+  color: var(--text-default-secondary);
+}
+
+.vertical .trigger {
+  width: 40px;
+  padding: 6px 0 0 19px;
+}
+
+.wrap:hover .trigger,
+.wrap:focus-within .trigger,
+.trigger[aria-expanded='true'] {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .trigger {
+    opacity: 1;
+  }
+}
+
+.trigger:focus-visible,
+.item:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: -2px;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 6;
+  width: 67px;
+  box-shadow: 0 16px 27.2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.vertical .menu {
+  top: 6px;
+  right: 4px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 67px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--border-default);
+  background: var(--surface-page);
+  color: var(--text-action);
+  font: 400 10px/13px var(--font-body);
+  text-align: left;
+  cursor: pointer;
+}
+
+.item + .item {
+  border-top: 0;
+}
+
+.item:hover {
+  background: var(--surface-hover);
+  color: var(--neutral-600);
+}

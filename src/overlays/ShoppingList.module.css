@@ -1,0 +1,98 @@
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  background: rgba(0, 0, 0, 0.33);
+}
+
+.panel {
+  position: absolute;
+  left: 72px;
+  right: 24px;
+  bottom: 170px;
+  padding: 40px 24px 24px;
+  border-radius: 2px;
+  background: var(--surface-page);
+  box-shadow: var(--shadow-button);
+}
+
+.panel h2 {
+  margin: 0;
+  padding-bottom: 19px;
+  border-bottom: 1px solid var(--text-action);
+  color: var(--text-default-secondary);
+}
+
+.rows {
+  padding-top: 24px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  column-gap: 27px;
+  padding-bottom: 24px;
+}
+
+.check {
+  align-self: start;
+  margin-top: 16px;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.name {
+  color: var(--text-action);
+}
+
+.unit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--border-default);
+  background: var(--surface-page);
+  color: var(--text-default-secondary);
+}
+
+.quantity {
+  grid-column: 2;
+  padding: 12px 6px 0;
+}
+
+.off .name,
+.off .quantity span {
+  color: var(--neutral-500);
+}
+
+.add {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.addButton {
+  width: 40px;
+  height: 40px;
+  min-width: 0;
+  padding: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--text-action);
+}
+
+.square {
+  width: 42px;
+  padding: 0;
+}

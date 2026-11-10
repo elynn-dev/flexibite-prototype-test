@@ -1,0 +1,135 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.month {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dark-green);
+}
+
+.viewToggle {
+  width: 32px;
+  height: 32px;
+  margin-top: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.dates {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 16px;
+}
+
+.weekdays {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 24px;
+  opacity: 0.5;
+}
+
+.weekdays span {
+  width: 36px;
+  text-align: center;
+  color: var(--text-heading);
+}
+
+.weeks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.week {
+  display: flex;
+  justify-content: space-between;
+}
+
+.day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 36px;
+  height: 36px;
+  padding: 4px 0 0;
+  border: 0;
+  border-radius: 2px;
+  background: var(--surface-page);
+  color: var(--text-default-secondary);
+  cursor: pointer;
+}
+
+.day:hover:not(.selected) {
+  background: var(--surface-hover);
+}
+
+.outside {
+  color: var(--neutral-500);
+}
+
+.selected {
+  background: var(--secondary-warm-light);
+  color: var(--text-action);
+}
+
+.day:focus-visible,
+.viewToggle:focus-visible,
+.disclosure:focus-visible {
+  outline: 2px solid var(--toast-info-fg);
+  outline-offset: 2px;
+}
+
+.plan {
+  display: flex;
+  height: 9px;
+  padding: 0 2px;
+}
+
+.plan > * {
+  margin-top: -1px;
+}
+
+.today {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--text-action);
+}
+
+.disclosure {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 12px;
+  margin: 12px 0 -4px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.disclosure img {
+  transition: transform 0.2s;
+}
+
+.open img {
+  transform: rotate(180deg);
+}

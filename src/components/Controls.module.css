@@ -1,0 +1,201 @@
+/* Mini button */
+.mini {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--border-default);
+  background: var(--surface-page);
+  color: var(--text-default-secondary);
+  font: 400 12px/16px var(--font-body);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.mini:hover:not(:disabled) {
+  background: var(--surface-hover);
+  border-color: var(--neutral-600);
+  color: var(--neutral-600);
+}
+
+.mini:active {
+  background: var(--surface-pressed);
+  box-shadow: var(--shadow-button);
+}
+
+.mini:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: 2px;
+}
+
+/* Pill */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+  height: 24px;
+  padding: 0 12px;
+  border: 1px solid var(--text-action);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text-action);
+  font: 400 10px/13px var(--font-body);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pill b {
+  font-weight: 400;
+  color: var(--red-200);
+}
+
+.dark {
+  background: var(--text-action);
+  color: var(--text-on-action);
+}
+
+.off {
+  border-color: transparent;
+  background: var(--surface-disabled);
+  color: var(--neutral-500);
+}
+
+/* Switch */
+.switch {
+  position: relative;
+  flex: none;
+  width: 44px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 13px;
+  background: #cbc8c2;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--surface-page);
+  transition: transform 0.15s;
+}
+
+.switch[aria-checked='true'] {
+  background: var(--surface-default);
+}
+
+.switch[aria-checked='true']::after {
+  transform: translateX(18px);
+}
+
+.switch:hover:not([aria-checked='true']) {
+  background: var(--surface-hover);
+}
+
+.switch[aria-checked='true']:hover {
+  background: var(--neutral-600);
+}
+
+.switch:focus-visible,
+.checkbox:focus-visible,
+.iconButton:focus-visible {
+  outline: 2px solid var(--toast-info-fg);
+  outline-offset: 2px;
+}
+
+/* Checkbox */
+.checkbox {
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+/* Stepper */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--text-action);
+}
+
+.stepper button {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.stepper button:hover {
+  background: var(--surface-hover);
+}
+
+/* Snack bar */
+.snack {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 64px;
+  padding: 8px 16px;
+  background: var(--toast-ok-bg);
+  animation: up 0.3s ease-out;
+}
+
+.snack span {
+  flex: 1;
+  font: 500 14px/16px var(--font-body);
+  color: var(--toast-ok-fg);
+}
+
+.snack button {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--border-default);
+  background: transparent;
+  color: var(--text-default-secondary);
+  font: 400 10px/13px var(--font-body);
+  cursor: pointer;
+}
+
+.snack button:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+@keyframes up {
+  from {
+    transform: translateY(64px);
+  }
+}
+
+/* Overlay header */
+.overlayHeader {
+  display: flex;
+  align-items: flex-start;
+  padding: 56px var(--space-page) 0;
+}
+
+.iconButton {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.close {
+  margin-left: auto;
+}

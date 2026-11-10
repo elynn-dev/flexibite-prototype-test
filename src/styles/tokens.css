@@ -1,0 +1,75 @@
+/*
+ * Design tokens from the Figma file "[Design system] Meal planner".
+ * Names follow the Figma variable names (surface/page -> --surface-page, etc.).
+ * Change a value here and it updates everywhere.
+ */
+:root {
+  /* Surface */
+  --surface-page: #f4f4f4;
+  --surface-default-secondary: #f4f4f4;
+  --surface-default: #343231;
+  --surface-action: #000000;
+  --surface-disabled: #d6d6d6;
+  --surface-hover: #eeeeee;
+  --surface-pressed: #e8e5e4;
+  --surface-tab-bar: #f9f9f9;
+  --surface-desk: #e8e5e4;
+
+  /* Text */
+  --text-action: #000000;
+  --text-default-secondary: #343231;
+  --text-caption: #343231;
+  --text-dark-green: #1f281a;
+  --text-heading: #1b1b1b;
+  --text-on-action: #ffffff;
+  --text-on-action-hover: #ffffff;
+  --text-disabled: #93918b;
+  --text-step: #696969;
+
+  /* Border */
+  --border-default: #343231;
+  --border-action: #343231;
+  --border-subtle: #a6a6a6;
+  --border-muted: #93918b;
+  --border-tab-bar: #929292;
+
+  /* Neutrals & accents */
+  --neutral-500: #93918b;
+  --neutral-600: #6b635e;
+  --secondary-warm-light: #d1c0bb;
+  --red-200: #b5263f;
+  --badge: #d6522a;
+
+  /* Meal times */
+  --meal-time-breakfast: #d6522a;
+  --meal-time-lunch: #595de3;
+  --meal-time-dinner: #00765e;
+
+  /* Toasts */
+  --toast-info-bg: #dddef9;
+  --toast-info-fg: #4f53ce;
+  --toast-ok-bg: #cce4df;
+  --toast-ok-fg: #007059;
+  --toast-fail-bg: #f6d5d9;
+  --toast-fail-fg: #b5263f;
+
+  /* Effects */
+  --shadow-button: 0 16px 27.2px 5.5px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 16px 13.6px rgba(0, 0, 0, 0.1);
+  --shadow-pressed: 0 4px 24.2px 5px rgba(0, 0, 0, 0.02);
+  --shadow-dark-button: 0 4px 11.45px rgba(0, 0, 0, 0.2);
+  --shadow-link: 0 6px 10px -2px rgba(0, 0, 0, 0.1);
+
+  /* Fonts */
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-body: "Ubuntu", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Spacing */
+  --space-page: 24px;
+
+  /* Device frame */
+  --frame-width: 393px;
+  --frame-height: 852px;
+
+  color-scheme: light;
+}

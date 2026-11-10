@@ -1,0 +1,14 @@
+/* Text styles from Figma. Use these classes instead of setting font sizes by hand. */
+.heading-h2 { font: 400 48px/56px var(--font-display); }
+.heading-h4 { font: 400 36px/40px var(--font-display); letter-spacing: 0.36px; }
+.heading-h6 { font: 400 21px/25px var(--font-display); letter-spacing: 0.42px; }
+
+.label-lg-medium { font: 500 16px/21px var(--font-body); letter-spacing: -0.16px; }
+.label-md-regular { font: 400 14px/16px var(--font-body); letter-spacing: -0.14px; }
+.label-md-regular-upper { font: 400 14px/16px var(--font-body); letter-spacing: -0.14px; text-transform: uppercase; }
+.label-sm-regular { font: 400 12px/15px var(--font-body); }
+.label-sm-medium { font: 500 12px/15px var(--font-body); }
+.label-xs-regular { font: 400 10px/13px var(--font-body); }
+.label-xs-regular-upper { font: 400 10px/14px var(--font-body); text-transform: uppercase; }
+.label-xs-bold-upper { font: 700 10px/14px var(--font-body); text-transform: uppercase; }
+.body-sm-regular { font: 400 12px/16px var(--font-body); letter-spacing: 0.12px; }

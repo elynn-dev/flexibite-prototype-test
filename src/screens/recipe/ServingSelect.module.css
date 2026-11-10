@@ -1,0 +1,68 @@
+.serving {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 32px;
+}
+
+.reset {
+  width: 32px;
+  padding: 0;
+}
+
+.select {
+  position: relative;
+  min-width: 90px;
+  height: 32px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  /* Grows with its content so the chevron never runs into the border. */
+  width: 100%;
+  min-width: 90px;
+  height: 32px;
+  padding: 12px 8px;
+  border: 1px solid var(--border-default);
+  background: var(--surface-default-secondary);
+  color: var(--text-default-secondary);
+  font: 400 10px/14px var(--font-body);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: var(--surface-hover);
+}
+
+.option:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: -2px;
+}
+
+.option b {
+  font: 500 12px/15px var(--font-body);
+}
+
+.option img {
+  margin-left: auto;
+}
+
+.flipped {
+  transform: rotate(180deg);
+}
+
+.list {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  box-shadow: var(--shadow-button);
+}
+
+.list .option + .option {
+  border-top: 0;
+}

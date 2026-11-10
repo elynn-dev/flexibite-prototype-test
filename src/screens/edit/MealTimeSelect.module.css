@@ -1,0 +1,79 @@
+/* Figma: select 98 × 36 (32px option + 4px bottom padding). */
+.select {
+  position: relative;
+  width: 100%;
+  padding-bottom: 4px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 32px;
+  padding: 0 8px 0 0;
+  border: 0;
+  border-bottom: 1px solid var(--border-default);
+  background: var(--surface-default-secondary);
+  cursor: pointer;
+}
+
+.label {
+  font: 400 10px/14px var(--font-body);
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--border-default);
+}
+
+.option:hover {
+  background: var(--surface-hover);
+}
+
+.option:hover .label {
+  color: var(--neutral-600);
+}
+
+.option:focus-visible,
+.item:focus-visible {
+  outline: 2px solid var(--neutral-600);
+  outline-offset: 2px;
+}
+
+.list {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  box-shadow: var(--shadow-card);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  height: 32px;
+  padding: 0 8px 0 0;
+  border: 1px solid var(--border-default);
+  border-top: 0;
+  background: var(--surface-default-secondary);
+  cursor: pointer;
+}
+
+.item:first-child {
+  border-top: 1px solid var(--border-default);
+}
+
+.item:hover {
+  background: var(--surface-hover);
+}
+
+.item:hover .label {
+  color: var(--neutral-600);
+}
+
+.item[aria-selected='true'] {
+  background: var(--surface-pressed);
+}

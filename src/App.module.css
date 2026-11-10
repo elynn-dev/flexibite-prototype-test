@@ -1,0 +1,30 @@
+.frame {
+  position: relative;
+  width: 100%;
+  max-width: var(--frame-width);
+  height: var(--frame-height);
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--surface-page);
+}
+
+.help {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: var(--frame-width);
+  margin: 16px auto 0;
+  font-size: 12px;
+  color: var(--text-default-secondary);
+}
+
+.help button {
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 12px;
+  color: var(--text-default-secondary);
+  text-decoration: underline;
+  cursor: pointer;
+}
