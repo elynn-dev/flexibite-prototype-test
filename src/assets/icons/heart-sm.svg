@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none"><path d="M8 13.5S2 10 2 6.2A3 3 0 0 1 8 5a3 3 0 0 1 6 1.2C14 10 8 13.5 8 13.5Z" stroke="#343231" stroke-width="1.2" vector-effect="non-scaling-stroke"/></svg>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="heart">
+<path id="Vector" d="M8 4.6C8 4.6 7.66574 4.16059 7.49333 3.93333C6.90667 3.16 6.04 2.6 5 2.6C3.34 2.6 2 3.94 2 5.6C2 6.22 2.18667 6.79333 2.50667 7.26667C3.04667 8.07333 8 13.2667 8 13.2667C8 13.2667 12.9533 8.07333 13.4933 7.26667C13.8133 6.79333 14 6.22 14 5.6C14 3.94 12.66 2.6 11 2.6C9.96 2.6 9.01333 3.26667 8.50667 3.93333L8 4.6Z" stroke-width="1.2" vector-effect="non-scaling-stroke" stroke-miterlimit="2.09574" stroke-linecap="round" stroke="#343231"/>
+</g>
+</svg>
