@@ -30,7 +30,7 @@ export function MealIdeasScreen() {
     <section className={styles.screen} aria-label="Meal Ideas">
       <div className={styles.scroll}>
         <IdeasHeader active="picked" />
-        <IdeaSection icon="repeat" title="Go-to-meal" subtitle="You choose this meal repeatedly">
+        <IdeaSection icon="repeat" title="Go-to meal" subtitle="You choose this meal repeatedly">
           <IdeaCard name={avocado.name} image={avocado.thumb} availability="available" onOpen={openAvocado} />
           <IdeaCard name={chicken.name} image={chicken.thumb} availability="available" />
         </IdeaSection>
@@ -50,13 +50,10 @@ export function MealIdeasScreen() {
 function IdeaSection({ icon, title, subtitle, children }: { icon: IconName; title: string; subtitle: string; children: ReactNode }) {
   return (
     <section className={styles.section}>
-      <div className={styles.sectionHeader}>
-        <h2>
-          <Icon name={icon} size={16} />
-          {title}
-        </h2>
-        <Icon name="edit" size={16} />
-      </div>
+      <h2>
+        <Icon name={icon} size={16} />
+        {title}
+      </h2>
       <p>{subtitle}</p>
       <div className={`${styles.row} hide-scrollbar`}>{children}</div>
     </section>

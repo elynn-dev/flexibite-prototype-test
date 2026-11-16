@@ -69,16 +69,13 @@
 }
 
 /* Picked for you */
+/* Figma Meal Ideas-1: 36px under the tabs, 56px between sections. */
 .section {
-  margin-top: 32px;
+  margin-top: 56px;
 }
 
-/* Figma "header": icon + H6 title on the left, edit pencil on the right. */
-.sectionHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 var(--space-page);
+.section:first-of-type {
+  margin-top: 36px;
 }
 
 .section h2 {
@@ -86,6 +83,7 @@
   align-items: center;
   gap: 6px;
   margin: 0;
+  padding: 0 var(--space-page);
   font: 400 21px/25px var(--font-display);
   letter-spacing: 0.42px;
   color: var(--text-default-secondary);
@@ -98,11 +96,16 @@
   color: #84655c;
 }
 
+/* Heading to cards: 20px in the first section, 16px in the others (as in Figma). */
 .row {
   display: flex;
   gap: 18px;
-  padding: 24px var(--space-page) 0;
+  padding: 16px var(--space-page) 0;
   overflow-x: auto;
+}
+
+.section:first-of-type .row {
+  padding-top: 20px;
 }
 
 .card {
@@ -110,8 +113,11 @@
   width: 325px;
 }
 
+/* Figma label-container: 132px wide, Label/Md/Regular. */
 .card [class*='name'] {
-  max-width: 150px;
+  width: 132px;
+  line-height: 16px;
+  letter-spacing: -0.14px;
 }
 
 /* Explore */
