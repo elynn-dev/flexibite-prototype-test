@@ -123,7 +123,7 @@ export function GroupScreen() {
         <MainTabBar active="join-in" />
       </div>
 
-      {checkInOpen && <CheckIn onDone={finishCheckIn} />}
+      {checkInOpen && <CheckIn onDone={finishCheckIn} onClose={() => setCheckInOpen(false)} />}
     </section>
   );
 }

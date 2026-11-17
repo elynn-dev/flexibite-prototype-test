@@ -347,48 +347,72 @@ button.checkInButton {
   background: rgba(52, 50, 49, 0.9);
 }
 
+/* Figma Check in-1: 345 wide, 36px padding top/bottom, 36px between blocks */
 .checkIn {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
   width: 345px;
   max-width: calc(100% - 48px);
-  padding: 24px;
-  border-radius: 2px;
+  padding: 36px 24px;
+  border-radius: 4px;
   background: var(--surface-page);
+}
+
+.checkInHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .checkInHead {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
+  white-space: nowrap;
 }
 
 .checkInHead h2 {
   margin: 0;
-  font: 400 28px/34px var(--font-display);
+  font: 400 30px/35px var(--font-display);
   color: var(--text-action);
 }
 
 .checkInHead span {
-  font-size: 10px;
+  font: 400 10px/13px var(--font-body);
   text-transform: uppercase;
   color: var(--text-default-secondary);
 }
 
+/* Body/Md/Regular */
 .question {
-  margin: 8px 0 0;
-  font-size: 16px;
+  margin: 0;
+  font: 400 16px/24px var(--font-body);
   color: var(--text-default-secondary);
+}
+
+.checkInMeals {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkInMealRow {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .checkInMeal {
-  margin-top: 32px;
   color: var(--text-default-secondary);
 }
 
+/* Figma planned-meal: 48px picture, 11px gap, name over a thin line */
 .checkInItem {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-top: 8px;
+  gap: 11.24px;
+  height: 48px;
 }
 
 .checkInPicture {
@@ -396,6 +420,7 @@ button.checkInButton {
   width: 48px;
   height: 48px;
   overflow: hidden;
+  background: #fff;
 }
 
 .checkInPicture img {
@@ -410,28 +435,45 @@ button.checkInButton {
   align-items: center;
   justify-content: space-between;
   height: 48px;
-  border-bottom: 1px solid var(--border-subtle);
-  font-size: 14px;
+  padding: 8px 0;
+  border-bottom: 0.703px solid var(--neutral-500);
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+  color: var(--text-dark-green);
+}
+
+.checkInDivider {
+  height: 1px;
+  background: var(--surface-default);
+}
+
+/* weekly-goal-container: 30px top padding, 12px gap */
+.goal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  padding-top: 30px;
 }
 
 .week {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 56px;
-  padding-top: 70px;
-  border-top: 1px solid var(--text-action);
-  font-size: 12px;
+  width: 100%;
+  font: 400 12px/15px var(--font-body);
   text-transform: uppercase;
+  color: var(--text-action);
 }
 
 .dots {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 500;
+  gap: 10px;
+  font: 500 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
   text-transform: none;
+  color: var(--text-default-secondary);
 }
 
 .dots i {
@@ -448,12 +490,6 @@ button.checkInButton {
 }
 
 .goalHint {
-  margin-top: 12px;
-  text-align: right;
-  font-size: 12px;
-  color: var(--text-default-secondary);
-}
-
-.checkInDone {
-  margin-top: 40px;
+  font: 400 12px/15px var(--font-body);
+  color: var(--text-caption);
 }

@@ -41,10 +41,7 @@
   opacity: 1;
 }
 
-/* pantry-nav: Heading/H6 tabs on a light strip, selected one underlined with a soft shadow */
-.pantry-nav {
-  background: #f2f2f2;
-}
+/* pantry-nav: Heading/H6 tabs. No background strip or glow: tabs sit on the page colour. */
 
 .pantry-nav .tab {
   height: 49px;
@@ -55,7 +52,6 @@
 .pantry-nav .tab[aria-selected='true'] {
   border-bottom-color: var(--border-default);
   color: var(--text-default-secondary);
-  box-shadow: 0 16px 27.2px rgba(0, 0, 0, 0.1);
 }
 
 /* join-in-nav: Label/Lg/Medium */
@@ -67,7 +63,6 @@
 }
 
 .join-in-nav .tab[aria-selected='true'] {
-  background: var(--surface-default-secondary);
   color: var(--text-action);
 }
 
@@ -81,7 +76,6 @@
 }
 
 .meal-idea-nav .tab[aria-selected='true'] {
-  background: var(--surface-default-secondary);
   color: var(--text-default-secondary);
 }
 
