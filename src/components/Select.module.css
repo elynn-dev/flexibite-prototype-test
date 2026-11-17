@@ -71,3 +71,8 @@
 .list .option {
   border-top: 0;
 }
+
+/* SelectButton on its own sizes to its label */
+.standalone {
+  width: auto;
+}

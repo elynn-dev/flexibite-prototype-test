@@ -1,3 +1,4 @@
+import { SectionHeader } from '../../components/SectionHeader';
 import { Button } from '../../components/Button';
 import { OverlayHeader } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
@@ -25,9 +26,10 @@ export function PlanSummaryScreen() {
   return (
     <section className={styles.screen} aria-label="Plan summary">
       <div className={styles.scroll}>
-        <OverlayHeader height={80} onBack={back} onClose={() => dispatch({ type: 'navigate', screen: 'home' })} />
+        <OverlayHeader onBack={back} onClose={() => dispatch({ type: 'navigate', screen: 'home' })} />
+        <div className={styles.summaryList}>
         {rows.map(({ day, meal }) => (
-          <div key={`${day}|${meal}`}>
+          <div key={`${day}|${meal}`} className={styles.summaryItem}>
             <div className={styles.summaryDate}>
               <MealMarker meal={meal} size="md" />
               {chipLabel(day)}
@@ -51,15 +53,21 @@ export function PlanSummaryScreen() {
             </div>
           </div>
         ))}
+        </div>
       </div>
 
+      <div className={styles.bottom}>
       {needs.length > 0 && (
         <div className={styles.needs}>
-          <h2 className="heading-h6">You may need</h2>
+          <SectionHeader title="You may need" trailing={<Icon name="edit" size={16} />} />
           <div className={styles.needChips}>
             {needs.map((n) => (
               <span className={styles.needChip} key={n.name}>
-                {n.name} <em>{n.amount}</em> <small>{n.unit}</small>
+                {n.name}
+                <span className={styles.needQty}>
+                  <em>{n.amount}</em>
+                  <small>{n.unit}</small>
+                </span>
                 <button
                   type="button"
                   aria-label={`Remove ${n.name}`}
@@ -73,9 +81,10 @@ export function PlanSummaryScreen() {
         </div>
       )}
 
-      <Button variant="default" size="lg" className={styles.addButton} disabled={!rows.length} onClick={() => dispatch({ type: 'commitDraft' })}>
+      <Button variant="default" size="lg" disabled={!rows.length} onClick={() => dispatch({ type: 'commitDraft' })}>
         Add to plan
       </Button>
+      </div>
     </section>
   );
 }

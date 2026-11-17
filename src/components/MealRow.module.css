@@ -95,3 +95,17 @@
   outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
+
+/* Figma Dropdown → .list-items (48px): 11px gap, 8px vertical padding, dark green name */
+.small {
+  align-items: center;
+  gap: 11.24px;
+}
+
+.small .text {
+  padding: 8px 0;
+}
+
+.small .name {
+  color: var(--text-dark-green);
+}

@@ -19,22 +19,34 @@
 }
 
 /* ---- Choose dates ---- */
+/* Figma Choosing dates-2…5: same calendar-base as Edit, under a 96px overlay header */
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 var(--space-page);
+}
+
 .title {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 24px var(--space-page) 0;
-  color: var(--text-action);
+  color: var(--text-default-secondary);
 }
 
+/* dates-container: 16px top, 24px weekday row, 14px gap */
 .weekdays {
-  display: flex;
-  padding: 32px var(--space-page) 0;
+  display: grid;
+  grid-template-columns: repeat(7, 36px);
+  justify-content: space-between;
+  align-items: center;
+  height: 24px;
+  margin: 16px var(--space-page) 0;
   opacity: 0.5;
 }
 
 .weekdays span {
-  flex: 1;
   text-align: center;
   font: 400 10px/13px var(--font-body);
   color: var(--text-heading);
@@ -42,9 +54,10 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, 36px);
+  justify-content: space-between;
   row-gap: 8px;
-  padding: 12px var(--space-page) 0;
+  margin: 14px var(--space-page) 0;
 }
 
 .gridDay {
@@ -52,31 +65,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   width: 36px;
   height: 36px;
-  margin: 0 auto;
   padding: 4px 0 0;
   border: 0;
   border-radius: 2px;
-  background: none;
-  color: var(--text-action);
+  background: var(--surface-page);
+  color: var(--text-default-secondary);
   font: 400 10px/13px var(--font-body);
   cursor: pointer;
 }
 
 .gridDay:hover {
-  background: var(--surface-hover);
-  color: var(--neutral-600);
+  background: var(--surface-action-hover-light);
+  color: var(--text-action-hover);
 }
 
 .outside {
-  color: var(--neutral-500);
+  color: var(--text-disabled);
 }
 
 .on,
 .on:hover {
   background: var(--secondary-warm-light);
+  color: var(--text-action);
 }
 
 .today::before {
@@ -86,7 +99,7 @@
   right: 0;
   bottom: 0;
   height: 2px;
-  background: var(--text-action);
+  background: var(--surface-action);
 }
 
 .gridDay:focus-visible {
@@ -99,9 +112,10 @@
   gap: 2px;
 }
 
+/* edit-part: 16px under the calendar + 10px gap, then a top line */
 .rule {
-  margin: 32px var(--space-page) 0;
-  border-top: 1px solid #cbc8c2;
+  margin: 26px var(--space-page) 0;
+  border-top: 1px solid var(--neutral-400);
 }
 
 .selectedToggle {
@@ -115,73 +129,43 @@
   margin: 24px var(--space-page) 0;
 }
 
+/* selected-meals box */
 .dateRow {
-  padding: 12px;
-  background: var(--surface-desk);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 12px 16px;
+  border-radius: 4px;
+  background: var(--surface-action-secondary);
 }
 
 .dateRowHead {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 32px;
-  font-size: 14px;
-  color: var(--text-action);
-}
-
-.typeMenu {
-  position: absolute;
-  top: 32px;
-  right: 0;
-  z-index: 5;
-  width: 94px;
-  border: 1px solid var(--border-default);
-  background: var(--surface-page);
-  box-shadow: var(--shadow-button);
-}
-
-.typeMenu button {
-  display: block;
-  width: 100%;
-  height: 32px;
-  padding: 0 15px;
-  border: 0;
-  border-top: 1px solid var(--border-default);
-  background: var(--surface-page);
-  color: var(--text-action);
-  font: 400 10px/13px var(--font-body);
-  text-align: left;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.typeMenu button:first-child {
-  border-top: 0;
-}
-
-.typeMenu button:hover {
-  background: var(--surface-hover);
-  color: var(--neutral-600);
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+  color: var(--text-heading);
 }
 
 .typeChips {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 24px;
 }
 
+/* meal-type: marker, Label/Sm/Medium, 24px close, over a thin line */
 .typeChip {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  width: 90px;
-  height: 32px;
-  padding-left: 4px;
-  border-bottom: 1px solid var(--border-subtle);
+  gap: 6px;
+  /* 40px tall with the line inside, as in Figma */
+  height: 40px;
+  padding: 8px 0;
+  border-bottom: 0.703px solid var(--neutral-500);
   font: 500 12px/15px var(--font-body);
-  color: var(--text-action);
+  color: var(--text-dark-green);
 }
 
 .typeChip button,
@@ -196,7 +180,16 @@
   cursor: pointer;
 }
 
-.typeChip button img,
+.typeChip button {
+  width: 24px;
+  height: 24px;
+}
+
+.typeChip button img {
+  width: 24px;
+  height: 24px;
+}
+
 .dateChip button img,
 .needChip button img {
   width: 20px;
@@ -207,22 +200,18 @@
   position: absolute;
   right: var(--space-page);
   bottom: 36px;
-  width: 58px;
-  border: 0;
-  box-shadow: var(--shadow-button);
 }
 
-/* ---- Plan builder ---- */
+/* ---- Plan builder (Figma Choosing dates-6 / -7) ---- */
 .chipRow {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 12px;
-  padding: 0 var(--space-page);
+  padding: 16px var(--space-page) 0;
 }
 
 .calendarButton {
-  width: 44px;
-  padding: 0;
+  flex: none;
 }
 
 .chips {
@@ -231,32 +220,37 @@
   overflow-x: auto;
 }
 
+/* selected-date: 40px tall, underlined, label then a 20px close */
 .dateChip {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   flex: none;
-  height: 42px;
-  padding-left: 4px;
-  border-bottom: 1px solid var(--text-action);
-  font-size: 14px;
-  color: var(--text-action);
+  height: 40px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-action);
   white-space: nowrap;
 }
 
-.dateChip button {
-  margin-left: 16px;
+.dateChipLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+  color: var(--text-action);
 }
 
+/* Figma search bar: 48px, light border, 20px icon */
 .search {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   height: 48px;
   margin: 12px var(--space-page) 0;
   padding: 0 12px;
-  border: 1px solid #cabebb;
-  background: var(--surface-page);
+  border: 1px solid var(--border-default-secondary);
+  background: var(--surface-default-secondary);
 }
 
 .search input {
@@ -264,58 +258,87 @@
   border: 0;
   background: none;
   outline: 0;
-  font: 400 14px var(--font-body);
-  color: var(--text-action);
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+  color: var(--icon-action);
 }
 
 .search:focus-within {
   border-color: var(--border-default);
 }
 
+/* list-scroll container */
 .dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
   max-height: 312px;
-  margin: 12px var(--space-page) 0;
-  padding: 12px;
+  margin: 11px var(--space-page) 0;
+  padding: 17px 4px 17px 12px;
   overflow-y: auto;
-  background: var(--surface-page);
-  box-shadow: var(--shadow-button);
+  background: var(--surface-default-secondary);
+  filter: drop-shadow(0 16px 13.6px rgba(0, 0, 0, 0.1));
 }
 
-.dropdown h3 {
-  margin: 12px 0 8px;
-  font: 400 14px/18px var(--font-body);
+/* Figma .scroll bar: 6px pill */
+.dropdown::-webkit-scrollbar {
+  width: 14px;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+  border: 4px solid var(--surface-default-secondary);
+  border-radius: 1000px;
+  background: var(--neutral-400);
+}
+
+.dropSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dropSection h3 {
+  margin: 0;
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
   color: var(--text-action);
 }
 
-.dropdown h3:first-child {
-  margin-top: 0;
+.dropList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.dropdown > div {
-  margin-top: 8px;
+/* ---- Summary (Figma Choosing dates-9) ---- */
+.summaryList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 36px var(--space-page) 0;
 }
 
-.addToPlan {
-  flex: none;
-  font-size: 10px;
+.summaryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-/* ---- Summary ---- */
 .summaryDate {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 24px;
-  padding: 0 var(--space-page);
-  font-size: 14px;
-  color: var(--text-action);
+  gap: 4px;
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+  color: var(--text-default-secondary);
 }
 
+/* planned-meal: 48px picture, 11px gap, name over a thin line, 24px close */
 .summaryRow {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin: 8px var(--space-page) 0;
+  gap: 11.24px;
+  height: 48px;
 }
 
 .summaryPicture {
@@ -323,6 +346,7 @@
   width: 48px;
   height: 48px;
   overflow: hidden;
+  background: #fff;
 }
 
 .summaryPicture img {
@@ -337,9 +361,11 @@
   align-items: center;
   justify-content: space-between;
   height: 48px;
-  border-bottom: 1px solid var(--border-subtle);
-  font-size: 14px;
-  color: var(--text-action);
+  padding: 8px 0;
+  border-bottom: 0.703px solid var(--neutral-500);
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+  color: var(--text-dark-green);
 }
 
 .summaryText button {
@@ -351,58 +377,65 @@
   cursor: pointer;
 }
 
-.needs {
+/* add-to-plan container: 52px between the checklist and the button, 24px from the bottom */
+.bottom {
   position: absolute;
   left: var(--space-page);
   right: var(--space-page);
-  bottom: 120px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
 }
 
-.needs h2 {
-  margin: 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--text-action);
-  color: var(--text-default-secondary);
+.needs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 12px 0;
 }
 
 .needChips {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
+  gap: 12px;
+  /* 12px in Figma, less the 1px line drawn inside */
+  padding: 11px 0 12px;
+  border-top: 1px solid var(--text-action);
 }
 
+/* Figma data-display, type=outline */
 .needChip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   height: 32px;
-  padding: 0 8px 0 16px;
-  border: 1px solid var(--text-action);
-  border-radius: 16px;
-  background: var(--surface-page);
-  font-size: 14px;
+  padding: 0 16px;
+  border: 1px solid var(--border-action);
+  border-radius: 30px;
+  background: var(--surface-default-secondary);
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
   color: var(--text-action);
 }
 
+.needQty {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .needChip em {
+  font: 500 14px/16px var(--font-body);
   font-style: normal;
   color: var(--red-200);
 }
 
 .needChip small {
-  font-size: 10px;
+  font: 400 10px/13px var(--font-body);
   color: var(--neutral-500);
 }
 
 .needChip button {
   margin-left: 0;
-}
-
-.addButton {
-  position: absolute;
-  left: var(--space-page);
-  right: var(--space-page);
-  bottom: 36px;
-  width: auto;
 }

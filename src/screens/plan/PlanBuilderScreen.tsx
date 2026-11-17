@@ -71,7 +71,7 @@ export function PlanBuilderScreen() {
       name={c.name}
       image={c.image}
       trailing={
-        <Link variant="outline-all" className={styles.addToPlan} onClick={() => c.recipeId && choose(c.recipeId)}>
+        <Link variant="outline-all" onClick={() => c.recipeId && choose(c.recipeId)}>
           Add to plan
         </Link>
       }
@@ -81,7 +81,7 @@ export function PlanBuilderScreen() {
   return (
     <section className={styles.screen} aria-label="Plan builder">
       <div className={styles.scroll}>
-        <OverlayHeader height={80} onClose={() => dispatch({ type: 'navigate', screen: 'home' })} />
+        <OverlayHeader onClose={() => dispatch({ type: 'navigate', screen: 'home' })} />
         <div className={styles.chipRow}>
           <Button
             variant="default"
@@ -95,8 +95,10 @@ export function PlanBuilderScreen() {
             {[...draft.dates].sort().flatMap((day) =>
               draftTypes(draft, day).map((meal) => (
                 <span className={styles.dateChip} key={`${day}|${meal}`}>
-                  <MealMarker meal={meal} size="md" />
-                  {chipLabel(day)}
+                  <span className={styles.dateChipLabel}>
+                    <MealMarker meal={meal} size="md" />
+                    {chipLabel(day)}
+                  </span>
                   <button type="button" aria-label={`Remove ${chipLabel(day)} ${meal}`} onClick={() => removeChip(day, meal)}>
                     <Icon name="close" size={20} />
                   </button>
@@ -108,7 +110,7 @@ export function PlanBuilderScreen() {
 
         <div ref={searchRef}>
           <label className={styles.search}>
-            <Icon name="search" size={24} />
+            <Icon name="search" size={20} />
             <input
               type="text"
               placeholder="Choosing a recipe"
@@ -125,16 +127,16 @@ export function PlanBuilderScreen() {
           {open && (
             <div className={styles.dropdown}>
               {recent.length > 0 && (
-                <>
+                <div className={styles.dropSection}>
                   <h3>Recent</h3>
-                  {recent.map(item)}
-                </>
+                  <div className={styles.dropList}>{recent.map(item)}</div>
+                </div>
               )}
               {goTo.length > 0 && (
-                <>
+                <div className={styles.dropSection}>
                   <h3>Go-to meal</h3>
-                  {goTo.map(item)}
-                </>
+                  <div className={styles.dropList}>{goTo.map(item)}</div>
+                </div>
               )}
             </div>
           )}

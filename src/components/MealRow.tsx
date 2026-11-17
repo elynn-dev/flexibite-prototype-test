@@ -25,7 +25,7 @@ export function MealRow({ name, image, description, trailing, size = 74, onClick
       </span>
       <span className={styles.text} style={{ height: size }}>
         <span className={size === 74 ? styles.labels : undefined}>
-          <span className={styles.name} style={{ fontSize: size === 48 ? 14 : undefined }}>
+          <span className={styles.name}>
             {name}
           </span>
           {description && <span className={styles.description}>{description}</span>}
@@ -35,10 +35,10 @@ export function MealRow({ name, image, description, trailing, size = 74, onClick
     </>
   );
   return onClick ? (
-    <button type="button" className={`${styles.row} ${styles.clickable}`} onClick={onClick} aria-label={ariaLabel}>
+    <button type="button" className={`${styles.row} ${styles.clickable} ${size === 48 ? styles.small : ''}`} onClick={onClick} aria-label={ariaLabel}>
       {content}
     </button>
   ) : (
-    <div className={styles.row}>{content}</div>
+    <div className={`${styles.row} ${size === 48 ? styles.small : ''}`}>{content}</div>
   );
 }

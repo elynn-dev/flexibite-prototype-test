@@ -11,7 +11,9 @@ export interface SelectOption<T> {
 }
 
 interface SelectProps<T> {
-  value: T;
+  /** null shows the placeholder (e.g. "Meal type") instead of a chosen option. */
+  value: T | null;
+  placeholder?: ReactNode;
   options: SelectOption<T>[];
   onChange: (value: T) => void;
   ariaLabel: string;
@@ -22,11 +24,11 @@ interface SelectProps<T> {
  * Design-system select (Figma: Components → Dropdown → select, with ".option" rows).
  * Closed: one option with a chevron. Open: the options drop below with the Figma shadow.
  */
-export function Select<T>({ value, options, onChange, ariaLabel, className }: SelectProps<T>) {
+export function Select<T>({ value, placeholder, options, onChange, ariaLabel, className }: SelectProps<T>) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const current = options.find((o) => o.value === value) ?? options[0];
+  const current = placeholder != null && value === null ? { label: placeholder, quantity: undefined } : (options.find((o) => o.value === value) ?? options[0]);
 
   useEffect(() => {
     if (!open) return;
@@ -78,5 +80,28 @@ export function Select<T>({ value, options, onChange, ariaLabel, className }: Se
         </div>
       )}
     </div>
+  );
+}
+
+/**
+ * The closed select (Figma ".option" with a chevron) used as a plain button,
+ * e.g. the "Selected" toggle on Choose dates.
+ */
+export function SelectButton({
+  label,
+  open,
+  onClick,
+  className,
+}: {
+  label: ReactNode;
+  open?: boolean;
+  onClick: () => void;
+  className?: string;
+}) {
+  return (
+    <button type="button" className={`${styles.option} ${styles.trigger} ${styles.standalone} ${className ?? ''}`} aria-expanded={open} onClick={onClick}>
+      <span className={styles.label}>{label}</span>
+      <Icon name={open ? 'chevronUp' : 'chevronDown'} size={16} />
+    </button>
   );
 }

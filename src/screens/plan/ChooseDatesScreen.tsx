@@ -1,5 +1,5 @@
-import { Link } from '../../components/Link';
-import { useEffect, useRef, useState } from 'react';
+import { Select, SelectButton } from '../../components/Select';
+import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { OverlayHeader } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
@@ -15,18 +15,7 @@ export function ChooseDatesScreen() {
   const { draft, plans } = usePlanner();
   const dispatch = usePlannerDispatch();
   const [showSelected, setShowSelected] = useState(true);
-  const [menuFor, setMenuFor] = useState<DayKey | null>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!menuFor) return;
-    const onDown = (e: PointerEvent) => !menuRef.current?.contains(e.target as Node) && setMenuFor(null);
-    document.addEventListener('pointerdown', onDown);
-    return () => document.removeEventListener('pointerdown', onDown);
-  }, [menuFor]);
-
   const toggleDay = (day: DayKey) => {
-    setMenuFor(null);
     if (draft.dates.includes(day)) {
       const types = { ...draft.types };
       delete types[day];
@@ -42,10 +31,14 @@ export function ChooseDatesScreen() {
   return (
     <section className={styles.screen} aria-label="Choose dates">
       <div className={styles.scroll}>
-        <OverlayHeader height={80} onClose={() => dispatch({ type: 'navigate', screen: 'home' })} />
-        <div className={`${styles.title} heading-h2`}>
-          {MONTH_SHORT[CALENDAR_MONTH]}
-          <Icon name="chevronDownSm" size={16} />
+        <OverlayHeader onClose={() => dispatch({ type: 'navigate', screen: 'home' })} />
+        {/* Figma calendar-base heading: month + chevron, month view icon on the right */}
+        <div className={styles.titleRow}>
+          <div className={`${styles.title} heading-h2`}>
+            {MONTH_SHORT[CALENDAR_MONTH]}
+            <Icon name="chevronDownSm" size={16} />
+          </div>
+          <Icon name="viewToggle" size={32} />
         </div>
 
         <div className={styles.weekdays} aria-hidden="true">
@@ -91,10 +84,7 @@ export function ChooseDatesScreen() {
         <div className={styles.rule} />
 
         <div className={styles.selectedToggle}>
-          <Link variant="outline-all" className={styles.upper} aria-expanded={showSelected} onClick={() => setShowSelected((s) => !s)}>
-            Selected
-            <Icon name={showSelected ? 'chevronDownDark' : 'chevronUp'} size={16} />
-          </Link>
+          <SelectButton label="Selected" open={showSelected} onClick={() => setShowSelected((s) => !s)} />
         </div>
 
         {showSelected && (
@@ -103,35 +93,15 @@ export function ChooseDatesScreen() {
               const types = draft.types[day] ?? [];
               return (
                 <div className={styles.dateRow} key={day}>
-                  <div className={styles.dateRowHead} ref={menuFor === day ? menuRef : undefined}>
+                  <div className={styles.dateRowHead}>
                     <span>{chipLabel(day)}</span>
-                    <Link variant="outline-all"
-                      className={styles.upper}
-                      aria-haspopup="listbox"
-                      aria-expanded={menuFor === day}
-                      onClick={() => setMenuFor(menuFor === day ? null : day)}
-                    >
-                      Meal type
-                      <Icon name={menuFor === day ? 'chevronUp' : 'chevronDownDark'} size={16} />
-                    </Link>
-                    {menuFor === day && (
-                      <div className={styles.typeMenu} role="listbox">
-                        {MEAL_TIMES.map((m) => (
-                          <button
-                            key={m}
-                            type="button"
-                            role="option"
-                            aria-selected={types.includes(m)}
-                            onClick={() => {
-                              if (!types.includes(m)) setTypes(day, [...types, m]);
-                              setMenuFor(null);
-                            }}
-                          >
-                            {MEAL_LABEL[m]}
-                          </button>
-                        ))}
-                      </div>
-                    )}
+                    <Select
+                      value={null}
+                      placeholder="Meal type"
+                      ariaLabel={`Meal type for ${chipLabel(day)}`}
+                      options={MEAL_TIMES.map((m) => ({ value: m, label: MEAL_LABEL[m] }))}
+                      onChange={(m) => !types.includes(m) && setTypes(day, [...types, m])}
+                    />
                   </div>
                   {types.length > 0 && (
                     <div className={styles.typeChips}>
@@ -140,7 +110,7 @@ export function ChooseDatesScreen() {
                           <MealMarker meal={m} size="md" />
                           {MEAL_LABEL[m]}
                           <button type="button" aria-label={`Remove ${m}`} onClick={() => setTypes(day, types.filter((t) => t !== m))}>
-                            <Icon name="close" size={20} />
+                            <Icon name="close" size={24} />
                           </button>
                         </span>
                       ))}

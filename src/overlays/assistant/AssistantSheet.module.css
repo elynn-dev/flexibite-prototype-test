@@ -125,7 +125,8 @@
 }
 
 .heading {
-  margin: 50px 0 0;
+  /* Figma content-list: 48px between blocks */
+  margin: 48px 0 0;
   font: 400 21px/25px var(--font-display);
   color: var(--text-action);
 }
@@ -330,7 +331,8 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  height: 46px;
+  /* 46px ingredient + the 1px line */
+  height: 47px;
   border-bottom: 1px solid var(--border-default);
 }
 
@@ -516,7 +518,8 @@
   display: flex;
   align-items: center;
   height: 46px;
-  margin-top: 22px;
+  /* Figma: 24px under the question */
+  margin-top: 24px;
 }
 
 .calendarButton {
@@ -527,7 +530,8 @@
   height: 46px;
   border: 0;
   background: var(--surface-default);
-  box-shadow: var(--shadow-button);
+  /* design-system dark button shadow */
+  filter: drop-shadow(0 16px 13.6px rgba(0, 0, 0, 0.1));
   cursor: pointer;
 }
 
@@ -546,28 +550,33 @@
 .quickDay {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   flex: none;
   height: 40px;
-  padding: 0 17px 0 20px;
-  border: 1px solid var(--border-default);
+  /* Figma data-display, type=outline: 16px sides, 4px between marker and label */
+  padding: 0 16px;
+  border: 1px solid var(--border-action);
   border-radius: 30px;
-  background: var(--surface-page);
+  background: var(--surface-default-secondary);
   color: var(--text-action);
   font: 500 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
   cursor: pointer;
 }
 
+/* 12px square inside a 20px meal-time box */
 .quickDay i {
   display: block;
   width: 12px;
   height: 12px;
+  margin: 4px;
   background: var(--meal-time-lunch);
 }
 
 .quickDay:hover {
-  background: var(--surface-hover);
-  border-color: var(--neutral-600);
+  background: var(--surface-action-hover-light);
+  border-color: var(--border-action-hover);
+  color: var(--text-action-hover);
 }
 
 .on {
