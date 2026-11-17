@@ -50,6 +50,7 @@ import onion from './onion.svg';
 import pantryLg from './pantry-lg.svg';
 import pantryNeeds from './pantry-needs.svg';
 import pantry from './pantry.svg';
+import people from './people.svg';
 import person from './person.svg';
 import plusBlack from './plus-black.svg';
 import plusSm from './plus-sm.svg';
@@ -134,6 +135,7 @@ export const icons = {
   pantryLg,
   pantryNeeds,
   pantry,
+  people,
   person,
   plusBlack,
   plusSm,

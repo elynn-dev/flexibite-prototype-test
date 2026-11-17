@@ -53,12 +53,14 @@ export function GroupScreen() {
           </h1>
           <div className={styles.status}>
             <span className={styles.members}>
-              <Icon name="person" size={14} />
+              <Icon name="people" size={20} />
               56
             </span>
-            <span>Apr.01-May.01</span>
-            <span className={styles.statusBar} />
-            <span className={styles.goal}>3 days / week</span>
+            <span className={styles.duration}>
+              <span>Apr.01-May.01</span>
+              <span className={styles.statusBar} />
+              <span className={styles.goalText}>3 days / week</span>
+            </span>
           </div>
           <div className={styles.progress}>
             <span>This week</span>

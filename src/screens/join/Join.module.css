@@ -156,23 +156,35 @@
   color: var(--text-default-secondary);
 }
 
+/* Figma participants-duration: 40px row between two lines, 51px after the member count */
 .status {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 51px;
   height: 40px;
   margin: 42px var(--space-page) 0;
-  border-top: 1px solid var(--text-action);
-  border-bottom: 1px solid var(--text-action);
-  font-size: 12px;
-  text-transform: uppercase;
-  color: var(--text-default-secondary);
+  border-top: 1px solid var(--text-default-secondary);
+  border-bottom: 1px solid var(--text-default-secondary);
 }
 
+/* people icon + count, Label/Md/Regular */
 .members {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+  color: var(--text-action);
+}
+
+/* dates | 3 DAYS / WEEK, 15px apart */
+.duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  font: 500 13px/15px var(--font-body);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--text-default-secondary);
 }
 
 .statusBar {
@@ -181,8 +193,9 @@
   background: var(--text-action);
 }
 
-.goal {
-  font-weight: 500;
+.goalText {
+  line-height: 16px;
+  color: var(--text-action);
 }
 
 .progress {
