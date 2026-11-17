@@ -1,0 +1,20 @@
+<svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Illustrations">
+<g id="ingredient">
+<g id="type=Lemon">
+<path id="Vector" d="M53.9121 47.9456C59.7087 39.2043 58.9379 28.2431 52.6171 21.5214C52.3396 21.2285 52.2317 20.7968 52.3858 20.3806C53.095 18.7618 52.54 16.8193 50.9983 15.8173C49.4567 14.8152 47.4371 15.0927 46.2037 16.3877C45.88 16.6806 45.4483 16.7577 45.0629 16.6189C36.3217 13.6743 25.8537 17.3743 20.0879 26.1002C14.3067 34.826 15.0621 45.741 21.3212 52.4781C21.5987 52.8018 21.7067 53.2335 21.5525 53.6189C20.8433 55.2377 21.3983 57.1802 22.94 58.1823C24.4817 59.1843 26.5012 58.9068 27.7346 57.6118C28.0583 57.3189 28.49 57.2418 28.8754 57.3806C37.6475 60.4023 48.1308 56.7023 53.9275 47.9456H53.9121Z" fill="url(#paint0_linear_16402_19012)"/>
+</g>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_16402_19012" x1="42.1492" y1="63.1927" x2="34.1017" y2="22.2768" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FCB722"/>
+<stop offset="0.26" stop-color="#FCB724"/>
+<stop offset="0.43" stop-color="#FCB92D"/>
+<stop offset="0.57" stop-color="#FDBC3C"/>
+<stop offset="0.7" stop-color="#FDC152"/>
+<stop offset="0.82" stop-color="#FEC76D"/>
+<stop offset="0.84" stop-color="#FFC872"/>
+</linearGradient>
+</defs>
+</svg>

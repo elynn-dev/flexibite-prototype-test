@@ -1,15 +1,15 @@
 import type { PantryItem, UsedIngredient } from './types';
-import onion from '../assets/ingredients/onion.png';
-import avocado from '../assets/ingredients/avocado.png';
-import pumpkin from '../assets/ingredients/pumpkin.png';
-import lemon from '../assets/ingredients/lemon.png';
-import oliveOil from '../assets/ingredients/olive-oil.png';
-import salt from '../assets/ingredients/salt.png';
-import egg from '../assets/ingredients/egg.png';
-import eggplant from '../assets/ingredients/eggplant.png';
-import springOnion from '../assets/ingredients/spring-onion.png';
-import carrot from '../assets/ingredients/carrot.png';
-import broccoli from '../assets/ingredients/broccoli.png';
+import onion from '../assets/ingredients/onion.svg';
+import avocado from '../assets/ingredients/avocado.svg';
+import pumpkin from '../assets/ingredients/pumpkin.svg';
+import lemon from '../assets/ingredients/lemon.svg';
+import oliveOil from '../assets/ingredients/olive-oil.svg';
+import salt from '../assets/ingredients/salt.svg';
+import egg from '../assets/ingredients/egg.svg';
+import eggplant from '../assets/ingredients/eggplant.svg';
+import springOnion from '../assets/ingredients/spring-onion.svg';
+import carrot from '../assets/ingredients/carrot.svg';
+import broccoli from '../assets/ingredients/broccoli.svg';
 
 /** What's in the pantry when the app starts. */
 export const INITIAL_PANTRY: PantryItem[] = [

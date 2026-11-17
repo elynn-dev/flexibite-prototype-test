@@ -2,7 +2,7 @@ import { Icon } from '../../components/Icon';
 import type { IngredientId, RecipeIngredient } from '../../data/types';
 import avocado from '../../assets/ingredients/avocado.svg';
 import bread from '../../assets/ingredients/bread.svg';
-import egg from '../../assets/ingredients/egg-48.svg';
+import egg from '../../assets/ingredients/egg.svg';
 import oliveOil from '../../assets/ingredients/olive-oil.svg';
 import salt from '../../assets/ingredients/salt.svg';
 import styles from './IngredientStock.module.css';
