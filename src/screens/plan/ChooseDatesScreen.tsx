@@ -130,7 +130,7 @@ export function ChooseDatesScreen() {
         disabled={!draft.dates.length}
         onClick={() => dispatch({ type: 'navigate', screen: 'build' })}
       >
-        Done
+        Choose a meal
       </Button>
     </section>
   );
