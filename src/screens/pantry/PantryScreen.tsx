@@ -37,8 +37,6 @@ export function PantryScreen() {
   const { pantry, usedIngredients } = usePlanner();
   const dispatch = usePlannerDispatch();
   const [tab, setTab] = useState<PantryLocation>('storage');
-  const [searching, setSearching] = useState(false);
-  const [query, setQuery] = useState('');
   const [open, setOpen] = useState<string | null>(null);
   /** Snack bar text plus the pantry to go back to on Undo. */
   const [snack, setSnack] = useState<{ text: string; before: { pantry: PantryItem[]; used: UsedIngredient[] } } | null>(null);
@@ -53,8 +51,7 @@ export function PantryScreen() {
   };
 
   const items = pantry
-    .filter((p) => p.location === tab)
-    .filter((p) => !query || p.name.toLowerCase().includes(query.toLowerCase()));
+    .filter((p) => p.location === tab);
 
   const removeItem = (name: string) => dispatch({ type: 'setPantry', pantry: pantry.filter((p) => p.name !== name) });
 
@@ -83,8 +80,11 @@ export function PantryScreen() {
           <span className={styles.usedLabel}>Used ingredients</span>
           {usedIngredients.map((u, i) => (
             <span className={styles.usedChip} key={u.name}>
-              {u.name} <em>{u.quantity} -</em>
-              <small>whole</small>
+              {u.name}
+              <span className={styles.usedQty}>
+                <em>{u.quantity} -</em>
+                <small>whole</small>
+              </span>
               <button type="button" aria-label={`Apply ${u.name}`} onClick={() => applyUsed(i)}>
                 <Icon name="close" size={20} />
               </button>
@@ -105,15 +105,8 @@ export function PantryScreen() {
             <Icon name="plusWhiteThick" size={20} />
           </Button>
           <div className={styles.barRight}>
-            <Button variant="outline"
-             
-              aria-label="Search"
-              aria-pressed={searching}
-              onClick={() => {
-                setSearching((s) => !s);
-                setQuery('');
-              }}
-            >
+            {/* Search isn't built yet: the button has no action */}
+            <Button variant="outline" aria-label="Search">
               <Icon name="search" size={20} />
             </Button>
             <Button variant="outline" aria-label="Sort">
@@ -121,16 +114,6 @@ export function PantryScreen() {
             </Button>
           </div>
         </div>
-        {searching && (
-          <input
-            className={styles.search}
-            type="search"
-            aria-label="Search ingredients"
-            autoFocus
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        )}
 
         <div className={styles.rows}>
           {rowsFor(items, tab).map((row, r) => (

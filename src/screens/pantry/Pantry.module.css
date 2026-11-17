@@ -12,18 +12,20 @@
 }
 
 /* Used ingredients strip */
+/* Figma usage-container: 345 wide inside the page padding, a line above and below, 8px padding */
 .used {
   display: flex;
   align-items: center;
   gap: 16px;
   height: 56px;
-  margin-top: 56px;
-  padding-left: var(--space-page);
+  margin: 56px var(--space-page) 0;
+  padding: 7px 0;
   overflow-x: auto;
   border-top: 1px solid var(--text-action);
   border-bottom: 1px solid var(--text-action);
 }
 
+/* data-display, type=transparent: Label/Sm/Regular uppercase */
 .usedLabel {
   flex: none;
   font: 400 12px/15px var(--font-body);
@@ -32,34 +34,36 @@
   color: var(--text-action);
 }
 
+/* data-display, type=outline */
 .usedChip {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   flex: none;
   height: 40px;
-  padding: 0 12px 0 16px;
-  border: 1px solid var(--border-default);
-  border-radius: 20px;
-  background: var(--surface-page);
-  font: 500 14px/18px var(--font-body);
+  padding: 0 16px;
+  border: 1px solid var(--border-action);
+  border-radius: 30px;
+  background: var(--surface-default-secondary);
+  font: 500 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
   color: var(--text-action);
 }
 
-.usedChip:last-child {
-  margin-right: var(--space-page);
+.usedQty {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .usedChip em {
+  font: 400 14px/16px var(--font-body);
   font-style: normal;
-  font-weight: 400;
   color: var(--red-200);
 }
 
 .usedChip small {
-  margin-left: -4px;
-  font-size: 10px;
-  font-weight: 400;
+  font: 400 10px/13px var(--font-body);
   color: var(--neutral-500);
 }
 
@@ -104,16 +108,6 @@
 .squareMd {
   width: 42px;
   padding: 0;
-}
-
-.search {
-  width: calc(100% - 48px);
-  height: 40px;
-  margin: 16px var(--space-page) 0;
-  padding: 0 12px;
-  border: 1px solid var(--border-default);
-  background: var(--surface-page);
-  font: 14px var(--font-body);
 }
 
 /* Ingredient cards */
