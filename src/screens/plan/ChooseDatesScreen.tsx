@@ -84,7 +84,8 @@ export function ChooseDatesScreen() {
         <div className={styles.rule} />
 
         <div className={styles.selectedToggle}>
-          <SelectButton label="Selected" open={showSelected} onClick={() => setShowSelected((s) => !s)} />
+          {/* Figma Choosing dates-2…5: the chevron points down while the list is showing */}
+          <SelectButton label="Selected" open={showSelected} chevron={showSelected ? 'down' : 'up'} onClick={() => setShowSelected((s) => !s)} />
         </div>
 
         {showSelected && (

@@ -90,18 +90,21 @@ export function Select<T>({ value, placeholder, options, onChange, ariaLabel, cl
 export function SelectButton({
   label,
   open,
+  chevron,
   onClick,
   className,
 }: {
   label: ReactNode;
   open?: boolean;
+  /** Which way the chevron points; defaults to up when open. */
+  chevron?: 'up' | 'down';
   onClick: () => void;
   className?: string;
 }) {
   return (
     <button type="button" className={`${styles.option} ${styles.trigger} ${styles.standalone} ${className ?? ''}`} aria-expanded={open} onClick={onClick}>
       <span className={styles.label}>{label}</span>
-      <Icon name={open ? 'chevronUp' : 'chevronDown'} size={16} />
+      <Icon name={(chevron ?? (open ? 'up' : 'down')) === 'up' ? 'chevronUp' : 'chevronDown'} size={16} />
     </button>
   );
 }
