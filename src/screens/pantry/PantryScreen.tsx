@@ -147,12 +147,9 @@ export function PantryScreen() {
 
         <div className={styles.recipes}>
           <h2>
-            <span>
-              <Icon name="edit" size={16} />
-              Recipes from your staples
-            </span>
+            <span>Recipes from your staples</span>
             <MiniButton className={styles.seeMore} onClick={() => dispatch({ type: 'navigate', screen: 'ideas' })}>
-              See More
+              See more
             </MiniButton>
           </h2>
           <MealRow

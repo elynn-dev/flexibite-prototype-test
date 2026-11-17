@@ -8,7 +8,6 @@
   border: 1px solid var(--border-default);
   background: var(--surface-default-secondary);
   color: var(--text-default-secondary);
-  box-shadow: var(--shadow-button);
   cursor: pointer;
 }
 
@@ -34,10 +33,12 @@
   cursor: default;
 }
 
+/* Only dark buttons keep the drop shadow; outline buttons have none (Figma Buttons). */
 .dark {
   background: var(--surface-default);
   border-color: transparent;
   color: var(--text-on-action);
+  box-shadow: var(--shadow-button);
 }
 
 .dark:hover {

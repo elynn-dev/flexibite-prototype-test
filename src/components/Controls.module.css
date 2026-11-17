@@ -22,7 +22,7 @@
 
 .mini:active {
   background: var(--surface-pressed);
-  box-shadow: var(--shadow-button);
+  box-shadow: var(--shadow-pressed);
 }
 
 .mini:focus-visible {
