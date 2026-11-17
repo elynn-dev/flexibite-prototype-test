@@ -1,6 +1,7 @@
+/* Figma Components → Card → meal-card, type=detail (default / hover / action / focus). */
 .row {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 16px;
   width: 100%;
   padding: 0;
@@ -17,7 +18,7 @@
 .picture {
   flex: none;
   overflow: hidden;
-  background: var(--surface-desk);
+  background: #fff;
 }
 
 .picture img {
@@ -32,44 +33,65 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding-right: 8px;
-  border-bottom: 0.7px solid var(--neutral-500);
-}
-
-.name {
-  display: block;
-  font: 400 14px/18px var(--font-body);
+  gap: 4px;
+  padding: 12px 8px 12px 0;
+  border-bottom: 0.703px solid var(--neutral-500);
   color: var(--text-action);
 }
 
+/* label-container: 132px wide, 5px between name and description */
+.labels {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: none;
+  width: 132px;
+}
+
+/* Label/Md/Regular */
+.name {
+  display: block;
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+}
+
+/* Label/Xs/Regular at 50% */
 .description {
   display: block;
-  max-width: 120px;
-  margin-top: 4px;
   font: 400 10px/13px var(--font-body);
   color: var(--text-default-secondary);
+  opacity: 0.5;
 }
 
 .clickable:hover {
-  background: var(--surface-hover);
+  background: var(--surface-action-hover-light);
+}
+
+.clickable:hover .picture {
+  mix-blend-mode: darken;
 }
 
 .clickable:hover .text {
-  border-bottom-color: transparent;
+  --chip-bg: var(--surface-action-hover);
+  border-bottom-color: var(--border-action-hover);
+  color: var(--text-action-hover);
 }
 
-.clickable:hover .name,
 .clickable:hover .description {
-  color: var(--neutral-600);
+  color: inherit;
 }
 
 .clickable:active {
-  background: var(--surface-pressed);
+  background: var(--surface-action-secondary);
   box-shadow: var(--shadow-pressed);
 }
 
+.clickable:active .text {
+  border-bottom-color: transparent;
+  color: var(--text-action);
+}
+
 .clickable:focus-visible {
-  outline: 2px solid var(--neutral-600);
-  outline-offset: 5px;
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
 }

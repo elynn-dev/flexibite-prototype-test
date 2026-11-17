@@ -249,7 +249,7 @@ export function AssistantSheet() {
                 )}
               </div>
               <div className={styles.buttonRow}>
-                <Button variant="dark" onClick={() => go('ideasLoading')}>
+                <Button variant="default" onClick={() => go('ideasLoading')}>
                   Suggested meal ideas
                 </Button>
               </div>
@@ -360,7 +360,7 @@ export function AssistantSheet() {
                 ))}
               </div>
               <div className={styles.buttonRow}>
-                <Button
+                <Button variant="outline"
                   onClick={() => {
                     commit();
                     setDate(null);
@@ -371,7 +371,7 @@ export function AssistantSheet() {
                   Make another
                 </Button>
                 <Button
-                  variant="dark"
+                  variant="default"
                   onClick={() => {
                     commit();
                     dispatch({ type: 'showToast', toast: { kind: 'ok', text: 'Plan saved!', durationMs: 2200 } });

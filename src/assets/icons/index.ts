@@ -64,6 +64,7 @@ import sort from './sort.svg';
 import sparkleAgent from './sparkle-agent.svg';
 import sparkle from './sparkle.svg';
 import spatulaLg from './spatula-lg.svg';
+import star from './star.svg';
 import tabHomeActive from './tab-home-active.svg';
 import tabHome from './tab-home.svg';
 import tabJoinActive from './tab-join-active.svg';
@@ -144,6 +145,7 @@ export const icons = {
   sparkleAgent,
   sparkle,
   spatulaLg,
+  star,
   tabHomeActive,
   tabHome,
   tabJoinActive,

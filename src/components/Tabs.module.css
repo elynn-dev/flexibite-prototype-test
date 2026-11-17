@@ -1,0 +1,96 @@
+/* Figma Components → Navigation → tabs (size=sm). */
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 1.4px solid transparent;
+  background: none;
+  color: var(--text-disabled);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tab[aria-selected='true'] {
+  border-bottom-color: var(--border-action);
+}
+
+.tab:hover:not([aria-selected='true']) {
+  color: var(--text-action-hover);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+.tab img {
+  opacity: 0.6;
+}
+
+.tab[aria-selected='true'] img {
+  opacity: 1;
+}
+
+/* pantry-nav: Heading/H6 tabs on a light strip, selected one underlined with a soft shadow */
+.pantry-nav {
+  background: #f2f2f2;
+}
+
+.pantry-nav .tab {
+  height: 49px;
+  font: 400 21px/25px var(--font-display);
+  letter-spacing: 0.42px;
+}
+
+.pantry-nav .tab[aria-selected='true'] {
+  border-bottom-color: var(--border-default);
+  color: var(--text-default-secondary);
+  box-shadow: 0 16px 27.2px rgba(0, 0, 0, 0.1);
+}
+
+/* join-in-nav: Label/Lg/Medium */
+.join-in-nav .tab {
+  height: 29px;
+  padding: 0;
+  font: 500 16px/21px var(--font-body);
+  letter-spacing: -0.16px;
+}
+
+.join-in-nav .tab[aria-selected='true'] {
+  background: var(--surface-default-secondary);
+  color: var(--text-action);
+}
+
+/* meal-idea--nav: Label/Md/Regular uppercase with a 16px icon */
+.meal-idea-nav .tab {
+  height: 29px;
+  padding: 0;
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+  text-transform: uppercase;
+}
+
+.meal-idea-nav .tab[aria-selected='true'] {
+  background: var(--surface-default-secondary);
+  color: var(--text-default-secondary);
+}
+
+.dot {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red-200);
+}

@@ -33,35 +33,16 @@
 
 /* Empty day */
 .empty {
-  padding-top: 12px;
+  /* Figma Home: plan-container starts 28px under the calendar. */
+  padding-top: 28px;
 }
 
-.createPlan {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+/* Heading/H7 label on the design-system Link */
+.empty .createPlan {
   height: 44px;
-  padding: 0 12px;
-  border: 1px solid var(--border-default);
-  background: var(--surface-default-secondary);
-  color: var(--text-default-secondary);
+  gap: 5.25px;
   font: 400 18px/22px var(--font-display);
   letter-spacing: 0.36px;
-  cursor: pointer;
-}
-
-.createPlan:hover {
-  background: var(--surface-hover);
-  border-color: var(--neutral-600);
-}
-
-.createPlan:active {
-  background: var(--surface-pressed);
-}
-
-.createPlan:focus-visible {
-  outline: 2px solid var(--neutral-600);
-  outline-offset: 4px;
 }
 
 .tiles {

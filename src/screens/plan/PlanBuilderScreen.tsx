@@ -1,6 +1,7 @@
+import { Link } from '../../components/Link';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../components/Button';
-import { MiniButton, OverlayHeader } from '../../components/Controls';
+import { OverlayHeader } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
 import { MealMarker } from '../../components/MealTime';
 import { MealRow } from '../../components/MealRow';
@@ -70,9 +71,9 @@ export function PlanBuilderScreen() {
       name={c.name}
       image={c.image}
       trailing={
-        <MiniButton className={styles.addToPlan} onClick={() => c.recipeId && choose(c.recipeId)}>
+        <Link variant="outline-all" className={styles.addToPlan} onClick={() => c.recipeId && choose(c.recipeId)}>
           Add to plan
-        </MiniButton>
+        </Link>
       }
     />
   );
@@ -83,7 +84,7 @@ export function PlanBuilderScreen() {
         <OverlayHeader height={80} onClose={() => dispatch({ type: 'navigate', screen: 'home' })} />
         <div className={styles.chipRow}>
           <Button
-            variant="dark"
+            variant="default"
             className={styles.calendarButton}
             aria-label="Edit dates"
             onClick={() => dispatch({ type: 'navigate', screen: 'choose' })}

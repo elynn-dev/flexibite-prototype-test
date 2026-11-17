@@ -73,7 +73,7 @@ export function PlanSummaryScreen() {
         </div>
       )}
 
-      <Button variant="dark" size="lg" className={styles.addButton} disabled={!rows.length} onClick={() => dispatch({ type: 'commitDraft' })}>
+      <Button variant="default" size="lg" className={styles.addButton} disabled={!rows.length} onClick={() => dispatch({ type: 'commitDraft' })}>
         Add to plan
       </Button>
     </section>

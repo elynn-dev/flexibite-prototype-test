@@ -1,5 +1,7 @@
+import { SectionHeader } from '../../components/SectionHeader';
+import { Chip } from '../../components/Chip';
 import type { ReactNode } from 'react';
-import { Pill } from '../../components/Controls';
+
 import { Icon, type IconName } from '../../components/Icon';
 import { MealRow } from '../../components/MealRow';
 import { RECIPES } from '../../data/recipes';
@@ -50,10 +52,7 @@ export function MealIdeasScreen() {
 function IdeaSection({ icon, title, subtitle, children }: { icon: IconName; title: string; subtitle: string; children: ReactNode }) {
   return (
     <section className={styles.section}>
-      <h2>
-        <Icon name={icon} size={16} />
-        {title}
-      </h2>
+      <SectionHeader className={styles.sectionHeader} icon={<Icon name={icon} size={16} />} title={title} />
       <p>{subtitle}</p>
       <div className={`${styles.row} hide-scrollbar`}>{children}</div>
     </section>
@@ -63,14 +62,11 @@ function IdeaSection({ icon, title, subtitle, children }: { icon: IconName; titl
 function IdeaCard({ name, image, availability, onOpen }: Idea) {
   const pill =
     availability === 'available' ? (
-      <Pill tone="dark">Available</Pill>
+      <Chip type="default" label="Available" />
     ) : availability === 'needs' ? (
-      <Pill>
-        <Icon name="pantryNeeds" size={16} />
-        Needs <b>3+</b>
-      </Pill>
+      <Chip type="outline" leftIcon={<Icon name="pantryNeeds" size={16} />} label="Needs" quantity="3+" />
     ) : (
-      <Pill tone="off">Unavailable</Pill>
+      <Chip disabled label="Unavailable" />
     );
   return (
     <div className={styles.card}>

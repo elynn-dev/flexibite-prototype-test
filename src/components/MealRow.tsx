@@ -14,7 +14,7 @@ interface MealRowProps {
 }
 
 /**
- * Figma "meal-card" (list layout): picture on the left, name (+ description) over a thin
+ * Figma "meal-card" (type=detail, 325 × 74): picture on the left, name (+ description) over a thin
  * bottom line, and something on the right. A button when it has onClick, otherwise a plain row.
  */
 export function MealRow({ name, image, description, trailing, size = 74, onClick, ariaLabel }: MealRowProps) {
@@ -24,7 +24,7 @@ export function MealRow({ name, image, description, trailing, size = 74, onClick
         <img src={image} alt="" />
       </span>
       <span className={styles.text} style={{ height: size }}>
-        <span>
+        <span className={size === 74 ? styles.labels : undefined}>
           <span className={styles.name} style={{ fontSize: size === 48 ? 14 : undefined }}>
             {name}
           </span>

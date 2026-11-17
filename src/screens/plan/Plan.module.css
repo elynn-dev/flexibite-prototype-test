@@ -90,7 +90,7 @@
 }
 
 .gridDay:focus-visible {
-  outline: 2px solid var(--neutral-600);
+  outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
 

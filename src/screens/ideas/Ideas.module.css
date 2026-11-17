@@ -24,47 +24,11 @@
 }
 
 .tabs {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
   padding: 36px var(--space-page) 0;
 }
 
-.tab {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  height: 29px;
-  padding: 12px 0;
-  border: 0;
-  border-bottom: 1.4px solid var(--surface-disabled);
-  background: none;
-  color: var(--neutral-500);
-  font: 400 14px/16px var(--font-body);
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.tab img {
-  opacity: 0.6;
-}
-
-.tab[aria-selected='true'] {
-  border-bottom-color: var(--text-default-secondary);
-  color: var(--text-default-secondary);
-}
-
-.tab[aria-selected='true'] img {
-  opacity: 1;
-}
-
-.tab:focus-visible,
 .tile:focus-visible {
-  outline: 2px solid var(--neutral-600);
+  outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
 
@@ -78,15 +42,8 @@
   margin-top: 36px;
 }
 
-.section h2 {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0;
+.sectionHeader {
   padding: 0 var(--space-page);
-  font: 400 21px/25px var(--font-display);
-  letter-spacing: 0.42px;
-  color: var(--text-default-secondary);
 }
 
 .section p {
@@ -111,13 +68,6 @@
 .card {
   flex: none;
   width: 325px;
-}
-
-/* Figma label-container: 132px wide, Label/Md/Regular. */
-.card [class*='name'] {
-  width: 132px;
-  line-height: 16px;
-  letter-spacing: -0.14px;
 }
 
 /* Explore */
@@ -159,17 +109,6 @@
   margin-top: 36px;
 }
 
-.exploreSection h2 {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0;
-  padding: 0 var(--space-page);
-  font: 400 18px/22px var(--font-display);
-  letter-spacing: 0.02em;
-  color: var(--text-default-secondary);
-}
-
 .exploreSection p {
   margin: 6px var(--space-page) 0;
   font: 400 12px/16px var(--font-body);
@@ -201,11 +140,13 @@
   object-fit: cover;
 }
 
+/* Same states as the design-system meal-card: no overlay, 25% multiply on hover. */
 .tile::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: transparent;
+  mix-blend-mode: multiply;
   transition: background 0.2s;
 }
 
@@ -233,7 +174,9 @@
   color: var(--text-default-secondary);
 }
 
+/* Figma video-metadata: the view count sits right under the title (no gap). */
 .views {
+  margin-top: -8px;
   font: 400 10px/13px var(--font-body);
   color: var(--text-default-secondary);
 }
@@ -268,7 +211,7 @@
 
 .tags {
   font: 400 10px/13px var(--font-body);
-  color: var(--toast-info-fg);
+  color: var(--text-information);
 }
 
 .squareDots {

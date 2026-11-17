@@ -1,16 +1,7 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Icon } from './Icon';
+import { Link } from './Link';
 import styles from './Controls.module.css';
-
-/** Figma "mini button": 32px tall outline button with small text. */
-export function MiniButton({ className, type = 'button', ...rest }: ButtonHTMLAttributes<HTMLButtonElement>) {
-  return <button type={type} className={`${styles.mini} ${className ?? ''}`} {...rest} />;
-}
-
-/** Rounded tag: "Available", "Needs 3+", dates, etc. */
-export function Pill({ tone = 'outline', children }: { tone?: 'outline' | 'dark' | 'off'; children: ReactNode }) {
-  return <span className={`${styles.pill} ${styles[tone]}`}>{children}</span>;
-}
 
 /** On/off switch (Edit plans "Keep on current day"). */
 export function Switch({ checked, onChange, label }: { checked: boolean; onChange: (v: boolean) => void; label: string }) {
@@ -56,9 +47,20 @@ export function Checkbox({
 }
 
 /** − 3 + quantity row. */
-export function Stepper({ value, onChange, label }: { value: ReactNode; onChange: (delta: number) => void; label: string }) {
+export function Stepper({
+  value,
+  onChange,
+  label,
+  counter,
+}: {
+  value: ReactNode;
+  onChange: (delta: number) => void;
+  label: string;
+  /** Figma "counter" look: 42px tall with a bottom line. */
+  counter?: boolean;
+}) {
   return (
-    <div className={styles.stepper}>
+    <div className={`${styles.stepper} ${counter ? styles.counter : ''}`}>
       <button type="button" aria-label={`Less ${label}`} onClick={() => onChange(-1)}>
         <Icon name="minus" size={20} />
       </button>
@@ -70,16 +72,27 @@ export function Stepper({ value, onChange, label }: { value: ReactNode; onChange
   );
 }
 
-/** Green bar above the tab bar with an Undo button. */
-export function SnackBar({ text, onUndo }: { text: string; onUndo?: () => void }) {
+/** Figma Feedback → snack-bar (state success | error | info): message, then an Undo link or a description. */
+export function SnackBar({
+  text,
+  onUndo,
+  state = 'success',
+  description,
+}: {
+  text: string;
+  onUndo?: () => void;
+  state?: 'success' | 'error' | 'info';
+  description?: string;
+}) {
   return (
-    <div className={styles.snack} role="status">
-      <span>{text}</span>
+    <div className={`${styles.snack} ${styles[state]}`} role="status">
+      <span className={styles.snackMessage}>{text}</span>
       {onUndo && (
-        <button type="button" onClick={onUndo}>
+        <Link variant="outline-all" className={styles.snackLink} onClick={onUndo}>
           Undo
-        </button>
+        </Link>
       )}
+      {description && <span className={styles.snackDescription}>{description}</span>}
     </div>
   );
 }

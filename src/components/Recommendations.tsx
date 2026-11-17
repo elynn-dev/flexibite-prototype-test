@@ -44,10 +44,10 @@ export function Recommendations({ onAddWithSuggestions, onEditPlans, onMoreIdeas
       {open && (
         <div className={styles.left}>
           <div className={styles.buttons}>
-            <Button aria-label="Add with suggestions" onClick={then(onAddWithSuggestions)}>
+            <Button variant="outline" aria-label="Add with suggestions" onClick={then(onAddWithSuggestions)}>
               <Icon name="magicAdd" size={20} />
             </Button>
-            <Button aria-label="Edit plans" onClick={then(onEditPlans)}>
+            <Button variant="outline" aria-label="Edit plans" onClick={then(onEditPlans)}>
               <Icon name="magicEdit" size={20} />
             </Button>
           </div>
@@ -66,7 +66,7 @@ export function Recommendations({ onAddWithSuggestions, onEditPlans, onMoreIdeas
         </div>
       )}
       <Button
-        variant="dark"
+        variant="default"
         className={styles.toggle}
         aria-label={open ? 'Close recommendations' : 'Recommendations, open'}
         aria-expanded={open}

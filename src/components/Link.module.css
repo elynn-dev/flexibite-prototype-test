@@ -1,0 +1,111 @@
+/* Figma Components → Link ("link-small", "link- medium"; variant default | outline-all | outline-bottom). */
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border: 0;
+  background: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+.link:disabled {
+  cursor: default;
+}
+
+.sm {
+  gap: 4px;
+  height: 32px;
+  padding: 0 12px;
+  font: 400 10px/13px var(--font-body);
+}
+
+.md {
+  gap: 4px;
+  height: 42px;
+  padding: 0 12px;
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+}
+
+/* default: dark fill */
+.default {
+  background: var(--surface-default);
+  color: var(--text-on-action);
+  filter: drop-shadow(0 16px 13.6px rgba(0, 0, 0, 0.1));
+}
+
+.default:hover:not(:disabled) {
+  background: var(--surface-action-hover);
+}
+
+.default:active:not(:disabled),
+.default.current {
+  background: var(--surface-action);
+  filter: drop-shadow(0 4px 12.1px rgba(0, 0, 0, 0.02));
+}
+
+.default:focus-visible {
+  color: var(--text-default);
+}
+
+.default:disabled {
+  background: var(--surface-disabled);
+  color: var(--text-disabled);
+  filter: none;
+}
+
+/* outline-all: like the outline button, no shadow */
+.outline-all {
+  padding-inline: 11px;
+  border: 1px solid var(--border-default);
+  background: var(--surface-default-secondary);
+  color: var(--text-default-secondary);
+}
+
+.outline-all:hover:not(:disabled) {
+  border-color: var(--border-action-hover);
+  background: var(--surface-action-hover-light);
+  color: var(--text-action-hover);
+}
+
+.outline-all:active:not(:disabled),
+.outline-all.current {
+  border-color: var(--border-action);
+  background: var(--surface-action-secondary);
+  color: var(--text-action);
+}
+
+.outline-all:disabled {
+  border-color: var(--border-disabled);
+  color: var(--text-disabled);
+}
+
+/* outline-bottom: underline only */
+.outline-bottom {
+  border-bottom: 1.4px solid var(--border-default);
+  color: var(--text-default-secondary);
+}
+
+.outline-bottom:hover:not(:disabled) {
+  border-bottom-color: var(--border-action-hover);
+  color: var(--text-action-hover);
+}
+
+.outline-bottom:active:not(:disabled),
+.outline-bottom.current {
+  border-bottom-color: var(--border-action);
+  color: var(--text-action);
+}
+
+.outline-bottom:disabled {
+  border-bottom-color: var(--border-disabled);
+  color: var(--text-disabled);
+}

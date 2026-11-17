@@ -15,6 +15,7 @@
 .heading {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 80px;
 }
 
@@ -110,7 +111,7 @@
 .day:focus-visible,
 .card:focus-visible,
 .chev:focus-visible {
-  outline: 2px solid var(--toast-info-fg);
+  outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
 
@@ -244,9 +245,12 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-top: 14px;
+  /* Figma calendar-edit: 16px under the toast, then a 10px gap */
+  margin-top: 26px;
+  /* edit-part is 342px wide in Figma */
+  width: 342px;
   padding-top: 24px;
-  border-top: 1px solid #cbc8c2;
+  border-top: 1px solid var(--neutral-400);
 }
 
 .cards {

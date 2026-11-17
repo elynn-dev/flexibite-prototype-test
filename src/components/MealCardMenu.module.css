@@ -47,9 +47,8 @@
   }
 }
 
-.trigger:focus-visible,
-.item:focus-visible {
-  outline: 2px solid var(--neutral-600);
+.trigger:focus-visible {
+  outline: 2px solid var(--border-focus);
   outline-offset: -2px;
 }
 
@@ -67,26 +66,3 @@
   right: 4px;
 }
 
-.item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  width: 67px;
-  height: 32px;
-  padding: 0 8px;
-  border: 1px solid var(--border-default);
-  background: var(--surface-page);
-  color: var(--text-action);
-  font: 400 10px/13px var(--font-body);
-  text-align: left;
-  cursor: pointer;
-}
-
-.item + .item {
-  border-top: 0;
-}
-
-.item:hover {
-  background: var(--surface-hover);
-  color: var(--neutral-600);
-}

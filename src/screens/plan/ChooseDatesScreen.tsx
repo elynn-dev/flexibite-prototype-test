@@ -1,6 +1,7 @@
+import { Link } from '../../components/Link';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../components/Button';
-import { MiniButton, OverlayHeader } from '../../components/Controls';
+import { OverlayHeader } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
 import { MealMarker } from '../../components/MealTime';
 import { MEAL_LABEL, MEAL_TIMES, type DayKey, type MealTime } from '../../data/types';
@@ -90,10 +91,10 @@ export function ChooseDatesScreen() {
         <div className={styles.rule} />
 
         <div className={styles.selectedToggle}>
-          <MiniButton className={styles.upper} aria-expanded={showSelected} onClick={() => setShowSelected((s) => !s)}>
+          <Link variant="outline-all" className={styles.upper} aria-expanded={showSelected} onClick={() => setShowSelected((s) => !s)}>
             Selected
             <Icon name={showSelected ? 'chevronDownDark' : 'chevronUp'} size={16} />
-          </MiniButton>
+          </Link>
         </div>
 
         {showSelected && (
@@ -104,7 +105,7 @@ export function ChooseDatesScreen() {
                 <div className={styles.dateRow} key={day}>
                   <div className={styles.dateRowHead} ref={menuFor === day ? menuRef : undefined}>
                     <span>{chipLabel(day)}</span>
-                    <MiniButton
+                    <Link variant="outline-all"
                       className={styles.upper}
                       aria-haspopup="listbox"
                       aria-expanded={menuFor === day}
@@ -112,7 +113,7 @@ export function ChooseDatesScreen() {
                     >
                       Meal type
                       <Icon name={menuFor === day ? 'chevronUp' : 'chevronDownDark'} size={16} />
-                    </MiniButton>
+                    </Link>
                     {menuFor === day && (
                       <div className={styles.typeMenu} role="listbox">
                         {MEAL_TIMES.map((m) => (
@@ -153,7 +154,7 @@ export function ChooseDatesScreen() {
       </div>
 
       <Button
-        variant="dark"
+        variant="default"
         className={styles.done}
         disabled={!draft.dates.length}
         onClick={() => dispatch({ type: 'navigate', screen: 'build' })}

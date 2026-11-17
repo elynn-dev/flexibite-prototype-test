@@ -5,66 +5,100 @@
   background: rgba(0, 0, 0, 0.33);
 }
 
+/* Figma .Input → shopping list (297 wide). */
 .panel {
   position: absolute;
   left: 72px;
   right: 24px;
   bottom: 170px;
-  padding: 40px 24px 24px;
-  border-radius: 2px;
-  background: var(--surface-page);
-  box-shadow: var(--shadow-button);
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  /* Figma strokes sit inside the box, so padding gives up the 1px border */
+  padding: 35px 23px;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  background: var(--surface-default-secondary);
+  box-shadow: var(--shadow-button-large);
 }
 
 .panel h2 {
   margin: 0;
-  padding-bottom: 19px;
+  padding-bottom: 23px;
   border-bottom: 1px solid var(--text-action);
   color: var(--text-default-secondary);
 }
 
-.rows {
-  padding-top: 24px;
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+/* items container: 12px between items, 16px above the add button */
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* item: checkbox (34px down) + shopping cart-item */
 .row {
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  column-gap: 27px;
-  padding-bottom: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
 }
 
 .check {
-  align-self: start;
-  margin-top: 16px;
+  margin-top: 34px;
+}
+
+/* shopping cart-item: 12px padding, label row over the counter */
+.item {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 12px;
 }
 
 .main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 48px;
-  border-bottom: 1px solid var(--border-subtle);
+  width: 100%;
+  padding-bottom: 11px;
+  border-bottom: 1px solid var(--border-tab-bar);
 }
 
 .name {
   color: var(--text-action);
 }
 
+/* Figma Dropdown → select, closed .option */
 .unit {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   height: 32px;
-  padding: 0 10px;
+  padding: 0 8px 0 12px;
   border: 1px solid var(--border-default);
-  background: var(--surface-page);
-  color: var(--text-default-secondary);
+  background: var(--surface-default-secondary);
+  color: var(--border-default);
 }
 
+/* counter: − 1 + on the right, 12px apart, Label/Lg/Regular */
 .quantity {
-  grid-column: 2;
-  padding: 12px 6px 0;
+  display: flex;
+  height: 24px;
+  align-items: center;
+}
+
+.quantity > div {
+  gap: 12px;
+  font: 400 16px/21px var(--font-body);
 }
 
 .off .name,
@@ -72,27 +106,24 @@
   color: var(--neutral-500);
 }
 
+
 .add {
   display: flex;
   justify-content: flex-end;
-}
-
-.addButton {
-  width: 40px;
-  height: 40px;
-  min-width: 0;
-  padding: 0;
+  margin-top: -4px;
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 16px;
-  padding-top: 24px;
+  padding-top: 23px;
   border-top: 1px solid var(--text-action);
 }
 
-.square {
-  width: 42px;
+/* Figma add-button: 38 × 38 */
+.add .square {
+  width: 38px;
+  height: 38px;
+  min-width: 0;
   padding: 0;
 }

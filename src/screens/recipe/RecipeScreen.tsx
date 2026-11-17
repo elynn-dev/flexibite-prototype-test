@@ -1,3 +1,6 @@
+import { Chip } from '../../components/Chip';
+import { Link } from '../../components/Link';
+import { SectionHeader } from '../../components/SectionHeader';
 import { useCallback, useState } from 'react';
 import { Button } from '../../components/Button';
 import { Icon } from '../../components/Icon';
@@ -56,7 +59,7 @@ export function RecipeScreen({ recipeId }: { recipeId: RecipeId }) {
       <div className={styles.main}>
         <div className={styles.selectedDates}>
           <Button
-            variant="dark"
+            variant="default"
             className={styles.dateButton}
             aria-label="Edit dates"
             onClick={() => dispatch({ type: 'navigate', screen: planMode ? 'choose' : 'edit' })}
@@ -85,15 +88,14 @@ export function RecipeScreen({ recipeId }: { recipeId: RecipeId }) {
           <div className={styles.titleBlock}>
             <div className={styles.title}>
               <h1 className="heading-h4">{recipe.name}</h1>
-              <Button size="sm" className={styles.search} aria-label="Search">
+              <Link variant="outline-all" aria-label="Search">
                 <Icon name="search" size={16} />
-              </Button>
+              </Link>
             </div>
-            <div className={`${styles.info} label-xs-regular-upper`}>
+            {/* Figma recipe-info: the first chip is outlined, the others have no border */}
+            <div className={styles.info}>
               {recipe.info.map((t, i) => (
-                <span key={t} className={`${styles.infoChip} ${i === 0 ? styles.outlined : ''}`}>
-                  {t}
-                </span>
+                <Chip key={t} type="outline" label={t} className={i === 0 ? styles.infoChip : `${styles.infoChip} ${styles.plain}`} />
               ))}
             </div>
           </div>
@@ -104,19 +106,12 @@ export function RecipeScreen({ recipeId }: { recipeId: RecipeId }) {
 
         <div className={styles.sections}>
           <section className={`${styles.section} ${styles.steps}`}>
-            <div className={styles.sectionHeader}>
-              <h2 className="heading-h6">Steps</h2>
-              <Icon name="editSteps" size={16} />
-            </div>
+            <SectionHeader title="Steps" trailing={<Icon name="editSteps" size={16} />} />
             <StepList steps={recipe.steps} />
           </section>
 
           <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2 className="heading-h6">
-                Ingredients
-              </h2>
-            </div>
+            <SectionHeader title="Ingredients" />
             <div className={styles.ingredients}>
               <ServingSelect
                 value={servings}
@@ -136,7 +131,7 @@ export function RecipeScreen({ recipeId }: { recipeId: RecipeId }) {
                     {secondRow.map((ing) => (
                       <IngredientStock key={ing.id} ingredient={ing} servings={servings} />
                     ))}
-                    <Button variant="dark" className={styles.addIngredient} aria-label="Add ingredient" onClick={showNotBuilt('Adding ingredients')}>
+                    <Button variant="default" className={styles.addIngredient} aria-label="Add ingredient" onClick={showNotBuilt('Adding ingredients')}>
                       <Icon name="plusWhite" size={20} />
                     </Button>
                   </div>
@@ -146,11 +141,7 @@ export function RecipeScreen({ recipeId }: { recipeId: RecipeId }) {
           </section>
 
           <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2 className="heading-h6">
-                Note
-              </h2>
-            </div>
+            <SectionHeader title="Note" />
             <textarea
               className={`${styles.note} body-sm-regular`}
               placeholder="Placeholder"
@@ -167,7 +158,7 @@ export function RecipeScreen({ recipeId }: { recipeId: RecipeId }) {
 
       <div className={styles.footer}>
         <Button
-          variant="dark"
+          variant="default"
           size="lg"
           disabled={!planMode && !dirty}
           onClick={() => dispatch({ type: 'saveRecipe', recipeId, servings })}

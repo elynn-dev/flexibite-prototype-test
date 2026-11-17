@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { Icon } from './Icon';
+import { Menu } from './Menu';
 import styles from './MealCardMenu.module.css';
 
 interface MealCardMenuProps {
@@ -10,7 +11,7 @@ interface MealCardMenuProps {
   onDelete?: () => void;
 }
 
-/** Figma "meal-card-menu": a ⋮ button on the card's corner that opens Edit / Delete. */
+/** Figma "meal-card-menu" (uses the design-system Menu): a ⋮ button on the card's corner that opens Edit / Delete. */
 export function MealCardMenu({ children, vertical, onEdit, onDelete }: MealCardMenuProps) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -50,16 +51,14 @@ export function MealCardMenu({ children, vertical, onEdit, onDelete }: MealCardM
         <KebabIcon />
       </button>
       {open && (
-        <div className={styles.menu} role="menu" id={menuId}>
-          <button type="button" role="menuitem" className={styles.item} onClick={choose(onEdit)}>
-            <Icon name="menuEdit" size={16} />
-            <span>Edit</span>
-          </button>
-          <button type="button" role="menuitem" className={styles.item} onClick={choose(onDelete)}>
-            <Icon name="menuDelete" size={16} />
-            <span>Delete</span>
-          </button>
-        </div>
+        <Menu
+          id={menuId}
+          className={styles.menu}
+          items={[
+            { label: 'Edit', icon: <Icon name="menuEdit" size={16} />, onSelect: choose(onEdit) },
+            { label: 'Delete', icon: <Icon name="menuDelete" size={16} />, onSelect: choose(onDelete) },
+          ]}
+        />
       )}
     </div>
   );

@@ -33,7 +33,7 @@ export function Calendar(props: CalendarProps) {
   const visible = expanded ? weeks : [weeks[weekIndexOf(selectedDay)]];
 
   return (
-    <div className={styles.calendar}>
+    <div className={`${styles.calendar} ${expanded ? styles.expanded : ''}`}>
       <div className={styles.heading}>
         <div className={`${styles.month} heading-h2`}>
           <span>{MONTH_SHORT[CALENDAR_MONTH]}</span>

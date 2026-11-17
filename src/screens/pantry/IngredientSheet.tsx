@@ -92,17 +92,17 @@ export function IngredientSheet({ item, onClose, onSave, onDelete }: IngredientS
                 {plenty ? (
                   <span className={styles.plentyLabel}>Plenty</span>
                 ) : (
-                  <Stepper value={quantity} label={item.name} onChange={(d) => setQuantity((q) => Math.max(0, q + d))} />
+                  <Stepper counter value={quantity} label={item.name} onChange={(d) => setQuantity((q) => Math.max(0, q + d))} />
                 )}
               </div>
-              <Button className={styles.squareMd} aria-label={`Delete ${item.name}`} onClick={() => close(onDelete)}>
+              <Button variant="outline" className={styles.squareMd} aria-label={`Delete ${item.name}`} onClick={() => close(onDelete)}>
                 <Icon name="trash" size={20} />
               </Button>
             </div>
           </div>
         </div>
         <div className={styles.sheetFooter}>
-          <Button variant="dark" size="lg" onClick={() => close(() => onSave(quantity))}>
+          <Button variant="default" size="lg" onClick={() => close(() => onSave(quantity))}>
             Save
           </Button>
         </div>

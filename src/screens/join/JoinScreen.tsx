@@ -1,5 +1,7 @@
+import { Link } from '../../components/Link';
+import { Chip } from '../../components/Chip';
 import { Button } from '../../components/Button';
-import { MiniButton, Pill } from '../../components/Controls';
+
 import { Icon } from '../../components/Icon';
 import { MealRow } from '../../components/MealRow';
 import { MainTabBar } from '../../components/TabBar';
@@ -41,28 +43,28 @@ export function JoinScreen() {
             <Icon name="search" size={20} />
             <input type="text" placeholder="Explore" aria-label="Explore" />
           </label>
-          <Button variant="dark" className={styles.create} aria-label="Create a group">
+          <Button variant="default" className={styles.create} aria-label="Create a group">
             <Icon name="plusWhiteThick" size={18} />
           </Button>
         </div>
 
         <div className={styles.sectionHead}>
           <span>Active now</span>
-          <MiniButton className={styles.seeMore} onClick={openGroup}>
+          <Link variant="outline-all" onClick={openGroup}>
             See more
-          </MiniButton>
+          </Link>
         </div>
         <div className={`${styles.activeRow} hide-scrollbar`}>
           {ACTIVE.map((g) => (
             <div className={styles.activeCard} key={g.label}>
-              <MealRow name={g.name} image={g.image} trailing={<Pill tone="dark">{g.dates}</Pill>} onClick={openGroup} ariaLabel={g.label} />
+              <MealRow name={g.name} image={g.image} trailing={<Chip type="default" label={g.dates} />} onClick={openGroup} ariaLabel={g.label} />
             </div>
           ))}
         </div>
 
         <div className={`${styles.sectionHead} ${styles.soon}`}>
           <span>Starting soon</span>
-          <MiniButton className={styles.seeMore}>See more</MiniButton>
+          <Link variant="outline-all">See more</Link>
         </div>
         <div className={styles.list}>
           {SOON.map((g) => {
@@ -75,7 +77,7 @@ export function JoinScreen() {
                 image={g.image}
                 trailing={
                   <span className={styles.soonRight}>
-                    <Pill>{g.when}</Pill>
+                    <Chip type="outline" label={g.when} />
                     <button
                       type="button"
                       className={styles.bell}

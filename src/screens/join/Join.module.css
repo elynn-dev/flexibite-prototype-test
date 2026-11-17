@@ -13,48 +13,20 @@
 
 /* join-in / joining */
 .tabs {
-  display: flex;
-  gap: 24px;
   padding: 56px var(--space-page) 0;
 }
 
-.tab {
-  position: relative;
-  padding: 0 0 4px;
-  border: 0;
-  border-bottom: 1px solid #cabebb;
-  background: none;
-  color: var(--neutral-500);
-  font: 400 14px/18px var(--font-body);
-  cursor: pointer;
-}
-
-.tab[aria-selected='true'] {
-  border-bottom-color: var(--text-action);
-  color: var(--text-action);
-}
-
-.tab i {
-  position: absolute;
-  top: -4px;
-  right: -8px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--red-200);
-}
-
-.tab:focus-visible,
 .bell:focus-visible,
 .checkInButton:focus-visible {
-  outline: 2px solid var(--neutral-600);
+  outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
 
 /* Join in list */
 .title {
   max-width: 208px;
-  margin: 48px var(--space-page) 0;
+  /* Figma Join-in feed: 36px under the tabs, 24px above the search row */
+  margin: 36px var(--space-page) 0;
   font: 400 39px/44px var(--font-display);
   text-transform: capitalize;
   color: var(--text-action);
@@ -63,7 +35,7 @@
 .searchRow {
   display: flex;
   gap: 12px;
-  margin: 32px var(--space-page) 0;
+  margin: 24px var(--space-page) 0;
 }
 
 .search {
@@ -96,19 +68,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 40px var(--space-page) 0;
+  margin: 36px var(--space-page) 0;
+}
+
+/* Figma: Starting soon begins 199px below the top of Active now */
+.sectionHead.soon {
+  margin-top: 69px;
 }
 
 .sectionHead > span {
   font: 400 16px/21px var(--font-body);
   text-transform: uppercase;
   color: var(--text-action);
-}
-
-.seeMore {
-  width: 67px;
-  padding: 0;
-  font-size: 10px;
 }
 
 .activeRow {
@@ -166,7 +137,8 @@
 
 .hero {
   height: 112px;
-  margin: 48px var(--space-page) 0;
+  /* Figma join-in-info: 36px under the tabs, then 42px between image, title and details */
+  margin: 36px var(--space-page) 0;
   overflow: hidden;
 }
 
@@ -177,8 +149,10 @@
 }
 
 .groupTitle {
-  margin: 48px var(--space-page) 0;
-  font: 400 40px/45px var(--font-display);
+  margin: 42px var(--space-page) 0;
+  /* Heading/H3 */
+  font: 400 39px/44px var(--font-display);
+  text-transform: capitalize;
   color: var(--text-default-secondary);
 }
 
@@ -187,7 +161,7 @@
   align-items: center;
   gap: 20px;
   height: 40px;
-  margin: 32px var(--space-page) 0;
+  margin: 42px var(--space-page) 0;
   border-top: 1px solid var(--text-action);
   border-bottom: 1px solid var(--text-action);
   font-size: 12px;
@@ -214,7 +188,8 @@
 .progress {
   display: flex;
   align-items: center;
-  margin: 12px var(--space-page) 0;
+  height: 13px;
+  margin: 16px var(--space-page) 0;
   font-size: 10px;
   text-transform: uppercase;
   color: var(--text-default-secondary);
@@ -257,25 +232,15 @@
   border-bottom: 10px solid var(--surface-default);
 }
 
-.checkInButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+/* Figma check-in-button: design-system button- large; only the spacing and avatar are local */
+button.checkInButton {
   width: calc(100% - 48px);
-  height: 52px;
-  margin: 48px var(--space-page) 0;
-  border: 1px solid var(--border-default);
-  background: var(--surface-default);
-  box-shadow: var(--shadow-button);
-  color: var(--text-on-action);
-  font: 400 14px/18px var(--font-body);
-  cursor: pointer;
-}
-
-.checkInButton:hover {
-  background: var(--neutral-600);
-  border-color: var(--neutral-600);
+  /* Figma: 60px under the progress row (the 80% marker hangs below it) */
+  margin: 60px var(--space-page) 0;
+  /* Figma overrides the label to Label/Lg/Regular, uppercase */
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .checkInButton img {
@@ -286,19 +251,12 @@
 }
 
 .ok {
-  background: var(--surface-page);
-  color: var(--text-default-secondary);
   text-transform: uppercase;
-}
-
-.ok:hover {
-  background: var(--surface-hover);
-  color: var(--neutral-600);
 }
 
 .feed {
   min-height: 560px;
-  padding: 24px var(--space-page) 160px;
+  padding: 32px var(--space-page) 160px;
   background: #fff;
 }
 

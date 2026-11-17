@@ -1,5 +1,7 @@
+import { Button } from '../../components/Button';
+import { Link } from '../../components/Link';
 import { useEffect, useRef, useState } from 'react';
-import { MiniButton, SnackBar } from '../../components/Controls';
+import { SnackBar } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
 import { MainTabBar } from '../../components/TabBar';
 import { usePlanner, usePlannerDispatch } from '../../state/PlannerContext';
@@ -66,13 +68,14 @@ export function GroupScreen() {
             </div>
           </div>
           {join.done ? (
-            <button type="button" className={`${styles.checkInButton} ${styles.ok}`} onClick={() => setCheckInOpen(true)}>
+            <Button variant="outline" size="lg" className={`${styles.checkInButton} ${styles.ok}`} onClick={() => setCheckInOpen(true)}>
               <img src={friend1} alt="" />
               Keep on track!
-            </button>
+            </Button>
           ) : (
-            <button
-              type="button"
+            <Button
+              variant="default"
+              size="lg"
               className={styles.checkInButton}
               onClick={() => {
                 dispatch({ type: 'updateJoin', join: { checked: [true, false] } });
@@ -80,22 +83,22 @@ export function GroupScreen() {
               }}
             >
               <img src={friend2} alt="" />2 / 3
-            </button>
+            </Button>
           )}
         </div>
 
         <div className={styles.feed}>
           <div className={styles.tools}>
-            <MiniButton className={styles.all}>
+            <Link variant="outline-all" className={styles.all}>
               All <Icon name="chevronDownSm" size={16} />
-            </MiniButton>
-            <MiniButton className={styles.toolSquare} aria-label="Search">
+            </Link>
+            <Link variant="outline-all" className={styles.toolSquare} aria-label="Search">
               <Icon name="search" size={16} />
-            </MiniButton>
+            </Link>
             <span className={styles.spacer} />
-            <MiniButton className={styles.toolSquare} aria-label="New post">
+            <Link variant="outline-all" className={styles.toolSquare} aria-label="New post">
               <Icon name="edit" size={16} />
-            </MiniButton>
+            </Link>
           </div>
           <article className={styles.post}>
             <div className={styles.postHead}>

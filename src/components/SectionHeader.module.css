@@ -1,0 +1,33 @@
+/* Figma Components → Headers → header (section-header-sm / section-header-lg). */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: var(--text-default-secondary);
+  white-space: nowrap;
+}
+
+/* Heading/H6 */
+.sm .label {
+  font: 400 21px/25px var(--font-display);
+  letter-spacing: 0.42px;
+}
+
+/* Heading/H5 */
+.lg {
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.lg .label {
+  font: 400 28px/32px var(--font-display);
+  letter-spacing: 0.28px;
+  text-transform: capitalize;
+}

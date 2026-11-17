@@ -62,7 +62,7 @@ export function CheckIn({ onDone }: { onDone: () => void }) {
         <div className={styles.goalHint}>
           {left > 0 ? `${left} more day${left > 1 ? 's' : ''} to reach your goal` : 'You’ve reached your goal!'}
         </div>
-        <Button variant="dark" size="lg" className={styles.checkInDone} onClick={onDone}>
+        <Button variant="default" size="lg" className={styles.checkInDone} onClick={onDone}>
           DONE
         </Button>
       </div>

@@ -1,72 +1,153 @@
+/*
+ * Figma Components → Buttons ("button- small / medium / large", variant default | outline).
+ * Outline buttons have no shadow in any state.
+ */
 .button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
   flex: none;
-  padding: 0 12px;
-  border: 1px solid var(--border-default);
-  background: var(--surface-default-secondary);
-  color: var(--text-default-secondary);
+  border: 0;
+  white-space: nowrap;
   cursor: pointer;
 }
 
-.button:hover {
-  background: var(--surface-hover);
-  border-color: var(--neutral-600);
-}
-
-.button:active {
-  background: var(--surface-pressed);
-}
-
 .button:focus-visible {
-  outline: 2px solid var(--neutral-600);
-  outline-offset: 4px;
+  outline: 2px solid var(--border-focus);
 }
 
 .button:disabled {
-  background: var(--surface-disabled);
-  border-color: transparent;
-  box-shadow: none;
   cursor: default;
 }
 
-/* Only dark buttons have a drop shadow; outline buttons have none in any state. */
-.dark {
-  background: var(--surface-default);
-  border-color: transparent;
-  color: var(--text-on-action);
-  box-shadow: var(--shadow-button);
-}
-
-.dark:hover {
-  background: var(--neutral-600);
-  border-color: transparent;
-}
-
-.dark:active {
-  background: var(--surface-action);
-  box-shadow: var(--shadow-pressed);
-}
-
+/* Sizes */
 .sm {
+  gap: 4px;
   height: 32px;
   min-width: 32px;
+  padding: 0 12px;
+  font: 400 10px/13px var(--font-body);
 }
 
 .md {
+  gap: 4px;
   height: 42px;
   min-width: 42px;
+  padding: 0 12px;
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
 }
 
 .lg {
+  gap: 8px;
   width: 100%;
   height: 52px;
+  padding: 0 8px;
   font: 500 16px/21px var(--font-body);
   letter-spacing: -0.16px;
 }
 
-.lg:disabled {
+/* Icon-only buttons are square, as in Figma. */
+.sm:has(> img:only-child) {
+  width: 32px;
+  padding: 0;
+}
+
+/* Medium icon-only: 12px padding round a 20px icon = 44 × 42, as in Figma. */
+.md:has(> img:only-child) {
+  min-width: 0;
+  padding: 0 12px;
+}
+
+/* Variant: default (dark) */
+.default {
+  background: var(--surface-default);
+  color: var(--text-on-action);
+  filter: drop-shadow(0 16px 13.6px rgba(0, 0, 0, 0.1));
+}
+
+.default.lg {
+  filter: none;
+  box-shadow: var(--shadow-button-large);
+}
+
+.default:hover:not(:disabled) {
+  background: var(--surface-action-hover);
+  color: var(--text-on-action-hover);
+}
+
+.default:active:not(:disabled) {
+  background: var(--surface-action);
+  color: var(--text-on-action);
+  filter: drop-shadow(0 4px 12.1px rgba(0, 0, 0, 0.02));
+}
+
+.default.lg:active:not(:disabled) {
+  filter: none;
+  box-shadow: var(--shadow-pressed);
+}
+
+.default:focus-visible {
+  background: var(--surface-default);
+  color: var(--text-default);
+  outline-offset: 1px;
+}
+
+.default:disabled {
+  background: var(--surface-disabled);
+  color: var(--text-disabled);
+  filter: none;
+  box-shadow: none;
+}
+
+/* Variant: outline (no shadow) */
+.outline {
+  border: 1.2px solid var(--border-default);
+  background: var(--surface-default-secondary);
+  color: var(--text-default-secondary);
+}
+
+.outline.sm {
+  border-width: 1px;
+}
+
+/* Figma draws strokes inside the box, so the padding gives up the border's width. */
+.outline.sm:not(:has(> img:only-child)) {
+  padding-inline: 11px;
+}
+
+.outline.md,
+.outline.md:has(> img:only-child) {
+  padding-inline: 10.8px;
+}
+
+.outline:hover:not(:disabled) {
+  border-color: var(--border-action-hover);
+  background: var(--surface-action-hover-light);
+  color: var(--text-action-hover);
+}
+
+.outline:active:not(:disabled) {
+  border-color: var(--border-action);
+  background: var(--surface-action-secondary);
+  color: var(--text-action);
+}
+
+.outline.sm:focus-visible {
+  outline-offset: 1px;
+}
+
+.outline.md:focus-visible {
+  outline-offset: 2px;
+}
+
+.outline.lg:focus-visible {
+  outline-offset: 4px;
+}
+
+.outline:disabled {
+  border-color: var(--border-disabled);
+  background: var(--surface-disabled);
   color: var(--text-disabled);
 }

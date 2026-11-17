@@ -21,7 +21,7 @@
 }
 
 .close:focus-visible {
-  outline: 2px solid var(--neutral-600);
+  outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
 
@@ -112,32 +112,23 @@
   color: var(--text-heading);
 }
 
-.search {
-  width: 40px;
-  padding: 0;
-  box-shadow: none;
-}
-
+/* 40px tall including the top and bottom lines, as in Figma */
 .info {
   display: flex;
   gap: 10px;
-  padding: 8px 0;
+  padding: 7px 0;
   border-top: 1px solid var(--text-action);
   border-bottom: 1px solid var(--text-action);
 }
 
-.infoChip {
-  display: inline-flex;
-  align-items: center;
-  height: 24px;
-  padding: 0 12px;
-  border-radius: 22px;
-  color: var(--text-action);
+/* Chip on the page background; the plain ones drop the border */
+.info .infoChip {
+  background: transparent;
+  border-color: var(--text-action);
 }
 
-.outlined {
-  border: 1px solid var(--text-action);
-  padding: 0 11px;
+.info .plain {
+  border-color: transparent;
 }
 
 .photo {
@@ -168,25 +159,12 @@
   padding: 10px 0;
 }
 
-.sectionHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 25px;
-}
-
-.sectionHeader h2 {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0;
-  color: var(--text-default-secondary);
-}
-
 .ingredients {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  /* Figma serving-pantry: rows start 18px under the select and leave 18px below */
+  gap: 18px;
+  padding-bottom: 18px;
 }
 
 /* The ingredient cards scroll sideways and their shadows need room. */
@@ -230,7 +208,7 @@
 }
 
 .note:focus-visible {
-  outline: 2px solid var(--neutral-600);
+  outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
 

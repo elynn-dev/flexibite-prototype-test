@@ -84,25 +84,10 @@
 }
 
 /* Storage / Fridge / Freezer */
+/* Figma Pantry-default: tab strip right under the used-ingredients row, 12px top padding. */
 .tabs {
-  display: flex;
-  gap: 24px;
-  padding: 24px var(--space-page) 0;
-}
-
-.tab {
-  padding: 0 0 6px;
-  border: 0;
-  border-bottom: 1px solid #cabebb;
-  background: none;
-  font: 400 21px/25px var(--font-display);
-  color: var(--neutral-500);
-  cursor: pointer;
-}
-
-.tab[aria-selected='true'] {
-  border-bottom-color: var(--text-default-secondary);
-  color: var(--text-default-secondary);
+  margin: 0 var(--space-page);
+  padding-top: 12px;
 }
 
 .bar {
@@ -114,11 +99,6 @@
 .barRight {
   display: flex;
   gap: 8px;
-}
-
-.square {
-  width: 44px;
-  padding: 0;
 }
 
 .squareMd {
@@ -138,25 +118,24 @@
 
 /* Ingredient cards */
 .rows {
-  margin: 8px var(--space-page) 0;
+  margin: 33px var(--space-page) 0;
 }
 
+/* Figma stock rows: 156 / 160 / 156 tall. The divider is a top border inside the 16px padding. */
 .row {
   display: flex;
   gap: 16px;
   min-height: 156px;
   padding: 12px 0 16px;
-  border-bottom: 1px solid var(--border-subtle);
 }
 
-/* Figma stock rows: 12/16 for the first, 16/16 in the middle, 16/12 for the last. */
 .row + .row {
-  padding-top: 16px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-tab-bar);
 }
 
 .row:last-child {
   padding-bottom: 12px;
-  border-bottom: 0;
 }
 
 .four {
@@ -195,7 +174,7 @@
 }
 
 .stockOpen:focus-visible {
-  outline: 2px solid var(--neutral-600);
+  outline: 2px solid var(--border-focus);
   outline-offset: 4px;
 }
 
@@ -260,27 +239,9 @@
   margin: 48px var(--space-page) 0;
 }
 
-.recipes h2 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.recipesHeader {
   height: 32px;
-  margin: 0 0 24px;
-}
-
-.recipes h2 > span {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font: 400 21px/25px var(--font-display);
-  letter-spacing: 0.42px;
-  color: var(--text-default-secondary);
-}
-
-/* Figma small outline button: 12px padding, Label/Xs/Regular. */
-.seeMore {
-  padding: 0 12px;
-  font: 400 10px/13px var(--font-body);
+  margin-bottom: 24px;
 }
 
 /* Bottom: basket or snack bar, then the tab bar */
@@ -380,42 +341,51 @@
   height: 44px;
 }
 
+/* Heading/H3 */
 .sheetHead h2 {
   margin: 0;
-  font: 400 40px/48px var(--font-display);
-  color: var(--text-default-secondary);
+  font: 400 39px/44px var(--font-display);
+  text-transform: capitalize;
+  color: #454545;
 }
 
+/* Figma "unit / staples / shelf menu": small outline button with a Label/Md/Regular label */
 .select {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   height: 32px;
-  padding: 0 12px;
+  padding: 0 15px;
   border: 1px solid var(--border-default);
-  background: var(--surface-page);
-  font: 14px var(--font-body);
-  color: var(--text-action);
+  background: var(--surface-default-secondary);
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+  color: #454545;
 }
 
 .nutrition {
+  /* Figma: 18px between the name row and the nutrition row */
+  margin-top: 2px;
   display: flex;
   justify-content: space-between;
-  padding: 12px 0;
+  /* 12px in Figma, minus the 1px lines that Figma draws inside */
+  padding: 11px 0;
   border-top: 1px solid var(--border-default);
   border-bottom: 1px solid var(--border-default);
 }
 
+/* Label/Xs/Regular */
 .nutrition div {
-  font-size: 11px;
-  line-height: 14px;
-  color: var(--text-action);
+  font: 400 10px/13px var(--font-body);
+  color: var(--text-heading);
 }
 
 .nutrition small {
   display: block;
+  margin-top: 4px;
   font-size: 10px;
-  color: var(--neutral-500);
+  line-height: 13px;
+  color: var(--border-tab-bar);
 }
 
 .sheetInputs {
@@ -430,8 +400,9 @@
   justify-content: space-between;
 }
 
+/* Label/Lg/Regular | Uppercase */
 .storedIn > span {
-  font-size: 14px;
+  font: 400 16px/21px var(--font-body);
   text-transform: uppercase;
   color: var(--text-default-secondary);
 }

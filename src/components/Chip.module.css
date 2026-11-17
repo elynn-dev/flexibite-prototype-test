@@ -1,0 +1,86 @@
+/* Figma Components → input → chip (type default | outline | info, size sm | lg). */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  white-space: nowrap;
+}
+
+.text {
+  display: inline-flex;
+  align-items: center;
+}
+
+.sm {
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 22px;
+}
+
+.sm .text {
+  gap: 2px;
+}
+
+.sm .label {
+  font: 400 10px/14px var(--font-body);
+  text-transform: uppercase;
+}
+
+.sm .quantity {
+  font: 500 10px/13px var(--font-body);
+}
+
+.lg {
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 33px;
+}
+
+.lg .text {
+  gap: 3px;
+}
+
+.lg .label {
+  font: 500 16px/21px var(--font-body);
+  letter-spacing: -0.16px;
+}
+
+.lg .quantity {
+  font: 500 15px/19.5px var(--font-body);
+}
+
+.quantity {
+  color: var(--red-200);
+}
+
+/* --chip-bg lets a parent card switch the chip to its hover colour (Figma meal-card hover). */
+.default {
+  background: var(--chip-bg, var(--surface-action));
+  color: var(--text-on-action);
+}
+
+.outline {
+  border: 1px solid var(--border-action);
+  background: var(--surface-default-secondary);
+  color: var(--text-action);
+}
+
+.outline.lg {
+  border-width: 1.2px;
+}
+
+.info {
+  background: var(--surface-information);
+  color: var(--text-information);
+}
+
+.disabled {
+  border: 0;
+  background: var(--surface-disabled);
+  color: var(--text-disabled);
+}
+
+.disabled .quantity {
+  color: inherit;
+}

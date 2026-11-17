@@ -1,3 +1,4 @@
+import { SectionHeader } from '../../components/SectionHeader';
 import type { ReactNode } from 'react';
 import { Icon, type IconName } from '../../components/Icon';
 import { MainTabBar } from '../../components/TabBar';
@@ -110,10 +111,7 @@ function ExploreSection({
 }) {
   return (
     <section className={`${styles.exploreSection} ${first ? styles.firstSection : ''}`}>
-      <h2>
-        <Icon name={icon} size={16} />
-        {title}
-      </h2>
+      <SectionHeader className={styles.sectionHeader} icon={<Icon name={icon} size={16} />} title={title} />
       {subtitle && <p>{subtitle}</p>}
       <div className={`${styles.exploreRow} hide-scrollbar`}>{children}</div>
     </section>

@@ -1,3 +1,4 @@
+import { Link } from '../components/Link';
 import { useCallback } from 'react';
 import { Calendar } from '../components/Calendar';
 import { CartButton } from '../components/GroceryBasket';
@@ -112,10 +113,11 @@ export function HomeScreen() {
 function EmptyDay({ onCreatePlan, onMore }: { onCreatePlan: () => void; onMore: () => void }) {
   return (
     <div className={styles.empty}>
-      <button type="button" className={styles.createPlan} onClick={onCreatePlan}>
+      {/* Figma "make-a-plan-link": link- medium, outline-all, with the Heading/H7 label */}
+      <Link variant="outline-all" size="md" className={styles.createPlan} onClick={onCreatePlan}>
         <Icon name="magicAdd" size={20} />
         <span>Create a plan</span>
-      </button>
+      </Link>
       <div className={styles.tiles}>
         <MealCardMenu vertical>
           <MealTile

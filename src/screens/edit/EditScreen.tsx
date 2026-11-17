@@ -266,6 +266,8 @@ export function EditScreen() {
               <Icon name="chevronLeft" size={16} />
             </button>
           </div>
+          {/* Figma calendar-base heading: the month view icon sits on the right (display only here). */}
+          <Icon name="viewToggle" size={32} />
         </div>
 
         <div className={styles.dates}>
@@ -367,7 +369,7 @@ export function EditScreen() {
               <Switch checked={keep} onChange={setKeep} label="Keep on current day" />
             </div>
             <div className={styles.foot}>
-              <Button
+              <Button variant="outline"
                 ref={binRef}
                 className={`${styles.bin} ${drag?.nearBin ? styles.binOver : ''}`}
                 aria-label="Delete plan. Drag a recipe here to remove it from this day."

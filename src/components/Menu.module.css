@@ -1,0 +1,42 @@
+/* Figma Components → Dropdown → menu / .Menu items → .menu items. */
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  height: 32px;
+  padding: 0 12px 0 8px;
+  border: 1px solid var(--border-action);
+  background: var(--surface-default-secondary);
+  color: var(--icon-action);
+  font: 400 10px/13px var(--font-body);
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.item + .item {
+  border-top: 0;
+}
+
+.item:hover:not(:disabled) {
+  background: var(--surface-action-hover-light);
+  color: var(--text-action-hover);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+.item:disabled {
+  border-color: transparent;
+  background: var(--surface-disabled);
+  color: var(--text-disabled);
+  cursor: default;
+}

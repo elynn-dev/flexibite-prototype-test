@@ -33,6 +33,34 @@
   --border-muted: #93918b;
   --border-tab-bar: #929292;
 
+  /* Figma state variables (Buttons, Link, input, Card, calendar, Feedback, Dropdown) */
+  --surface-action-hover: #6b635e;
+  --surface-action-hover-light: #eeeeee;
+  --surface-action-secondary: #eeeeee;
+  --surface-information: #dddef9;
+  --surface-success: #cce4df;
+  --surface-error: #f6d5d9;
+  --text-default: #eeeeee;
+  --text-action-hover: #6b635e;
+  --text-action-pressed: #93918b;
+  --text-placeholder: #6b635e;
+  --text-information: #4f53ce;
+  --text-success: #007059;
+  --text-error: #b5263f;
+  --border-action-hover: #6b635e;
+  --border-focus: #6b635e;
+  --border-disabled: #d6d6d6;
+  --border-default-secondary: #d6d6d6;
+  --icon-default-secondary: #343231;
+  --icon-action: #000000;
+  --icon-action-hover: #6b635e;
+  --icon-disabled: #93918b;
+  --icon-on-action: #ffffff;
+  --neutral-400: #cbc8c2;
+  --accent-orange-50: #f3d6cd;
+  --accent-orange-100: #e7c5bb;
+  --accent-orange-200: #b74f30;
+
   /* Neutrals & accents */
   --neutral-500: #93918b;
   --neutral-600: #6b635e;
@@ -53,8 +81,10 @@
   --toast-fail-bg: #f6d5d9;
   --toast-fail-fg: #b5263f;
 
-  /* Effects */
+  /* Effects. --shadow-button-large is the Figma "Button" effect on large buttons. */
   --shadow-button: 0 16px 27.2px 5.5px rgba(0, 0, 0, 0.08);
+  --shadow-button-large: 0 16px 27.2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-button-dark: 0 16px 13.6px rgba(0, 0, 0, 0.1);
   --shadow-card: 0 16px 13.6px rgba(0, 0, 0, 0.1);
   --shadow-pressed: 0 4px 24.2px 5px rgba(0, 0, 0, 0.02);
   --shadow-dark-button: 0 4px 11.45px rgba(0, 0, 0, 0.2);

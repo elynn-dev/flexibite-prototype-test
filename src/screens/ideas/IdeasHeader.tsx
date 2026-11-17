@@ -1,5 +1,6 @@
 import { OverlayHeader } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
+import { Tabs } from '../../components/Tabs';
 import { usePlannerDispatch } from '../../state/PlannerContext';
 import styles from './Ideas.module.css';
 
@@ -12,31 +13,21 @@ export function IdeasHeader({ active }: { active: 'picked' | 'explore' }) {
         <OverlayHeader onClose={() => dispatch({ type: 'navigate', screen: 'home' })} />
       </div>
       <h1 className={styles.title}>Meal Ideas</h1>
-      <div className={styles.tabs} role="tablist">
-        <button
-          type="button"
-          role="tab"
-          aria-selected={active === 'picked'}
-          className={styles.tab}
-          onClick={() => dispatch({ type: 'navigate', screen: 'ideas' })}
-        >
-          Picked for you
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={active === 'explore'}
-          className={styles.tab}
-          onClick={() => dispatch({ type: 'navigate', screen: 'explore' })}
-        >
-          <Icon name="search" size={16} />
-          Explore
-        </button>
-        <button type="button" role="tab" aria-selected={false} className={styles.tab}>
-          <Icon name="bookmark" size={16} />
-          Your picks
-        </button>
-      </div>
+      {/* Figma tabs, type=meal-idea--nav. "Your picks" isn't built yet. */}
+      <Tabs
+        type="meal-idea-nav"
+        className={styles.tabs}
+        items={[
+          { id: 'picked', label: 'Picked for you', icon: <Icon name="star" size={16} /> },
+          { id: 'explore', label: 'Explore', icon: <Icon name="search" size={16} /> },
+          { id: 'picks', label: 'Your picks', icon: <Icon name="bookmark" size={16} /> },
+        ]}
+        value={active}
+        onChange={(id) => {
+          if (id === 'picked') dispatch({ type: 'navigate', screen: 'ideas' });
+          if (id === 'explore') dispatch({ type: 'navigate', screen: 'explore' });
+        }}
+      />
     </>
   );
 }

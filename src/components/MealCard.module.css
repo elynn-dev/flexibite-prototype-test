@@ -15,7 +15,8 @@
   gap: 16px;
   height: 74px;
   background: var(--surface-default-secondary);
-  box-shadow: var(--shadow-button);
+  /* Figma "Button" effect as used on meal-card */
+  filter: drop-shadow(0 16px 13.6px rgba(0, 0, 0, 0.1));
 }
 
 .photo {
@@ -36,16 +37,20 @@
 }
 
 .card:hover .inner {
-  background: var(--surface-hover);
+  background: var(--surface-action-hover-light);
+}
+
+.card:hover .photo {
+  mix-blend-mode: multiply;
 }
 
 .card:hover .name {
-  color: var(--neutral-600);
+  color: var(--text-action-hover);
 }
 
 .card:active .inner {
-  background: var(--surface-pressed);
-  box-shadow: var(--shadow-pressed);
+  background: var(--surface-action-secondary);
+  filter: drop-shadow(0 4px 12.1px rgba(0, 0, 0, 0.02));
 }
 
 .card:active .name {
@@ -53,7 +58,7 @@
 }
 
 .card:focus-visible {
-  outline: 2px solid var(--neutral-600);
+  outline: 2px solid var(--border-focus);
   outline-offset: 4px;
 }
 
@@ -63,7 +68,7 @@
 
 .card:disabled .inner {
   background: var(--surface-disabled);
-  box-shadow: none;
+  filter: none;
 }
 
 .card:disabled .name {
@@ -84,21 +89,24 @@
 }
 
 
+/* Figma meal-card (vertical): no overlay by default, 25% multiply on hover. */
 .tile::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: transparent;
+  mix-blend-mode: multiply;
   transition: background 0.2s;
   pointer-events: none;
 }
 
-.tile:hover::after {
+.tile:hover::after,
+.tile:active::after {
   background: rgba(0, 0, 0, 0.25);
 }
 
 .tile:focus-visible {
-  outline: 2px solid var(--neutral-600);
+  outline: 2px solid var(--border-focus);
   outline-offset: 5px;
 }
 
@@ -113,14 +121,15 @@
 
 .caption {
   position: absolute;
-  top: 62px;
+  top: 78px;
   left: 0;
   right: 0;
   z-index: 1;
   padding: 0 8px;
   text-align: center;
   font: 500 14px/16px var(--font-body);
-  color: #fff;
+  letter-spacing: -0.14px;
+  color: var(--text-on-action-hover);
   opacity: 0;
   transition: opacity 0.2s;
 }

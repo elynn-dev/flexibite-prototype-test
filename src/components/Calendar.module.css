@@ -1,6 +1,26 @@
 .calendar {
   display: flex;
   flex-direction: column;
+  /* Figma calendar-base: 8px bottom padding (202px tall when closed) */
+  padding-bottom: 8px;
+}
+
+/*
+ * Figma calendar-base, state=open (410px): floats over the page instead of pushing it down,
+ * 16px more under the dates, 24px bottom padding, 4px rounded bottom corners.
+ */
+.expanded {
+  position: relative;
+  z-index: 4;
+  margin: 0 calc(-1 * var(--space-page)) -208px;
+  padding: 0 var(--space-page) 24px;
+  border-radius: 0 0 4px 4px;
+  background: var(--surface-page);
+  box-shadow: 0 16px 27.2px rgba(0, 0, 0, 0.1);
+}
+
+.expanded .dates {
+  padding-bottom: 16px;
 }
 
 .heading {
@@ -91,7 +111,7 @@
 .day:focus-visible,
 .viewToggle:focus-visible,
 .disclosure:focus-visible {
-  outline: 2px solid var(--toast-info-fg);
+  outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
 
@@ -119,7 +139,7 @@
   justify-content: center;
   width: 100%;
   height: 12px;
-  margin: 12px 0 -4px;
+  margin: 12px 0 0;
   padding: 0;
   border: 0;
   background: none;

@@ -1,6 +1,10 @@
+import { Tabs } from '../../components/Tabs';
+import { SectionHeader } from '../../components/SectionHeader';
+import { Link } from '../../components/Link';
+import { Chip } from '../../components/Chip';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../components/Button';
-import { MiniButton, Pill, SnackBar } from '../../components/Controls';
+import { SnackBar } from '../../components/Controls';
 import { CartButton } from '../../components/GroceryBasket';
 import { Icon } from '../../components/Icon';
 import { MealRow } from '../../components/MealRow';
@@ -88,28 +92,21 @@ export function PantryScreen() {
           ))}
         </div>
 
-        <div className={styles.tabs} role="tablist">
-          {TABS.map(([id, label]) => (
-            <button
-              key={id}
-              type="button"
-              role="tab"
-              aria-selected={tab === id}
-              className={styles.tab}
-              onClick={() => setTab(id)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+        <Tabs
+          type="pantry-nav"
+          className={styles.tabs}
+          items={TABS.map(([id, label]) => ({ id, label }))}
+          value={tab}
+          onChange={setTab}
+        />
 
         <div className={styles.bar}>
-          <Button variant="dark" className={styles.square} aria-label="Add ingredient">
+          <Button variant="default" aria-label="Add ingredient">
             <Icon name="plusWhiteThick" size={20} />
           </Button>
           <div className={styles.barRight}>
-            <Button
-              className={styles.square}
+            <Button variant="outline"
+             
               aria-label="Search"
               aria-pressed={searching}
               onClick={() => {
@@ -119,7 +116,7 @@ export function PantryScreen() {
             >
               <Icon name="search" size={20} />
             </Button>
-            <Button className={styles.square} aria-label="Sort">
+            <Button variant="outline" aria-label="Sort">
               <Icon name="sort" size={20} />
             </Button>
           </div>
@@ -146,17 +143,20 @@ export function PantryScreen() {
         </div>
 
         <div className={styles.recipes}>
-          <h2>
-            <span>Recipes from your staples</span>
-            <MiniButton className={styles.seeMore} onClick={() => dispatch({ type: 'navigate', screen: 'ideas' })}>
-              See more
-            </MiniButton>
-          </h2>
+          <SectionHeader
+            className={styles.recipesHeader}
+            title="Recipes from your staples"
+            trailing={
+              <Link variant="outline-all" onClick={() => dispatch({ type: 'navigate', screen: 'ideas' })}>
+                See more
+              </Link>
+            }
+          />
           <MealRow
             name={avocado.name}
             image={avocado.thumb}
             description="lorlam sumloram sumloram sumloram sum"
-            trailing={<Pill tone="dark">Available</Pill>}
+            trailing={<Chip type="default" label="Available" />}
             onClick={() => dispatch({ type: 'openRecipe', recipeId: 'avocado-toast', returnTo: 'pantry' })}
           />
         </div>
