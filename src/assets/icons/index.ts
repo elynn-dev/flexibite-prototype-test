@@ -64,6 +64,9 @@ import sort from './sort.svg';
 import sparkleAgent from './sparkle-agent.svg';
 import sparkle from './sparkle.svg';
 import spatulaLg from './spatula-lg.svg';
+import trendingFlame from './trending-flame.svg';
+import heartHeader from './heart-header.svg';
+import starOutlined from './star-outlined.svg';
 import star from './star.svg';
 import tabHomeActive from './tab-home-active.svg';
 import tabHome from './tab-home.svg';
@@ -145,6 +148,9 @@ export const icons = {
   sparkleAgent,
   sparkle,
   spatulaLg,
+  trendingFlame,
+  heartHeader,
+  starOutlined,
   star,
   tabHomeActive,
   tabHome,

@@ -39,7 +39,7 @@ export function ExploreScreen() {
           <input type="text" placeholder="Find recipes" aria-label="Find recipes" />
         </label>
 
-        <ExploreSection icon="flame" title="Trending" first>
+        <ExploreSection icon="trendingFlame" title="Trending" first>
           {VIDEOS.map((v) => (
             <div className={styles.video} key={v.title}>
               <button type="button" className={styles.tile} aria-label={v.title}>
@@ -55,8 +55,8 @@ export function ExploreScreen() {
         </ExploreSection>
 
         <ExploreSection
-          icon="heartOutline"
-          title="More Ways to Enjoy Your Favorites"
+          icon="heartHeader"
+          title="More ways to Enjoy"
           subtitle="Discover recipes using ingredients from your go-to meals"
         >
           {FAVOURITES.map((f) => (
@@ -76,8 +76,8 @@ export function ExploreScreen() {
         </ExploreSection>
 
         <ExploreSection
-          icon="bookmark"
-          title="People with Similar Taste Also Like"
+          icon="starOutlined"
+          title="People with Similar Taste"
           subtitle="Meals chosen by people who enjoy the same dishes as you."
         >
           {[similar1, similar2, similar3].map((img, i) => (
