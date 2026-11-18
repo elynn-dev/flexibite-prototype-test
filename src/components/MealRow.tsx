@@ -13,13 +13,14 @@ interface MealRowProps {
   ariaLabel?: string;
   /** Colour behind the picture (Figma image styles put ingredient photos on #D1C0BB). */
   imageBackground?: string;
+  className?: string;
 }
 
 /**
  * Figma "meal-card" (type=detail, 325 × 74): picture on the left, name (+ description) over a thin
  * bottom line, and something on the right. A button when it has onClick, otherwise a plain row.
  */
-export function MealRow({ name, image, description, trailing, size = 74, onClick, ariaLabel, imageBackground }: MealRowProps) {
+export function MealRow({ name, image, description, trailing, size = 74, onClick, ariaLabel, imageBackground, className }: MealRowProps) {
   const content = (
     <>
       <span className={styles.picture} style={{ width: size, height: size, background: imageBackground }}>
@@ -37,10 +38,10 @@ export function MealRow({ name, image, description, trailing, size = 74, onClick
     </>
   );
   return onClick ? (
-    <button type="button" className={`${styles.row} ${styles.clickable} ${size === 48 ? styles.small : ''}`} onClick={onClick} aria-label={ariaLabel}>
+    <button type="button" className={`${styles.row} ${styles.clickable} ${size === 48 ? styles.small : ''} ${className ?? ''}`} onClick={onClick} aria-label={ariaLabel}>
       {content}
     </button>
   ) : (
-    <div className={`${styles.row} ${size === 48 ? styles.small : ''}`}>{content}</div>
+    <div className={`${styles.row} ${size === 48 ? styles.small : ''} ${className ?? ''}`}>{content}</div>
   );
 }
