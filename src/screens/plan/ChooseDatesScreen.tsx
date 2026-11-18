@@ -117,13 +117,11 @@ export function ChooseDatesScreen() {
                   </div>
                   {/* Meals already planned for this day: Figma meal-type (.list-items with the meal's photo) */}
                   {planned.length > 0 && (
-                    <div className={styles.plannedList}>
+                    <div className={styles.typeList}>
                       {planned.map((p) => (
                         <ListItem
                           key={p.meal}
                           noFill
-                          hug
-                          labelStyle="sm-medium"
                           image={RECIPES[p.recipeId].thumb}
                           mealTime={p.meal}
                           label={MEAL_LABEL[p.meal]}

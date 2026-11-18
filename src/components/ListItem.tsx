@@ -23,10 +23,6 @@ interface ListItemProps {
   disabled?: boolean;
   /** Instance override: no #F4F4F4 fill (rows sitting on a grey box). */
   noFill?: boolean;
-  /** Instance override: the row hugs its content instead of filling the width. */
-  hug?: boolean;
-  /** Instance override: the label in Label/Sm/Medium instead of Label/Md/Regular. */
-  labelStyle?: 'md-regular' | 'sm-medium';
   className?: string;
 }
 
@@ -44,15 +40,11 @@ export function ListItem({
   deleteLabel,
   disabled,
   noFill,
-  hug,
-  labelStyle = 'md-regular',
   className,
 }: ListItemProps) {
   const cls = [
     styles.item,
     noFill && styles.noFill,
-    hug && styles.hug,
-    labelStyle === 'sm-medium' && styles.smMedium,
     disabled && styles.disabled,
     className,
   ]

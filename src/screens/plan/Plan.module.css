@@ -149,14 +149,7 @@
   color: var(--text-heading);
 }
 
-/* Meals already on a selected day: Figma meal-type-container, items 28px apart */
-.plannedList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 28px;
-}
-
-/* Picked meal types: Figma meal-type-container, full-width .list-items rows */
+/* Figma meal-type-container: full-width .list-items rows, 12px apart */
 .typeList {
   display: flex;
   flex-direction: column;

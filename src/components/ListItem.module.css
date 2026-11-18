@@ -115,19 +115,3 @@
 .noFill:not(.disabled):hover {
   background: none;
 }
-
-.hug {
-  width: auto;
-}
-
-.hug .labelContainer,
-.hug .label {
-  flex: none;
-  justify-content: flex-start;
-}
-
-/* Label/Sm/Medium */
-.smMedium .label {
-  font: 500 12px/15px var(--font-body);
-  letter-spacing: 0;
-}
