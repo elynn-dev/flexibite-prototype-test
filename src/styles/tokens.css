@@ -32,6 +32,8 @@
   --border-subtle: #a6a6a6;
   --border-muted: #93918b;
   --border-tab-bar: #929292;
+  /* Figma colour styles Onion, Avocado, Banana, Tomato, Lemon, Olive Oil, Salt …: the photo background */
+  --ingredient-bg: #d1c0bb;
 
   /* Figma state variables (Buttons, Link, input, Card, calendar, Feedback, Dropdown) */
   --surface-action-hover: #6b635e;

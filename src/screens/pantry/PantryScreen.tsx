@@ -21,11 +21,11 @@ const TABS: [PantryLocation, string][] = [
   ['freezer', 'Freezer'],
 ];
 
-/** Storage shows 2 per row; the fridge shows 1, then rows of 4 (as in Figma). */
+/** Storage rows hold 3, 2 and 2 cards (Figma Pantry-default); other tabs fill rows of 3. */
 function rowsFor(items: PantryItem[], tab: PantryLocation): PantryItem[][] {
   const rows: PantryItem[][] = [];
   for (let i = 0, r = 0; i < items.length; r++) {
-    const n = tab === 'fridge' ? ([1, 4][r] ?? 4) : 2;
+    const n = tab === 'storage' ? ([3, 2, 2][r] ?? 3) : 3;
     rows.push(items.slice(i, i + n));
     i += n;
   }
@@ -77,7 +77,6 @@ export function PantryScreen() {
     <section className={styles.screen} aria-label="Pantry">
       <div className={styles.scroll}>
         <div className={`${styles.used} hide-scrollbar`}>
-          <span className={styles.usedLabel}>Used ingredients</span>
           {usedIngredients.map((u, i) => (
             <span className={styles.usedChip} key={u.name}>
               {u.name}
@@ -117,7 +116,7 @@ export function PantryScreen() {
 
         <div className={styles.rows}>
           {rowsFor(items, tab).map((row, r) => (
-            <div className={`${styles.row} ${row.length === 4 ? styles.four : ''}`} key={r}>
+            <div className={styles.row} key={r}>
               {row.map((it) => (
                 <StockCard key={it.name} item={it} onOpen={() => setOpen(it.name)} onDelete={() => removeItem(it.name)} />
               ))}
@@ -179,10 +178,13 @@ export function PantryScreen() {
 function StockCard({ item, onOpen, onDelete }: { item: PantryItem; onOpen: () => void; onDelete: () => void }) {
   const amount = item.quantity < 0 ? 'plenty' : `${item.quantity} ${item.unit}`;
   return (
+    // Figma Components → Card → stock (state=default, orientation=vertical, size=sm)
     <div className={styles.stock}>
       <button type="button" className={styles.stockOpen} aria-label={`${item.name}, ${amount}`} onClick={onOpen}>
+        <span className={styles.stockImage}>
+          <img src={item.image} alt="" />
+        </span>
         <span className={styles.stockName}>{item.name}</span>
-        <img src={item.image} alt="" />
         <span className={styles.stockQty}>
           {item.quantity < 0 ? (
             <b className={styles.plenty}>Plenty</b>
@@ -195,8 +197,7 @@ function StockCard({ item, onOpen, onDelete }: { item: PantryItem; onOpen: () =>
         </span>
       </button>
       <button type="button" className={styles.stockDelete} aria-label={`Delete ${item.name}`} onClick={onDelete}>
-        {/* Figma stock card delete: 13px, 0.7px line in #343231 */}
-        <Icon name="deleteCard" size={13.06} />
+        <Icon name="deleteCard" size={15.095} />
       </button>
     </div>
   );

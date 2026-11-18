@@ -41,7 +41,10 @@
   opacity: 1;
 }
 
-/* pantry-nav: Heading/H6 tabs. No background strip or glow: tabs sit on the page colour. */
+/* pantry-nav: Heading/H6 tabs, 46px apart (Figma Pantry-default). No background strip or glow. */
+.pantry-nav {
+  gap: 46px;
+}
 
 .pantry-nav .tab {
   height: 49px;
