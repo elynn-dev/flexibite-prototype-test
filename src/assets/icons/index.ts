@@ -31,6 +31,7 @@ import comment from './comment.svg';
 import countDot from './count-dot.svg';
 import disclosureArrow from './disclosure-arrow.svg';
 import deleteCard from './delete-card.svg';
+import plusUpload from './plus-upload.svg';
 import dots from './dots.svg';
 import editSteps from './edit-steps.svg';
 import edit from './edit.svg';
@@ -117,6 +118,7 @@ export const icons = {
   countDot,
   disclosureArrow,
   deleteCard,
+  plusUpload,
   dots,
   editSteps,
   edit,

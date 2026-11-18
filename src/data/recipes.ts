@@ -5,10 +5,10 @@ import granolaThumb from '../assets/images/granola-yogurt-bowl-sq.jpg';
 import avocadoToastImg from '../assets/images/avocado-toast.jpg';
 import friedRiceImg from '../assets/images/pineapple-fried-rice.jpg';
 import chickenSaladImg from '../assets/images/baked-chicken-salad.jpg';
-import step1 from '../assets/images/step-1.png';
-import step2 from '../assets/images/step-2.png';
-import step3 from '../assets/images/step-3.png';
-import step4 from '../assets/images/step-4.png';
+import step1 from '../assets/images/step-1.jpg';
+import step2 from '../assets/images/step-2.jpg';
+import step3 from '../assets/images/step-3.jpg';
+import step4 from '../assets/images/step-4.jpg';
 
 export const RECIPES: Record<RecipeId, Recipe> = {
   'granola-yogurt-bowl': {

@@ -131,15 +131,43 @@
   border-color: transparent;
 }
 
+/* Figma recipe-image-container: 163px photo, upload button in the bottom-right (6px / 8px in) */
 .photo {
+  position: relative;
   height: 163px;
   background: #fff;
 }
 
 .photo img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Figma upload-button: 24px, 0.857px line, 5.143px padding, 13.7px plus */
+.upload {
+  position: absolute;
+  right: 6px;
+  bottom: 8px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0.857px solid var(--border-default);
+  background: none;
+  box-shadow: 0 13.714px 23.314px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.upload:hover {
+  background: var(--surface-action-hover-light);
+}
+
+.upload:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
 }
 
 /* Steps, Ingredients, Note */
@@ -178,7 +206,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: 594px;
+  width: max-content;
 }
 
 .pantryRow {

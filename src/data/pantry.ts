@@ -1,17 +1,7 @@
 import type { PantryItem, UsedIngredient } from './types';
-// Figma Components → Ingredients: one photo per ingredient (1024px), shown on the ingredient colour.
-import onion from '../assets/ingredients/photos/onion.jpg';
-import avocado from '../assets/ingredients/photos/avocado.jpg';
-import banana from '../assets/ingredients/photos/banana.jpg';
-import tomato from '../assets/ingredients/photos/tomato.jpg';
-import lemon from '../assets/ingredients/photos/lemon.jpg';
-import oliveOil from '../assets/ingredients/photos/olive-oil.jpg';
-import salt from '../assets/ingredients/photos/salt.jpg';
-import egg from '../assets/ingredients/photos/egg.jpg';
-import eggplant from '../assets/ingredients/photos/eggplant.jpg';
-import carrot from '../assets/ingredients/photos/carrot.jpg';
-import pumpkin from '../assets/ingredients/photos/pumpkin.jpg';
-import apple from '../assets/ingredients/photos/apple.jpg';
+import { INGREDIENT_PHOTO } from './ingredients';
+
+const { onion, avocado, banana, tomato, lemon, oliveOil, salt, egg, eggplant, carrot, pumpkin, apple } = INGREDIENT_PHOTO;
 
 /** What's in the pantry when the app starts (Storage matches Figma Pantry-default). */
 export const INITIAL_PANTRY: PantryItem[] = [

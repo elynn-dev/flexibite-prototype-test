@@ -21,7 +21,8 @@
 
 .trigger {
   justify-content: center;
-  padding-left: 12px;
+  /* Figma pl 12 / pr 8 include the 1px line (strokes sit inside) */
+  padding: 0 7px 0 11px;
   border-color: var(--border-default);
   color: var(--text-default-secondary);
 }

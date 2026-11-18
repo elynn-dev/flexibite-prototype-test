@@ -334,6 +334,7 @@
   object-fit: cover;
 }
 
+/* Figma header: H3 name and the unit menu, 44px */
 .sheetHead {
   display: flex;
   align-items: center;
@@ -349,35 +350,31 @@
   color: #454545;
 }
 
-/* Figma "unit / staples / shelf menu": small outline button with a Label/Md/Regular label */
-.select {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  height: 32px;
-  padding: 0 15px;
-  border: 1px solid var(--border-default);
-  background: var(--surface-default-secondary);
-  font: 400 14px/16px var(--font-body);
-  letter-spacing: -0.14px;
-  color: #454545;
+/* Dropdown select (.option, Label/Xs/Regular uppercase) sized to its label: unit 65, storage 86, shelf 62 */
+.sheetHead .menu,
+.storedIn .menu {
+  display: inline-block;
+  min-width: 0;
 }
 
+.sheetHead .menu [role='listbox'],
+.storedIn .menu [role='listbox'] {
+  width: max-content;
+  min-width: 100%;
+}
+
+/* Figma nutrition container: 18px under the header, 12px padding inside the lines, 54px */
 .nutrition {
-  /* Figma: 18px between the name row and the nutrition row */
-  margin-top: 2px;
   display: flex;
-  justify-content: space-between;
-  /* 12px in Figma, minus the 1px lines that Figma draws inside */
-  padding: 11px 0;
+  align-items: flex-end;
+  gap: 59px;
+  height: 54px;
+  margin-top: 2px;
+  padding: 11px 12px;
   border-top: 1px solid var(--border-default);
   border-bottom: 1px solid var(--border-default);
-}
-
-/* Label/Xs/Regular */
-.nutrition div {
   font: 400 10px/13px var(--font-body);
-  color: var(--text-heading);
+  white-space: nowrap;
 }
 
 .nutrition small {
@@ -385,9 +382,32 @@
   margin-top: 4px;
   font-size: 10px;
   line-height: 13px;
-  color: var(--border-tab-bar);
+  color: #929292;
 }
 
+.nutrientUnit {
+  padding-right: 16px;
+  color: #1b1b1b;
+}
+
+.nutrientRest {
+  flex: 1;
+  display: flex;
+  gap: 84px;
+}
+
+.nutrientKcal {
+  color: #1b1b1b;
+}
+
+.nutrientMacros {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  color: #454545;
+}
+
+/* input container: 48px under the info, stored-in row then the counter 16px below */
 .sheetInputs {
   display: flex;
   flex-direction: column;
@@ -398,12 +418,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 32px;
 }
 
-/* Label/Lg/Regular | Uppercase */
+/* Label/Lg/Regular */
 .storedIn > span {
   font: 400 16px/21px var(--font-body);
-  text-transform: uppercase;
+  letter-spacing: -0.16px;
   color: var(--text-default-secondary);
 }
 
@@ -432,6 +453,86 @@
   border-bottom: 1px solid var(--border-action);
   font: 400 16px/21px var(--font-body);
   color: var(--text-action);
+}
+
+/* Create an Ingredient: the empty picture area (#CFB8AF) */
+.sheetImageEmpty {
+  background: #cfb8af;
+}
+
+/* dropdown: search bar, then the list 11px below */
+.ingSearch {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+/* Figma search bar: 48px, #D6D6D6 line, 20px icon, Label/Md/Regular */
+.ingSearchBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 48px;
+  padding: 0 12px;
+  border: 1px solid var(--border-default-secondary);
+  background: var(--surface-default-secondary);
+  cursor: text;
+}
+
+.ingSearchBar input {
+  width: 100%;
+  border: 0;
+  background: none;
+  outline: 0;
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+  color: var(--icon-action);
+}
+
+.ingSearchBar input::placeholder {
+  color: var(--neutral-500);
+}
+
+/* While typing, the Figma search bar sits at 45% */
+.ingSearchActive {
+  opacity: 0.45;
+}
+
+/* list-scroll container: 12px left / bottom padding, rows 253.757px wide, drop shadow */
+.ingList {
+  position: absolute;
+  top: 59px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 0 0 12px 12px;
+  background: var(--surface-default-secondary);
+  filter: drop-shadow(0 16px 13.6px rgba(0, 0, 0, 0.1));
+}
+
+/* list: 48px rows 8px apart, 328px tall, scrolls */
+.ingListItems {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 328px;
+  overflow-y: auto;
+}
+
+.ingListItems > div {
+  flex: none;
+}
+
+/* The 20px on the right of the rows holds a 6px scroll pill (Figma .scroll bar) */
+.ingListItems::-webkit-scrollbar {
+  width: 20px;
+}
+
+.ingListItems::-webkit-scrollbar-thumb {
+  border: 7px solid var(--surface-default-secondary);
+  border-radius: 1000px;
+  background: var(--neutral-400);
 }
 
 .sheetFooter {

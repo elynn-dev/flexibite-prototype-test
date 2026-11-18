@@ -37,6 +37,7 @@ export function PantryScreen() {
   const { pantry, usedIngredients } = usePlanner();
   const dispatch = usePlannerDispatch();
   const [tab, setTab] = useState<PantryLocation>('storage');
+  /** The ingredient sheet: an item's name, 'new' for the add flow, or closed. */
   const [open, setOpen] = useState<string | null>(null);
   /** Snack bar text plus the pantry to go back to on Undo. */
   const [snack, setSnack] = useState<{ text: string; before: { pantry: PantryItem[]; used: UsedIngredient[] } } | null>(null);
@@ -60,14 +61,21 @@ export function PantryScreen() {
     dispatch({ type: 'setPantry', pantry, used: usedIngredients.filter((_, i) => i !== index) });
   };
 
-  const saveQuantity = (name: string, quantity: number) => {
-    const item = pantry.find((p) => p.name === name);
-    if (!item || item.quantity < 0 || item.quantity === quantity) return;
+  const saveItem = (next: PantryItem) => {
+    const before = pantry.find((p) => p.name === next.name);
+    if (!before) {
+      showSnack('1 ingredient added');
+      dispatch({ type: 'setPantry', pantry: [...pantry.map((p) => ({ ...p, highlight: false })), { ...next, highlight: true }] });
+      setTab(next.location);
+      return;
+    }
+    const changed = before.quantity !== next.quantity || before.location !== next.location || before.unit !== next.unit;
+    if (!changed) return;
     showSnack('1 items updated');
     dispatch({
       type: 'setPantry',
-      pantry: pantry.map((p) => (p.name === name ? { ...p, quantity, highlight: true } : { ...p, highlight: false })),
-      used: usedIngredients.filter((u) => u.name !== name),
+      pantry: pantry.map((p) => (p.name === next.name ? { ...next, highlight: before.quantity !== next.quantity } : { ...p, highlight: false })),
+      used: before.quantity !== next.quantity ? usedIngredients.filter((u) => u.name !== next.name) : usedIngredients,
     });
   };
 
@@ -100,7 +108,7 @@ export function PantryScreen() {
         />
 
         <div className={styles.bar}>
-          <Button variant="default" aria-label="Add ingredient">
+          <Button variant="default" aria-label="Add ingredient" onClick={() => setOpen('new')}>
             <Icon name="plusWhiteThick" size={20} />
           </Button>
           <div className={styles.barRight}>
@@ -165,10 +173,12 @@ export function PantryScreen() {
 
       {open && (
         <IngredientSheet
-          item={pantry.find((p) => p.name === open)!}
+          item={open === 'new' ? null : (pantry.find((p) => p.name === open) ?? null)}
+          location={tab}
+          pantry={pantry}
           onClose={() => setOpen(null)}
-          onSave={(q) => saveQuantity(open, q)}
-          onDelete={() => removeItem(open)}
+          onSave={saveItem}
+          onDelete={removeItem}
         />
       )}
     </section>

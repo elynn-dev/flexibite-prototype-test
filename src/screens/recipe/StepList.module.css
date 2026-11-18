@@ -19,12 +19,15 @@
   gap: 8px;
   flex: none;
   width: 104px;
+  /* Figma image-container: 156px tall */
+  height: 156px;
 }
 
 .picture {
   width: 104px;
   height: 104px;
-  background: #e9e6df;
+  /* Figma image styles Step1–Step4 */
+  background: var(--ingredient-bg);
 }
 
 .picture img {

@@ -11,16 +11,18 @@ interface MealRowProps {
   size?: 74 | 48;
   onClick?: () => void;
   ariaLabel?: string;
+  /** Colour behind the picture (Figma image styles put ingredient photos on #D1C0BB). */
+  imageBackground?: string;
 }
 
 /**
  * Figma "meal-card" (type=detail, 325 × 74): picture on the left, name (+ description) over a thin
  * bottom line, and something on the right. A button when it has onClick, otherwise a plain row.
  */
-export function MealRow({ name, image, description, trailing, size = 74, onClick, ariaLabel }: MealRowProps) {
+export function MealRow({ name, image, description, trailing, size = 74, onClick, ariaLabel, imageBackground }: MealRowProps) {
   const content = (
     <>
-      <span className={styles.picture} style={{ width: size, height: size }}>
+      <span className={styles.picture} style={{ width: size, height: size, background: imageBackground }}>
         <img src={image} alt="" />
       </span>
       <span className={styles.text} style={{ height: size }}>

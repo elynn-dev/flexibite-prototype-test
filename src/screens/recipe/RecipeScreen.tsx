@@ -1,5 +1,4 @@
 import { Chip } from '../../components/Chip';
-import { Link } from '../../components/Link';
 import { SectionHeader } from '../../components/SectionHeader';
 import { useCallback, useState } from 'react';
 import { Button } from '../../components/Button';
@@ -88,9 +87,6 @@ export function RecipeScreen({ recipeId }: { recipeId: RecipeId }) {
           <div className={styles.titleBlock}>
             <div className={styles.title}>
               <h1 className="heading-h4">{recipe.name}</h1>
-              <Link variant="outline-all" aria-label="Search">
-                <Icon name="search" size={16} />
-              </Link>
             </div>
             {/* Figma recipe-info: the first chip is outlined, the others have no border */}
             <div className={styles.info}>
@@ -101,6 +97,10 @@ export function RecipeScreen({ recipeId }: { recipeId: RecipeId }) {
           </div>
           <div className={styles.photo}>
             <img src={recipe.image} alt={recipe.name} />
+            {/* Uploading a photo isn't built yet: the button has no action */}
+            <button type="button" className={styles.upload} aria-label="Upload a photo">
+              <Icon name="plusUpload" size={13.714} />
+            </button>
           </div>
         </div>
 
