@@ -3,7 +3,8 @@ import styles from './MealRow.module.css';
 
 interface MealRowProps {
   name: ReactNode;
-  image: string;
+  /** Left out for a .list-items row without a picture (e.g. a picked meal type). */
+  image?: string;
   description?: string;
   /** Right-hand side: a pill, a button, a bell... */
   trailing?: ReactNode;
@@ -23,9 +24,11 @@ interface MealRowProps {
 export function MealRow({ name, image, description, trailing, size = 74, onClick, ariaLabel, imageBackground, className }: MealRowProps) {
   const content = (
     <>
-      <span className={styles.picture} style={{ width: size, height: size, background: imageBackground }}>
-        <img src={image} alt="" />
-      </span>
+      {image && (
+        <span className={styles.picture} style={{ width: size, height: size, background: imageBackground }}>
+          <img src={image} alt="" />
+        </span>
+      )}
       <span className={styles.text} style={{ height: size }}>
         <span className={size === 74 ? styles.labels : undefined}>
           <span className={styles.name}>

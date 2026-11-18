@@ -4,6 +4,7 @@ import { Button } from '../../components/Button';
 import { OverlayHeader } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
 import { MealMarker } from '../../components/MealTime';
+import { Link } from '../../components/Link';
 import { MealRow } from '../../components/MealRow';
 import { RECIPES } from '../../data/recipes';
 import { MEAL_LABEL, MEAL_TIMES, type DayKey, type MealTime } from '../../data/types';
@@ -29,6 +30,15 @@ export function ChooseDatesScreen() {
 
   const setTypes = (day: DayKey, types: MealTime[]) =>
     dispatch({ type: 'updateDraft', draft: { types: { ...draft.types, [day]: types } } });
+
+  // "Choose a meal" on one meal type: pick a recipe for just that day and time.
+  const chooseOne = (day: DayKey, meal: MealTime) => {
+    dispatch({ type: 'updateDraft', draft: { dates: [day], types: { [day]: [meal] } } });
+    dispatch({ type: 'navigate', screen: 'build' });
+  };
+
+  // Figma Choosing dates-4/5: the main button turns on from two picked meal types and shows the count.
+  const pickedCount = draft.dates.reduce((n, d) => n + (draft.types[d]?.length ?? 0), 0);
 
   return (
     <section className={styles.screen} aria-label="Choose dates">
@@ -125,7 +135,7 @@ export function ChooseDatesScreen() {
                             <button
                               type="button"
                               aria-label={`Remove ${MEAL_LABEL[p.meal]} on ${chipLabel(day)}`}
-                              onClick={() => dispatch({ type: 'deletePlan', day, meal: p.meal })}
+                              onClick={() => dispatch({ type: 'removePlan', day, meal: p.meal })}
                             >
                               <Icon name="close" size={24} />
                             </button>
@@ -134,16 +144,35 @@ export function ChooseDatesScreen() {
                       ))}
                     </div>
                   )}
+                  {/* Picked meal types: Figma meal-type (.list-items, no picture) with "Choose a meal" and × */}
                   {types.length > 0 && (
-                    <div className={styles.typeChips}>
+                    <div className={styles.typeList}>
                       {types.map((m) => (
-                        <span className={styles.typeChip} key={m}>
-                          <MealMarker meal={m} size="md" />
-                          {MEAL_LABEL[m]}
-                          <button type="button" aria-label={`Remove ${m}`} onClick={() => setTypes(day, types.filter((t) => t !== m))}>
-                            <Icon name="close" size={24} />
-                          </button>
-                        </span>
+                        <MealRow
+                          key={m}
+                          size={48}
+                          className={styles.typeItem}
+                          name={
+                            <>
+                              <MealMarker meal={m} size="md" />
+                              {MEAL_LABEL[m]}
+                            </>
+                          }
+                          trailing={
+                            <span className={styles.typeActions}>
+                              <Link variant="outline-all" onClick={() => chooseOne(day, m)}>
+                                Choose a meal
+                              </Link>
+                              <button
+                                type="button"
+                                aria-label={`Remove ${MEAL_LABEL[m]} on ${chipLabel(day)}`}
+                                onClick={() => setTypes(day, types.filter((t) => t !== m))}
+                              >
+                                <Icon name="close" size={24} />
+                              </button>
+                            </span>
+                          }
+                        />
                       ))}
                     </div>
                   )}
@@ -157,10 +186,10 @@ export function ChooseDatesScreen() {
       <Button
         variant="default"
         className={styles.done}
-        disabled={!draft.dates.length}
+        disabled={pickedCount < 2}
         onClick={() => dispatch({ type: 'navigate', screen: 'build' })}
       >
-        Choose a meal
+        {pickedCount < 2 ? 'Choose a meal' : `Choose a meal (${pickedCount})`}
       </Button>
     </section>
   );

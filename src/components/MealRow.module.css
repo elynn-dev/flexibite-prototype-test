@@ -96,14 +96,21 @@
   outline-offset: 2px;
 }
 
-/* Figma Dropdown → .list-items (48px): 11px gap, 8px vertical padding, dark green name */
+/* Figma .list-items (48px): 12px after the picture; label container 8px top/bottom, 6px gap, dark green name */
 .small {
   align-items: center;
-  gap: 11.24px;
+  gap: 12px;
 }
 
 .small .text {
+  gap: 6px;
   padding: 8px 0;
+}
+
+/* Label/Md/Regular fills the row; the link and delete button sit 6px apart at the right */
+.small .text > span:first-child {
+  flex: 1;
+  min-width: 0;
 }
 
 .small .name {

@@ -213,8 +213,9 @@ function addToCartAvocados(cart: CartItem[], amount: number) {
 
 export function plannerReducer(state: PlannerState, action: PlannerAction): PlannerState {
   switch (action.type) {
+    // A toast belongs to the screen that showed it, so moving on drops it.
     case 'navigate':
-      return { ...state, screen: action.screen, overlay: null };
+      return { ...state, screen: action.screen, overlay: null, toast: null, lastDeleted: null };
 
     case 'goHome':
       return {
@@ -274,6 +275,8 @@ export function plannerReducer(state: PlannerState, action: PlannerAction): Plan
         ...state,
         screen: 'recipe',
         overlay: null,
+        toast: null,
+        lastDeleted: null,
         openRecipeId: action.recipeId,
         recipeReturnTo: action.returnTo,
         recipeMode: action.mode ?? 'view',
@@ -303,7 +306,7 @@ export function plannerReducer(state: PlannerState, action: PlannerAction): Plan
     }
 
     case 'startDraft':
-      return { ...state, draft: { ...EMPTY_DRAFT, dates: action.day ? [action.day] : [] }, screen: 'choose', overlay: null };
+      return { ...state, draft: { ...EMPTY_DRAFT, dates: action.day ? [action.day] : [] }, screen: 'choose', overlay: null, toast: null, lastDeleted: null };
 
     case 'updateDraft':
       return { ...state, draft: { ...state.draft, ...action.draft } };

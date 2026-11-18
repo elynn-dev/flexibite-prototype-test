@@ -59,7 +59,7 @@ export function PlanSummaryScreen() {
       <div className={styles.bottom}>
       {needs.length > 0 && (
         <div className={styles.needs}>
-          <SectionHeader title="You may need" trailing={<Icon name="edit" size={16} />} />
+          <SectionHeader title="You may need" />
           <div className={styles.needChips}>
             {needs.map((n) => (
               <span className={styles.needChip} key={n.name}>

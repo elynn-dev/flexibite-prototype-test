@@ -2,6 +2,7 @@ import { Chip } from '../../components/Chip';
 import { SectionHeader } from '../../components/SectionHeader';
 import { useCallback, useState } from 'react';
 import { Button } from '../../components/Button';
+import { OverlayHeader } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
 import { MealTimeLabel } from '../../components/MealTime';
 import { ToastMessage } from '../../components/ToastMessage';
@@ -49,11 +50,11 @@ export function RecipeScreen({ recipeId }: { recipeId: RecipeId }) {
 
   return (
     <section className={styles.screen} aria-label="Recipe">
-      <div className={styles.overlayHeader}>
-        <button type="button" className={styles.close} aria-label="Close" onClick={() => dispatch({ type: 'closeRecipe' })}>
-          <Icon name="close" size={24} />
-        </button>
-      </div>
+      {/* Figma overlay-header: back on the left, close on the right */}
+      <OverlayHeader
+        onBack={() => dispatch(planMode ? { type: 'navigate', screen: 'build' } : { type: 'closeRecipe' })}
+        onClose={() => dispatch(planMode ? { type: 'navigate', screen: 'home' } : { type: 'closeRecipe' })}
+      />
 
       <div className={styles.main}>
         <div className={styles.selectedDates}>
