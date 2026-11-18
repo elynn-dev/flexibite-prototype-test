@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { SnackBar } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
 import { MainTabBar } from '../../components/TabBar';
+import { Post } from '../../components/Post';
 import { usePlanner, usePlannerDispatch } from '../../state/PlannerContext';
 import homeCooking from '../../assets/images/group-home-cooking.jpg';
 import friend1 from '../../assets/images/avatar-friend-1.jpg';
@@ -102,21 +103,16 @@ export function GroupScreen() {
               <Icon name="edit" size={16} />
             </Link>
           </div>
-          <article className={styles.post}>
-            <div className={styles.postHead}>
-              <span className={styles.avatar} />
-              ELYN <small>3 MIN AGO</small>
-              <span className={styles.more} aria-hidden="true">
-                ···
-              </span>
-            </div>
-            <img src={tomatoSoup} alt="Tomato soup with bread" />
-            <p>I made tomato soup today!</p>
-            <div className={styles.postFoot}>
-              <Icon name="comment" size={20} />2
-              <Icon name="heartCount" size={20} />
-            </div>
-          </article>
+          {/* Figma Components → post (no profile picture yet: outlined circle) */}
+          <Post
+            className={styles.groupPost}
+            name="Elyn"
+            time="3 min ago"
+            image={tomatoSoup}
+            imageAlt="Tomato soup with bread"
+            note="I made tomato soup today!"
+            comments={2}
+          />
         </div>
       </div>
 

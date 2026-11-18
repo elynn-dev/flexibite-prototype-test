@@ -2,7 +2,10 @@ import { Tabs } from '../../components/Tabs';
 import { SectionHeader } from '../../components/SectionHeader';
 import { Link } from '../../components/Link';
 import { Chip } from '../../components/Chip';
-import { useEffect, useRef, useState } from 'react';
+import { DataDisplay } from '../../components/DataDisplay';
+import avocadoNoBg from '../../assets/ingredients/no-bg/avocado.png';
+import eggNoBg from '../../assets/ingredients/no-bg/egg.png';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Button } from '../../components/Button';
 import { SnackBar } from '../../components/Controls';
 import { CartButton } from '../../components/GroceryBasket';
@@ -20,6 +23,12 @@ const TABS: [PantryLocation, string][] = [
   ['fridge', 'Fridge'],
   ['freezer', 'Freezer'],
 ];
+
+/** Used-ingredient pictures as placed in Figma Pantry-default (image style "…-no-background" and its crop). */
+const USED_IMAGE: Record<string, { src: string; crop: CSSProperties }> = {
+  Onion: { src: avocadoNoBg, crop: { left: '-18.6%', top: '-18.53%', width: '137.14%', height: '137.14%' } },
+  Eggs: { src: eggNoBg, crop: { left: '-18.88%', top: '-14.11%', width: '137.74%', height: '137.74%' } },
+};
 
 /** Storage rows hold 3, 2 and 2 cards (Figma Pantry-default); other tabs fill rows of 3. */
 function rowsFor(items: PantryItem[], tab: PantryLocation): PantryItem[][] {
@@ -86,16 +95,19 @@ export function PantryScreen() {
       <div className={styles.scroll}>
         <div className={`${styles.used} hide-scrollbar`}>
           {usedIngredients.map((u, i) => (
-            <span className={styles.usedChip} key={u.name}>
-              {u.name}
-              <span className={styles.usedQty}>
-                <em>{u.quantity} -</em>
-                <small>whole</small>
-              </span>
-              <button type="button" aria-label={`Apply ${u.name}`} onClick={() => applyUsed(i)}>
-                <Icon name="close" size={20} />
-              </button>
-            </span>
+            // Figma data-display (type=outline) with the ingredient's no-background image style
+            <DataDisplay
+              key={u.name}
+              className={styles.usedChip}
+              image={USED_IMAGE[u.name]?.src}
+              imageStyle={USED_IMAGE[u.name]?.crop}
+              label={u.name}
+              quantity={`${u.quantity} -`}
+              quantityClassName={styles.usedQty}
+              unit="whole"
+              onRemove={() => applyUsed(i)}
+              removeLabel={`Apply ${u.name}`}
+            />
           ))}
         </div>
 

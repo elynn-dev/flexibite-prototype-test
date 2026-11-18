@@ -25,57 +25,13 @@
   border-bottom: 1px solid var(--text-action);
 }
 
-/* data-display, type=outline */
+/* Figma data-display (type=outline) at 40px; the change in red (red/200) */
 .usedChip {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  flex: none;
   height: 40px;
-  padding: 0 16px;
-  border: 1px solid var(--border-action);
-  border-radius: 30px;
-  background: var(--surface-default-secondary);
-  font: 500 14px/16px var(--font-body);
-  letter-spacing: -0.14px;
-  color: var(--text-action);
 }
 
-.usedQty {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.usedChip em {
-  font: 400 14px/16px var(--font-body);
-  font-style: normal;
+.usedChip .usedQty {
   color: var(--red-200);
-}
-
-.usedChip small {
-  font: 400 10px/13px var(--font-body);
-  color: var(--neutral-500);
-}
-
-.usedChip button {
-  display: grid;
-  place-items: center;
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-
-.usedChip button img {
-  width: 20px;
-  height: 20px;
-}
-
-.usedChip button:hover {
-  background: var(--surface-hover);
 }
 
 /* Storage / Fridge / Freezer */

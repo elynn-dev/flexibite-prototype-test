@@ -28,6 +28,8 @@ import closeWhite from './close-white.svg';
 import closeXs from './close-xs.svg';
 import close from './close.svg';
 import comment from './comment.svg';
+import commentPost from './comment-post.svg';
+import moreMenu from './more-menu.svg';
 import countDot from './count-dot.svg';
 import disclosureArrow from './disclosure-arrow.svg';
 import deleteCard from './delete-card.svg';
@@ -115,6 +117,8 @@ export const icons = {
   closeXs,
   close,
   comment,
+  commentPost,
+  moreMenu,
   countDot,
   disclosureArrow,
   deleteCard,
