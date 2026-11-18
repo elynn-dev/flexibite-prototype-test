@@ -30,6 +30,7 @@ import close from './close.svg';
 import comment from './comment.svg';
 import countDot from './count-dot.svg';
 import disclosureArrow from './disclosure-arrow.svg';
+import deleteCard from './delete-card.svg';
 import dots from './dots.svg';
 import editSteps from './edit-steps.svg';
 import edit from './edit.svg';
@@ -115,6 +116,7 @@ export const icons = {
   comment,
   countDot,
   disclosureArrow,
+  deleteCard,
   dots,
   editSteps,
   edit,

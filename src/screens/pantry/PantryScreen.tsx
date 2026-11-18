@@ -195,8 +195,8 @@ function StockCard({ item, onOpen, onDelete }: { item: PantryItem; onOpen: () =>
         </span>
       </button>
       <button type="button" className={styles.stockDelete} aria-label={`Delete ${item.name}`} onClick={onDelete}>
-        {/* 16px so the 1.2px lines stay clear (Figma scales this one to 13px and 0.5px) */}
-        <Icon name="trash" size={16} />
+        {/* Figma stock card delete: 13px, 0.7px line in #343231 */}
+        <Icon name="deleteCard" size={13.06} />
       </button>
     </div>
   );

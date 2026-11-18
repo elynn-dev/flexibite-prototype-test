@@ -209,14 +209,16 @@
   color: var(--red-200);
 }
 
+/* Figma quantity-container: 4px right and bottom padding, icon centred in the 16px row */
 .stockDelete {
   position: absolute;
   right: 4px;
   bottom: 4px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   width: 20px;
-  height: 20px;
+  height: 16px;
   padding: 0;
   border: 0;
   background: none;
