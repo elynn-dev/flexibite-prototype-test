@@ -14,6 +14,8 @@ import prep3 from '../../assets/images/prep-3.jpg';
 import avocadoPhoto from '../../assets/ingredients/photos/avocado.jpg';
 import onionPhoto from '../../assets/ingredients/photos/onion.jpg';
 import avocadoCutout from '../../assets/ingredients/no-bg/avocado.png';
+import onionCutout from '../../assets/ingredients/no-bg/onion.png';
+import carrotCutout from '../../assets/ingredients/no-bg/carrot.png';
 import { DatePicker } from './DatePicker';
 import styles from './AssistantSheet.module.css';
 
@@ -175,7 +177,6 @@ export function AssistantSheet() {
           <DataDisplay
             key={day}
             className={date?.day === day ? styles.on : undefined}
-            image={avocadoCutout}
             marker={<span className={styles.lunch}><i /></span>}
             label={label}
             pressed={date?.day === day}
@@ -273,15 +274,15 @@ export function AssistantSheet() {
               <div className={`${styles.ingredients} hide-scrollbar`}>
                 {(
                   [
-                    ['Avocado', 1],
-                    ['Onion', 4],
-                    ['Carrot', 2],
+                    ['Avocado', 1, avocadoCutout],
+                    ['Onion', 4, onionCutout],
+                    ['Carrot', 2, carrotCutout],
                   ] as const
-                ).map(([name, n]) => (
+                ).map(([name, n, img]) => (
                   <DataDisplay
                     key={name}
                     className={styles.ingredient}
-                    image={avocadoCutout}
+                    image={img}
                     label={name}
                     quantity={n}
                     quantityClassName={styles.ingredientQty}

@@ -66,3 +66,9 @@
   right: 4px;
 }
 
+
+/* Figma meal-card-menu → .menu items: 67px wide, 8px each side (the 1px line sits inside), 4px icon gap */
+.menu [role='menuitem'] {
+  gap: 4px;
+  padding: 0 7px;
+}
