@@ -1,0 +1,133 @@
+/* Figma Components → .list-items: 48px row, #F4F4F4, 12px between the picture and the label container */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 48px;
+  background: var(--surface-default-secondary);
+  font-family: var(--font-body);
+}
+
+/* Image/meal-card/image: 48px picture on white */
+.image {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* label container: 8px top/bottom, 6px gap, space-between, 0.703px neutral/500 line */
+.labelContainer {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  height: 100%;
+  padding: 8px 0;
+  border-bottom: 0.703px solid var(--neutral-500);
+}
+
+/* Label/Md/Regular, text/dark-green, fills the row */
+.label {
+  flex: 1;
+  min-width: 0;
+  font: 400 14px/16px var(--font-body);
+  letter-spacing: -0.14px;
+  color: var(--text-dark-green);
+}
+
+/* link-button-container: link and delete button 6px apart */
+.actions {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* icon-button (outline), 24px with the 24px close-x-exit icon */
+.delete {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.delete:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+/* state=hover: #EEE row, label #6B635E, link in its hover state */
+.item:not(.disabled):hover {
+  background: var(--surface-hover);
+}
+
+.item:not(.disabled):hover .label {
+  color: var(--text-action-hover);
+}
+
+.item:not(.disabled):hover .link {
+  border-color: var(--border-action-hover);
+  background: var(--surface-action-hover-light);
+  color: var(--text-action-hover);
+}
+
+/* state=focus: 2px #6B635E ring, 5px outside the row */
+.item:has(:focus-visible) {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+}
+
+/* state=disabled: #D6D6D6 row, #93918B label, no line */
+.disabled {
+  background: var(--surface-disabled);
+}
+
+.disabled .label {
+  color: var(--text-disabled);
+}
+
+.disabled .labelContainer {
+  border-bottom-color: transparent;
+}
+
+.disabled .delete {
+  cursor: default;
+}
+
+/* Instance overrides */
+.noFill,
+.noFill:not(.disabled):hover {
+  background: none;
+}
+
+.hug {
+  width: auto;
+}
+
+.hug .labelContainer,
+.hug .label {
+  flex: none;
+  justify-content: flex-start;
+}
+
+/* Label/Sm/Medium */
+.smMedium .label {
+  font: 500 12px/15px var(--font-body);
+  letter-spacing: 0;
+}

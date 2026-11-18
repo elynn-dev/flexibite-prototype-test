@@ -4,8 +4,7 @@ import { Button } from '../../components/Button';
 import { OverlayHeader } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
 import { MealMarker } from '../../components/MealTime';
-import { Link } from '../../components/Link';
-import { MealRow } from '../../components/MealRow';
+import { ListItem } from '../../components/ListItem';
 import { RECIPES } from '../../data/recipes';
 import { MEAL_LABEL, MEAL_TIMES, type DayKey, type MealTime } from '../../data/types';
 import { CALENDAR_MONTH, MONTH_SHORT, TODAY, WEEKDAY_LETTERS, calendarWeeks, chipLabel, shortLabel, toKey } from '../../lib/dates';
@@ -120,26 +119,16 @@ export function ChooseDatesScreen() {
                   {planned.length > 0 && (
                     <div className={styles.plannedList}>
                       {planned.map((p) => (
-                        <MealRow
+                        <ListItem
                           key={p.meal}
-                          size={48}
-                          className={styles.mealTypeItem}
+                          noFill
+                          hug
+                          labelStyle="sm-medium"
                           image={RECIPES[p.recipeId].thumb}
-                          name={
-                            <>
-                              <MealMarker meal={p.meal} size="md" />
-                              {MEAL_LABEL[p.meal]}
-                            </>
-                          }
-                          trailing={
-                            <button
-                              type="button"
-                              aria-label={`Remove ${MEAL_LABEL[p.meal]} on ${chipLabel(day)}`}
-                              onClick={() => dispatch({ type: 'removePlan', day, meal: p.meal })}
-                            >
-                              <Icon name="close" size={24} />
-                            </button>
-                          }
+                          mealTime={p.meal}
+                          label={MEAL_LABEL[p.meal]}
+                          onDelete={() => dispatch({ type: 'removePlan', day, meal: p.meal })}
+                          deleteLabel={`Remove ${MEAL_LABEL[p.meal]} on ${chipLabel(day)}`}
                         />
                       ))}
                     </div>
@@ -148,30 +137,14 @@ export function ChooseDatesScreen() {
                   {types.length > 0 && (
                     <div className={styles.typeList}>
                       {types.map((m) => (
-                        <MealRow
+                        <ListItem
                           key={m}
-                          size={48}
-                          className={styles.typeItem}
-                          name={
-                            <>
-                              <MealMarker meal={m} size="md" />
-                              {MEAL_LABEL[m]}
-                            </>
-                          }
-                          trailing={
-                            <span className={styles.typeActions}>
-                              <Link variant="outline-all" onClick={() => chooseOne(day, m)}>
-                                Choose a meal
-                              </Link>
-                              <button
-                                type="button"
-                                aria-label={`Remove ${MEAL_LABEL[m]} on ${chipLabel(day)}`}
-                                onClick={() => setTypes(day, types.filter((t) => t !== m))}
-                              >
-                                <Icon name="close" size={24} />
-                              </button>
-                            </span>
-                          }
+                          noFill
+                          mealTime={m}
+                          label={MEAL_LABEL[m]}
+                          link={{ label: 'Choose a meal', onClick: () => chooseOne(day, m) }}
+                          onDelete={() => setTypes(day, types.filter((t) => t !== m))}
+                          deleteLabel={`Remove ${MEAL_LABEL[m]} on ${chipLabel(day)}`}
                         />
                       ))}
                     </div>

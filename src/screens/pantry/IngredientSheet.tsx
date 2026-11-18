@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../components/Button';
 import { Stepper } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
-import { Link } from '../../components/Link';
-import { MealRow } from '../../components/MealRow';
+import { ListItem } from '../../components/ListItem';
 import { Select } from '../../components/Select';
 import { INGREDIENT_CATALOG, type CatalogIngredient } from '../../data/ingredients';
 import type { PantryItem, PantryLocation, PantryShelf } from '../../data/types';
@@ -223,16 +222,11 @@ function IngredientSearch({ onPick, onSave }: { onPick: (c: CatalogIngredient) =
                 <div className={styles.ingListItems}>
                   {results.map((c) => (
                     <div key={c.name} onPointerEnter={() => setPreview(c.image)} onFocus={() => setPreview(c.image)}>
-                      <MealRow
-                        size={48}
-                        name={c.name}
+                      <ListItem
+                        label={c.name}
                         image={c.image}
                         imageBackground="var(--ingredient-bg)"
-                        trailing={
-                          <Link variant="outline-all" onClick={() => onPick(c)}>
-                            Add to plan
-                          </Link>
-                        }
+                        link={{ label: 'Add to plan', onClick: () => onPick(c) }}
                       />
                     </div>
                   ))}

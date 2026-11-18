@@ -1,10 +1,9 @@
-import { Link } from '../../components/Link';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../components/Button';
 import { OverlayHeader } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
 import { MealMarker } from '../../components/MealTime';
-import { MealRow } from '../../components/MealRow';
+import { ListItem } from '../../components/ListItem';
 import { RECIPES } from '../../data/recipes';
 import type { DayKey, MealTime, RecipeId } from '../../data/types';
 import { chipLabel } from '../../lib/dates';
@@ -65,17 +64,7 @@ export function PlanBuilderScreen() {
   const goTo = GO_TO.filter(match);
 
   const item = (c: Choice) => (
-    <MealRow
-      key={c.name}
-      size={48}
-      name={c.name}
-      image={c.image}
-      trailing={
-        <Link variant="outline-all" onClick={() => c.recipeId && choose(c.recipeId)}>
-          Add to plan
-        </Link>
-      }
-    />
+    <ListItem key={c.name} label={c.name} image={c.image} link={{ label: 'Add to plan', onClick: () => c.recipeId && choose(c.recipeId) }} />
   );
 
   return (
