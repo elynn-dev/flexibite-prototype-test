@@ -363,10 +363,12 @@ function StockCard({
       className={`${styles.stock} ${lifted ? styles.stockLifted : ''}`}
       onPointerDown={onPress}
       onContextMenu={(e) => onPress && e.preventDefault()}
+      // Holding the photo must lift the whole card, not start the browser's own image drag.
+      onDragStart={(e) => e.preventDefault()}
     >
       <button type="button" className={styles.stockOpen} aria-label={`${item.name}, ${amount}`} onClick={onOpen}>
         <span className={styles.stockImage}>
-          <img src={item.image} alt="" />
+          <img src={item.image} alt="" draggable={false} />
         </span>
         <span className={styles.stockName}>{item.name}</span>
         <span className={styles.stockQty}>
