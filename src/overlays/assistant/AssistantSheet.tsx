@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Button } from '../../components/Button';
+import { DataDisplay } from '../../components/DataDisplay';
 import { Icon, type IconName } from '../../components/Icon';
 import { MealMarker } from '../../components/MealTime';
 import type { DayKey, MealTime } from '../../data/types';
@@ -10,7 +11,9 @@ import rainbowSalad from '../../assets/images/rainbow-salad.jpg';
 import prep1 from '../../assets/images/prep-1.jpg';
 import prep2 from '../../assets/images/prep-2.jpg';
 import prep3 from '../../assets/images/prep-3.jpg';
-import avocadoIcon from '../../assets/ingredients/avocado.svg';
+import avocadoPhoto from '../../assets/ingredients/photos/avocado.jpg';
+import onionPhoto from '../../assets/ingredients/photos/onion.jpg';
+import avocadoCutout from '../../assets/ingredients/no-bg/avocado.png';
 import { DatePicker } from './DatePicker';
 import styles from './AssistantSheet.module.css';
 
@@ -169,15 +172,15 @@ export function AssistantSheet() {
       </button>
       <div className={`${styles.quickDays} hide-scrollbar`}>
         {QUICK_DAYS.map(([label, day]) => (
-          <button
+          <DataDisplay
             key={day}
-            type="button"
-            className={`${styles.quickDay} ${date?.day === day ? styles.on : ''}`}
+            className={date?.day === day ? styles.on : undefined}
+            image={avocadoCutout}
+            marker={<span className={styles.lunch}><i /></span>}
+            label={label}
+            pressed={date?.day === day}
             onClick={() => pickDate(day)}
-          >
-            <i />
-            {label}
-          </button>
+          />
         ))}
       </div>
     </div>
@@ -243,8 +246,8 @@ export function AssistantSheet() {
               <div className={styles.pantryRows}>
                 {pantryTab === 'storage' && (
                   <>
-                    <PantryRow image={<img src={avocadoIcon} alt="" />} name="Avocado" quantity={1} badge="Added recently" />
-                    <PantryRow image={<Icon name="onion" size={46} />} name="Onion" quantity={4} />
+                    <DataDisplay type="edit" image={avocadoPhoto} label="Avocado" quantity={1} unit="Whole" chip="Added recently" />
+                    <DataDisplay type="edit" image={onionPhoto} label="Onion" quantity={4} unit="Whole" />
                   </>
                 )}
               </div>
@@ -275,11 +278,15 @@ export function AssistantSheet() {
                     ['Carrot', 2],
                   ] as const
                 ).map(([name, n]) => (
-                  <span className={styles.ingredient} key={name}>
-                    {name}
-                    <b>{n}</b>
-                    <small>whole</small>
-                  </span>
+                  <DataDisplay
+                    key={name}
+                    className={styles.ingredient}
+                    image={avocadoCutout}
+                    label={name}
+                    quantity={n}
+                    quantityClassName={styles.ingredientQty}
+                    unit="whole"
+                  />
                 ))}
               </div>
               <div className={styles.section}>
@@ -426,22 +433,5 @@ export function AssistantSheet() {
         />
       )}
     </>
-  );
-}
-
-function PantryRow({ image, name, quantity, badge }: { image: ReactNode; name: string; quantity: number; badge?: string }) {
-  return (
-    <div className={styles.pantryRow}>
-      <span className={styles.pantryImage}>{image}</span>
-      <span className={styles.pantryInfo}>
-        <span className={styles.pantryName}>{name}</span>
-        <span className={styles.pantryQty}>
-          {quantity}
-          <small>Whole</small>
-          <Icon name="chevronDownXs" size={16} />
-        </span>
-      </span>
-      {badge && <span className={styles.badge}>{badge}</span>}
-    </div>
   );
 }

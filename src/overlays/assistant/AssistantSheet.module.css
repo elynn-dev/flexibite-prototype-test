@@ -187,7 +187,6 @@
 
 .option:focus-visible,
 .meal:focus-visible,
-.quickDay:focus-visible,
 .calendarButton:focus-visible,
 .back:focus-visible {
   outline: 2px solid var(--border-focus);
@@ -327,59 +326,6 @@
   margin-top: 24px;
 }
 
-.pantryRow {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  /* 46px ingredient + the 1px line */
-  height: 47px;
-  border-bottom: 1px solid var(--border-default);
-}
-
-.pantryImage,
-.pantryImage img {
-  flex: none;
-  width: 46px;
-  height: 46px;
-}
-
-.pantryInfo {
-  margin-left: 12px;
-  padding-top: 4px;
-}
-
-.pantryName {
-  display: block;
-  font: 500 14px/16px var(--font-body);
-  color: var(--text-action);
-}
-
-.pantryQty {
-  display: flex;
-  align-items: center;
-  height: 16px;
-  margin-top: 3px;
-  font: 400 12px/15px var(--font-body);
-  color: var(--text-default-secondary);
-}
-
-.pantryQty small {
-  margin: 0 2px 0 6px;
-  font-size: 10px;
-}
-
-.badge {
-  position: absolute;
-  top: 11px;
-  right: 8px;
-  height: 24px;
-  padding: 0 12px;
-  border-radius: 22px;
-  background: var(--toast-info-bg);
-  color: var(--toast-info-fg);
-  font: 500 12px/24px var(--font-body);
-}
-
 .buttonRow {
   display: flex;
   justify-content: flex-end;
@@ -396,28 +342,13 @@
   overflow-x: auto;
 }
 
+/* Figma data-display (type=outline, 40px): the count in red/200 */
 .ingredient {
-  display: inline-flex;
-  align-items: center;
-  flex: none;
   height: 40px;
-  padding: 0 20px 0 16px;
-  border: 1px solid var(--border-default);
-  border-radius: 30px;
-  font: 500 14px/16px var(--font-body);
-  color: var(--text-action);
 }
 
-.ingredient b {
-  margin-left: 14px;
-  font-weight: 400;
+.ingredient .ingredientQty {
   color: var(--red-200);
-}
-
-.ingredient small {
-  margin-left: 4px;
-  font-size: 10px;
-  color: var(--neutral-500);
 }
 
 .section {
@@ -547,39 +478,27 @@
   overflow-x: auto;
 }
 
-.quickDay {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+/* meal-time: 12px lunch square in a 20px box */
+.lunch {
+  display: grid;
+  place-items: center;
   flex: none;
-  height: 40px;
-  /* Figma data-display, type=outline: 16px sides, 4px between marker and label */
-  padding: 0 16px;
-  border: 1px solid var(--border-action);
-  border-radius: 30px;
-  background: var(--surface-default-secondary);
-  color: var(--text-action);
-  font: 500 14px/16px var(--font-body);
-  letter-spacing: -0.14px;
-  cursor: pointer;
+  width: 20px;
+  height: 20px;
 }
 
-/* 12px square inside a 20px meal-time box */
-.quickDay i {
-  display: block;
+.lunch i {
   width: 12px;
   height: 12px;
-  margin: 4px;
   background: var(--meal-time-lunch);
 }
 
-.quickDay:hover {
-  background: var(--surface-action-hover-light);
-  border-color: var(--border-action-hover);
-  color: var(--text-action-hover);
+/* Figma data-display (type=outline) at 40px */
+.quickDays > * {
+  height: 40px;
 }
 
-.on {
+.quickDays .on {
   background: var(--surface-desk);
 }
 

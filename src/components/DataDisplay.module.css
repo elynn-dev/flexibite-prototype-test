@@ -134,3 +134,118 @@
 .disabled .remove {
   cursor: default;
 }
+
+/* A data display that is itself the button (e.g. quick-pick days) */
+.clickable {
+  font-family: var(--font-body);
+  text-align: left;
+  cursor: pointer;
+}
+
+.clickable:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+.clickable:disabled {
+  cursor: default;
+}
+
+/* type=edit: 46px photo, 12px gap, then the underlined quantity block; 8px right padding */
+.edit {
+  display: flex;
+  width: 100%;
+  padding-right: 8px;
+  background: var(--surface-default-secondary);
+}
+
+/* image-container: the photo over the ingredient colour (#D1C0BB) */
+.photo {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  background: var(--ingredient-bg, #d1c0bb);
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* quantity-stock-container: 1px #343231 line under it, stock chip at the right */
+.stock {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  min-width: 0;
+  border-bottom: 1px solid var(--border-default);
+}
+
+/* quantity-container: 4px top padding, 3px between the name and the select */
+.quantityContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  align-self: stretch;
+  padding-top: 4px;
+}
+
+/* quantity-select .option: Label/Sm number, Label/Xs unit, 16px chevron, 6px apart */
+.option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-default-secondary);
+}
+
+.optionQty {
+  font: 400 12px/15px var(--font-body);
+}
+
+.optionUnit {
+  font: 400 10px/13px var(--font-body);
+}
+
+/* stock-info-container: chip and the ×, 12px apart */
+.stockInfo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* edit hover: photo at 67%, line and text in action-hover */
+.edit:hover:not(.disabled) .photo {
+  opacity: 0.67;
+}
+
+.edit:hover:not(.disabled) .stock {
+  border-color: var(--border-action-hover);
+}
+
+.edit:hover:not(.disabled) .option {
+  color: var(--text-action-hover);
+}
+
+/* edit focus: 2px ring right on the edge */
+.edit:has(:focus-visible),
+.edit.clickable:focus-visible {
+  outline-offset: 0;
+}
+
+/* edit disabled: grey photo, grey line and text */
+.edit.disabled .photo {
+  mix-blend-mode: luminosity;
+}
+
+.edit.disabled .stock {
+  border-color: var(--border-disabled);
+}
+
+.edit.disabled .option {
+  color: var(--text-disabled);
+}
