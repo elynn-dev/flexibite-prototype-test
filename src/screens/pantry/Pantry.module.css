@@ -406,23 +406,26 @@
   gap: 16px;
 }
 
+/* Figma .Input → counter: the 276px counter (it draws its own line) and the 42px delete button */
 .quantityRow {
   display: flex;
   align-items: center;
-  gap: 24px;
+  justify-content: space-between;
 }
 
 .quantity {
-  flex: 1;
-  height: 42px;
-  padding: 11px 6px 0;
-  border-bottom: 1px solid var(--border-default);
+  width: 276px;
 }
 
+/* "Plenty" sits where the counter would, on the same 42px line */
 .plentyLabel {
-  display: block;
-  text-align: center;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  border-bottom: 1px solid var(--border-action);
+  font: 400 16px/21px var(--font-body);
+  color: var(--text-action);
 }
 
 .sheetFooter {

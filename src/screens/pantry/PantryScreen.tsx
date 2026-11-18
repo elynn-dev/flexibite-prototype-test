@@ -195,7 +195,8 @@ function StockCard({ item, onOpen, onDelete }: { item: PantryItem; onOpen: () =>
         </span>
       </button>
       <button type="button" className={styles.stockDelete} aria-label={`Delete ${item.name}`} onClick={onDelete}>
-        <Icon name="trash" size={13} />
+        {/* 16px so the 1.2px lines stay clear (Figma scales this one to 13px and 0.5px) */}
+        <Icon name="trash" size={16} />
       </button>
     </div>
   );

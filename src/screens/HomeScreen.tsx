@@ -43,6 +43,8 @@ export function HomeScreen() {
   /** Tapping an empty day starts a new plan for it. */
   const selectDay = (day: DayKey) => {
     dispatch({ type: 'selectDay', day });
+    // Picking a date closes the month view.
+    if (state.calendarExpanded) dispatch({ type: 'toggleCalendarExpanded' });
     if (!mealsOn(state.plans, day).length) dispatch({ type: 'startDraft', day });
   };
 
