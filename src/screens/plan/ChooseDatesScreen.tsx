@@ -4,6 +4,7 @@ import { Button } from '../../components/Button';
 import { OverlayHeader } from '../../components/Controls';
 import { Icon } from '../../components/Icon';
 import { MealMarker } from '../../components/MealTime';
+import { RECIPES } from '../../data/recipes';
 import { MEAL_LABEL, MEAL_TIMES, type DayKey, type MealTime } from '../../data/types';
 import { CALENDAR_MONTH, MONTH_SHORT, TODAY, WEEKDAY_LETTERS, calendarWeeks, chipLabel, shortLabel, toKey } from '../../lib/dates';
 import { usePlanner, usePlannerDispatch } from '../../state/PlannerContext';
@@ -38,7 +39,6 @@ export function ChooseDatesScreen() {
             {MONTH_SHORT[CALENDAR_MONTH]}
             <Icon name="chevronDownSm" size={16} />
           </div>
-          <Icon name="viewToggle" size={32} />
         </div>
 
         <div className={styles.weekdays} aria-hidden="true">
@@ -92,6 +92,7 @@ export function ChooseDatesScreen() {
           <div className={styles.dateRows}>
             {draft.dates.map((day) => {
               const types = draft.types[day] ?? [];
+              const planned = mealsOn(plans, day);
               return (
                 <div className={styles.dateRow} key={day}>
                   <div className={styles.dateRowHead}>
@@ -104,6 +105,25 @@ export function ChooseDatesScreen() {
                       onChange={(m) => !types.includes(m) && setTypes(day, [...types, m])}
                     />
                   </div>
+                  {/* Meals already planned for this day (Figma planned-meal, as in the plan summary) */}
+                  {planned.length > 0 && (
+                    <div className={styles.plannedList}>
+                      {planned.map((p) => (
+                        <div className={styles.summaryItem} key={p.meal}>
+                          <div className={styles.summaryDate}>
+                            <MealMarker meal={p.meal} size="md" />
+                            {MEAL_LABEL[p.meal]}
+                          </div>
+                          <div className={styles.summaryRow}>
+                            <span className={styles.summaryPicture}>
+                              <img src={RECIPES[p.recipeId].thumb} alt="" />
+                            </span>
+                            <span className={styles.summaryText}>{RECIPES[p.recipeId].name}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   {types.length > 0 && (
                     <div className={styles.typeChips}>
                       {types.map((m) => (
