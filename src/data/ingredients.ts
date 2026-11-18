@@ -20,8 +20,9 @@ export interface CatalogIngredient {
   unit: string;
 }
 
-/** Everything that can be added to the pantry, in the order of the Figma search list. */
-export const INGREDIENT_CATALOG: CatalogIngredient[] = [
+/** Everything that can be added to the pantry, A–Z. */
+export const INGREDIENT_CATALOG: CatalogIngredient[] = (
+  [
   { name: 'Avocado', image: avocado, unit: 'whole' },
   { name: 'Apple', image: apple, unit: 'whole' },
   { name: 'Banana', image: banana, unit: 'bunch' },
@@ -35,6 +36,7 @@ export const INGREDIENT_CATALOG: CatalogIngredient[] = [
   { name: 'Pumpkin', image: pumpkin, unit: 'whole' },
   { name: 'Salt', image: salt, unit: 'ts' },
   { name: 'Tomato', image: tomato, unit: 'whole' },
-];
+  ] as CatalogIngredient[]
+).sort((a, b) => a.name.localeCompare(b.name));
 
 export const INGREDIENT_PHOTO = { apple, avocado, banana, bread, carrot, egg, eggplant, lemon, oliveOil, onion, pumpkin, salt, tomato };
