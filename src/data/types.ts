@@ -70,6 +70,9 @@ export interface CartItem {
 
 export type PantryLocation = 'storage' | 'fridge' | 'freezer';
 
+/** The shelf an ingredient sits on; each shelf is one row of cards in the pantry. */
+export type PantryShelf = 'Top' | 'Middle' | 'Bottom';
+
 export interface PantryItem {
   name: string;
   /** -1 means "Plenty" (no count is kept). */
@@ -77,6 +80,8 @@ export interface PantryItem {
   unit: string;
   image: string;
   location: PantryLocation;
+  /** Missing means Top. */
+  shelf?: PantryShelf;
   /** Shown in red after the amount was just changed. */
   highlight?: boolean;
 }

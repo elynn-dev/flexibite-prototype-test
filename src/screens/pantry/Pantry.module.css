@@ -66,9 +66,54 @@
 /* Figma stock-row: 16px between cards, 12/16 padding, rows after the first get a #929292 line on top */
 .row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 16px;
   padding: 12px 0 16px;
+  transition: background-color 0.15s;
+}
+
+/* Moving a card: the shelf it would land on (surface/action-hover-light) */
+.rowOver {
+  background: var(--surface-action-hover-light);
+}
+
+/* An empty shelf, shown only while a card is moved */
+.rowEmpty {
+  justify-content: center;
+  min-height: 72px;
+}
+
+/* Label/Xs/Regular | Uppercase */
+.rowHint {
+  font: 400 10px/14px var(--font-body);
+  text-transform: uppercase;
+  color: var(--neutral-500);
+}
+
+.dragging {
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grabbing;
+}
+
+/* The card being moved stays in its row as a faded spot */
+.stockLifted {
+  opacity: 0.3;
+}
+
+/* The card under the finger: a little bigger, with a deeper shadow */
+.floating {
+  position: absolute;
+  z-index: 50;
+  width: 104px;
+  pointer-events: none;
+  transform: scale(1.06) rotate(-2deg);
+  filter: drop-shadow(0 24px 20px rgba(0, 0, 0, 0.18));
+}
+
+.floating .stock {
+  filter: none;
 }
 
 .row + .row {
@@ -84,6 +129,9 @@
 .stock {
   position: relative;
   flex: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
   width: 104px;
   filter: drop-shadow(0 16px 13.6px rgba(0, 0, 0, 0.1));
 }

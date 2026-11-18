@@ -6,7 +6,7 @@ import { Link } from '../../components/Link';
 import { MealRow } from '../../components/MealRow';
 import { Select } from '../../components/Select';
 import { INGREDIENT_CATALOG, type CatalogIngredient } from '../../data/ingredients';
-import type { PantryItem, PantryLocation } from '../../data/types';
+import type { PantryItem, PantryLocation, PantryShelf } from '../../data/types';
 import styles from './Pantry.module.css';
 
 /** Nutrition facts (only Onion has them in the design; the rest show the Figma Default values). */
@@ -32,7 +32,7 @@ const LOCATIONS: { value: PantryLocation; label: string }[] = [
   { value: 'fridge', label: 'Fridge' },
   { value: 'freezer', label: 'Freezer' },
 ];
-const SHELVES = ['Top', 'Middle', 'Bottom'].map((s) => ({ value: s, label: s }));
+const SHELVES = (['Top', 'Middle', 'Bottom'] as PantryShelf[]).map((s) => ({ value: s, label: s }));
 
 interface IngredientSheetProps {
   /** The ingredient to edit, or null to add a new one (Figma "Create an Ingredient-1/-2"). */
@@ -97,7 +97,7 @@ function IngredientForm({ item, onSave, onDelete }: { item: PantryItem; onSave: 
   const [plenty, setPlenty] = useState(item.quantity < 0);
   const [quantity, setQuantity] = useState(Math.max(item.quantity, 0));
   const [where, setWhere] = useState<PantryLocation>(item.location);
-  const [shelf, setShelf] = useState('Top');
+  const [shelf, setShelf] = useState<PantryShelf>(item.shelf ?? 'Top');
   const unit = item.unit || 'whole';
   const nutrition = NUTRITION[item.name] ?? DEFAULT_NUTRITION;
 
@@ -170,7 +170,7 @@ function IngredientForm({ item, onSave, onDelete }: { item: PantryItem; onSave: 
         <Button
           variant="default"
           size="lg"
-          onClick={() => onSave({ ...item, quantity: plenty ? -1 : quantity, unit: plenty ? '' : unit, location: where })}
+          onClick={() => onSave({ ...item, quantity: plenty ? -1 : quantity, unit: plenty ? '' : unit, location: where, shelf })}
         >
           Save
         </Button>

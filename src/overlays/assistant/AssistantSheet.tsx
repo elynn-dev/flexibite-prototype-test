@@ -274,15 +274,17 @@ export function AssistantSheet() {
               <div className={`${styles.ingredients} hide-scrollbar`}>
                 {(
                   [
-                    ['Avocado', 1, avocadoCutout],
-                    ['Onion', 4, onionCutout],
-                    ['Carrot', 2, carrotCutout],
+                    ['Avocado', 1, avocadoCutout, undefined],
+                    // Figma "-no-background" image styles: each cut-out has its own crop
+                    ['Onion', 4, onionCutout, { top: '-11.70%', left: '-15.81%', width: '131.56%', height: '131.56%' }],
+                    ['Carrot', 2, carrotCutout, { top: '-7.48%', left: '-6.12%', width: '121.77%', height: '121.77%' }],
                   ] as const
-                ).map(([name, n, img]) => (
+                ).map(([name, n, img, crop]) => (
                   <DataDisplay
                     key={name}
                     className={styles.ingredient}
                     image={img}
+                    imageStyle={crop}
                     label={name}
                     quantity={n}
                     quantityClassName={styles.ingredientQty}
